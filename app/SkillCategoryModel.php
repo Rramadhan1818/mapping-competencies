@@ -10,5 +10,4 @@ class SkillCategoryModel extends Model
     protected $fillable = [
         'id', 'skill_category'
     ];
-    public $timestamps = false;
-}
+} 
