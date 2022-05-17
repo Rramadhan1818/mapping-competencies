@@ -2,29 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Jabatan;
+use App\SubDepartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
-class JabatanController extends Controller
+class SubDepartmentController extends Controller
 {
-    public function get()
-    {
-        $items = Jabatan::orderBy('nama_job_title')->get();
-        return response()->json($items);
-    }
-
     public function index()
     {
-        $items = Jabatan::with('department')->orderBy('nama_job_title','ASC')->get();
-        return view('pages.admin.jabatan.index',compact('items'));
+        $items = SubDepartment::with('department')->orderBy('nama_subdepartment','ASC')->get();
+        return view('pages.admin.sub-department.index',compact('items'));
     }
 
     public function store()
     {
+        $id = request('id');
         $validator = Validator::make(request()->all(),[
-            'nama_job_title' => ['required'],
+            'nama_subdepartment' => ['required'],
             'department' => ['required']
         ]);
 
@@ -39,38 +34,37 @@ class JabatanController extends Controller
             return response()->json($response);
         }
 
-        $id = request('id');
         if($id)
         {
-            $data = Jabatan::where('id_job_title',$id)->update([
-                'id_department' => request('department'),
-                'nama_job_title' => request('nama_job_title')
+            $data = SubDepartment::where('id_subdepartment',$id)->update([
+                'nama_subdepartment' => request('nama_subdepartment'),
+                'id_department' => request('department')
             ]);
             $response = [
                  'code' => 200,
                  'status' => 'success',
-                 'message' => 'Job Title berhasil diupdate.',
+                 'message' => 'Sub Department  berhasil diupdate.',
                  'data' => $data
              ];
 
         }else{
-            $dep1 = Jabatan::orderBy('id_job_title','DESC');
+            $dep1 = SubDepartment::orderBy('id_subdepartment','DESC');
             if($dep1->count() > 0)
             {
-                $terakhir = Str::after($dep1->first()->id_job_title,'JT-');
-                $kode_baru = 'JT-' . str_pad($terakhir + 1,4,"0",STR_PAD_LEFT);
+                $terakhir = Str::after($dep1->first()->id_subdepartment,'SDP-');
+                $kode_baru = 'SDP-' . str_pad($terakhir + 1,4,"0",STR_PAD_LEFT);
             }else{
-                $kode_baru = 'JT-' . str_pad(1,4,"0",STR_PAD_LEFT);
+                $kode_baru = 'SDP-' . str_pad(1,4,"0",STR_PAD_LEFT);
             }
-            $data = Jabatan::create([
-                'id_job_title' => $kode_baru,
-                'nama_job_title' => request('nama_job_title'),
+            $data = SubDepartment::create([
+                'id_subdepartment' => $kode_baru,
+                'nama_subdepartment' => request('nama_subdepartment'),
                 'id_department' => request('department')
             ]);
              $response = [
                  'code' => 200,
                  'status' => 'success',
-                 'message' => 'Job Title berhasil ditambahkan.',
+                 'message' => 'Sub Department berhasil ditambahkan.',
                  'data' => $data
              ];
         }
@@ -90,12 +84,12 @@ class JabatanController extends Controller
         }
 
         $id = request('id');
-        Jabatan::where('id_job_title',$id)->delete();
+        SubDepartment::where('id_subdepartment',$id)->delete();
 
         $response = [
             'code' => 200,
             'status' => 'success',
-            'message' => 'Job Title berhasil dihapus.',
+            'message' => 'Sub Department berhasil dihapus.',
             'data' => NULL
         ];
 
