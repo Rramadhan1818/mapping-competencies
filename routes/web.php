@@ -12,11 +12,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/get-card', 'Dashboard@card_profile')->name('Dashboard.card-profile');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
-    Route::get('/member', 'MemberCG@index')->name('Member');
-    Route::get('/member/cgJson', 'MemberCG@cgJson')->name('Member.get');
-    Route::post('/member-post', 'MemberCG@store')->name('Member.post');
-    Route::post('/member-edit', 'MemberCG@edit')->name('Member.edit');
-    Route::get('/member-delete/{id}', 'MemberCG@delete')->name('Member.delete');
+    Route::prefix("member")->group(function(){
+        Route::get('/', 'MemberCG@index')->name('Member');
+        Route::get('/member/cgJson', 'MemberCG@cgJson')->name('Member.get');
+        Route::post('/member-post', 'MemberCG@store')->name('Member.post');
+        Route::get('/form-member-edit', 'MemberCG@edit')->name('Member.edit');
+        Route::post('/member-edit','MemberCG@update')->name('Member.update');
+        Route::get('/member-detail', 'MemberCG@detail')->name('Member.detail');
+        Route::get('/member-delete/{id}', 'MemberCG@deleteMember')->name('Member.delete');
+    });
 
     Route::get('/get-divisi', 'MemberCG@getDivisi')->name('get.divisi');
     Route::get('/get-jabatan', 'MemberCG@getJabatan')->name('get.jabatan');
@@ -46,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/form','Tagging@formTaggingList')->name('tagingForm');
         Route::post('/action','Tagging@actionTagingList')->name('actionTagingList');
         Route::get('/detail','Tagging@detail')->name('tagingDetail');
+        Route::get('/export-white-tag','Tagging@exportTaggingList')->middleware(['isAdmin'])->name('exportTaggingList');
+        Route::get('/tagging-print','Tagging@taggingPrint')->middleware(['isAdmin'])->name('taggingPrint');
     });
 
     // Competency Directory
@@ -61,7 +67,9 @@ Route::group(['middleware' => 'auth'], function () {
     // White Tag
     Route::prefix("white-tag")->group(function () {
         Route::get('/', 'WhiteTag@index')->name('WhiteTag');
-        Route::get('/member-json', 'WhiteTag@cgJson')->name('memberJson');
+        Route::get('/white-tag-json', 'WhiteTag@whiteTagJson')->name('memberJson');
+        Route::get('/white-tag-all-json', 'WhiteTag@whiteTagAll')->name('whiteTagAll');
+        Route::get('/white-tag-all-export','WhiteTag@exportWhiteTagAll')->middleware(['isAdmin'])->name('exportWhiteTagAll');
         Route::get('/form','WhiteTag@formWhiteTag')->name("formWhiteTag");
         Route::post('/action','WhiteTag@actionWhiteTag')->name("actionWhiteTag");
         Route::get('/detail', 'WhiteTag@detailWhiteTag')->name('detailWhiteTag');
