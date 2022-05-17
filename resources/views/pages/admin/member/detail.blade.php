@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="col-12 p-0">
+  <div class="col-12 p-0 text-center">
     @php
         $url = "../storage/app/public/".$user->gambar;
-        if ((isset($user->gambar) && $user->gambar != "") && file_exists($url)) {
+        if (((isset($user->gambar) && $user->gambar != "")) && file_exists($url)) {
             $url = "data:image/jpeg;base64,".base64_encode(file_get_contents($url));
         }else{
             $url = asset('assets/images/faces/face0.png');

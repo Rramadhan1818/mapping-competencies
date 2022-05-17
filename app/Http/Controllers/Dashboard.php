@@ -30,7 +30,13 @@ class Dashboard extends Controller
             ->where('id_cg', '=', $cg)
             ->groupBy('id_cg')
             ->get();
-        return view('pages.admin.dashboard', compact('data', 'jumlah'));
+        $cg = Auth::user()->id_cg;
+
+        $members = User::leftJoin('department as dp', 'users.id_department', '=', 'dp.id_department')
+            ->leftJoin('job_title as jt', 'users.id_job_title', '=', 'jt.id_job_title')
+            ->where('id_cg', $cg)
+        ->get(['users.*', 'dp.*', 'jt.*']);
+        return view('pages.admin.dashboard', compact('data', 'jumlah','members'));
     }
 
     public function card_profile()

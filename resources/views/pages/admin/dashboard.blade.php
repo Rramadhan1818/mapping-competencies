@@ -155,6 +155,42 @@ h4 {
   </div>
   <div class="row">
     <div class="col-12 col-sm-8 col-md-6 col-lg-4 stretch-card profile-card">
+      @foreach ($members as $member)
+        @php
+          $url = "../storage/app/public/".Auth::User()->gambar;
+          if ((isset($member->gambar) && $member->gambar != "") && file_exists($url)) {
+                  $url = "data:image/jpeg;base64,".base64_encode(file_get_contents($url));
+          }else{
+              $url = asset('assets/images/faces/face0.png');
+          }
+        @endphp
+        <div class="text-center card-box mr-3">
+          <div class="member-card pt-2 pb-2">
+            <div class="thumb-lg member-thumb mx-auto"><img src="{{$url}}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+              <div class="">
+                  <h5>{{$member->nama_pengguna}}</h4>
+                  <p class="text-muted">{{$member->nama_department}}</span></p>
+              </div>
+            <button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-detail-user" onclick="detail({{$member->id}})">Detail</button>
+          </div>
+        </div>
+      @endforeach
+    </div>
+    <div class="modal fade" id="modal-detail-user" tabindex="-1" role="dialog" aria-labelledby="modal-detail-user" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel17">Detail Karyawan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="bodyDetail" style="padding: 20px 26px"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -351,7 +387,7 @@ h4 {
 <script>
 $(document).ready(function() {
   var role = '{{ Auth::user()->peran_pengguna}}';
-  profilecard();
+  // profilecard();
   setInterval(displayTime,1000);
 
 function displayTime(){
@@ -368,34 +404,46 @@ function displayTime(){
 
 displayTime();
 })
-function profilecard(){
-  var gambar = '{{ asset("assets/images/faces/face0.png") }}';
-  $.ajax({
-      type: "GET",
-      url: "{{ route('Dashboard.card-profile') }}",
-      success: function(res) {
-        console.log(res.data );
-        $.each(res.data, function(i){
-          var htmlcard =
-            '<div class="text-center card-box mr-3">'+
-            '<div class="member-card pt-2 pb-2">'+
-                '<div class="thumb-lg member-thumb mx-auto"><img src="' + gambar + '" class="rounded-circle img-thumbnail" alt="profile-image"></div>'+
-                '<div class="">'+
-                    '<h5>'+ res.data[i].nama_pengguna +'</h4>'+
-                    '<p class="text-muted">' + res.data[i].nama_department + '</span></p>'+
-                '</div>'+
-                '<button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Detail</button>'+
-            '</div>'+
-          '</div>';
-          $('.profile-card').append(htmlcard);
-        })
-      },
-      error: function (xhr, ajaxOptions, thrownError) {
-        console.log(xhr);
-        alert(xhr.status);
-        alert(thrownError);
+// function profilecard(){
+//   var gambar = '{{ asset("assets/images/faces/face0.png") }}';
+//   $.ajax({
+//       type: "GET",
+//       url: "{{ route('Dashboard.card-profile') }}",
+//       success: function(res) {
+//         console.log(res.data );
+//         $.each(res.data, function(i){
+//           var htmlcard =
+//             '<div class="text-center card-box mr-3">'+
+//             '<div class="member-card pt-2 pb-2">'+
+//                 '<div class="thumb-lg member-thumb mx-auto"><img src="' + gambar + '" class="rounded-circle img-thumbnail" alt="profile-image"></div>'+
+//                 '<div class="">'+
+//                     '<h5>'+ res.data[i].nama_pengguna +'</h4>'+
+//                     '<p class="text-muted">' + res.data[i].nama_department + '</span></p>'+
+//                 '</div>'+
+//                 '<button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Detail</button>'+
+//             '</div>'+
+//           '</div>';
+//           $('.profile-card').append(htmlcard);
+//         })
+//       },
+//       error: function (xhr, ajaxOptions, thrownError) {
+//         console.log(xhr);
+//         alert(xhr.status);
+//         alert(thrownError);
+//       }
+//   })
+// }
+
+  function detail(id) {
+    const url = "{!! route('Member.detail') !!}?id="+id;
+    $.ajax({
+      type:"get",
+      url:url,
+      cache:false,
+      success:function(html){
+          $("#bodyDetail").html(html);
       }
-  })
-}
+    })
+  }
 </script>
 @endpush
