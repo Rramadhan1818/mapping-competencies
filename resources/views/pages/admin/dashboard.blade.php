@@ -157,7 +157,7 @@ h4 {
     <div class="col-12 col-sm-8 col-md-6 col-lg-4 stretch-card profile-card">
       @foreach ($members as $member)
         @php
-          $url = "../storage/app/public/".Auth::User()->gambar;
+          $url = "../storage/app/public/".$member->gambar;
           if ((isset($member->gambar) && $member->gambar != "") && file_exists($url)) {
                   $url = "data:image/jpeg;base64,".base64_encode(file_get_contents($url));
           }else{
