@@ -24,10 +24,13 @@
                     <div class="collapse" id="ui-basic">
                       <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ route('CG') }}">Circle Group</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('Grade') }}">Grade</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('grade.index') }}">Grade</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('SkillCategory') }}">Skill Category</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('department.index') }}">Department</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('sub-department.index') }}">Sub Department</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('divisi.index') }}">Divisi</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('jabatan.index') }}">Jabatan</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('level.index') }}">Level</a></li>
                       </ul>
                     </div>
                   </li>

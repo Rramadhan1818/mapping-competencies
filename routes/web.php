@@ -114,9 +114,6 @@ Route::group(['middleware' => 'auth'], function () {
         // Route::get('/delete/{id}', 'CGMaster@delete')->name('CGMaster.delete');
     });
 
-    // jabatan/job title
-    Route::get('jabatan/get','JabatanController@get')->name('jabatan.get');
-
     // department
     Route::prefix("department")->group(function () {
         Route::get('/', 'DepartmentController@index')->name('department.index');
@@ -129,6 +126,36 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'DivisiController@index')->name('divisi.index');
         Route::post('/create', 'DivisiController@store')->name('divisi.store');
         Route::post('/delete','DivisiController@destroy')->name('divisi.destroy');
+    });
+
+     // jabatan/jobtitle
+     Route::prefix("jabatan")->group(function () {
+         Route::get('/', 'JabatanController@index')->name('jabatan.index');
+         Route::get('/get','JabatanController@get')->name('jabatan.get');
+        Route::post('/create', 'JabatanController@store')->name('jabatan.store');
+        Route::post('/delete','JabatanController@destroy')->name('jabatan.destroy');
+    });
+
+
+     // grade
+     Route::prefix("grade")->group(function () {
+        Route::get('/', 'Grade@index')->name('grade.index');
+        Route::post('/create', 'Grade@store')->name('grade.store');
+        Route::post('/delete','Grade@destroy')->name('grade.destroy');
+    });
+
+    // sub department
+    Route::prefix("sub-department")->group(function () {
+        Route::get('/', 'SubDepartmentController@index')->name('sub-department.index');
+        Route::post('/create', 'SubDepartmentController@store')->name('sub-department.store');
+        Route::post('/delete','SubDepartmentController@destroy')->name('sub-department.destroy');
+    });
+
+     // level
+     Route::prefix("level")->group(function () {
+        Route::get('/', 'LevelController@index')->name('level.index');
+        Route::post('/create', 'LevelController@store')->name('level.store');
+        Route::post('/delete','LevelController@destroy')->name('level.destroy');
     });
 
 });

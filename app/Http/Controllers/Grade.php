@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\GradeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class Grade extends Controller
 {
     public function index()
     {
-        $data = GradeModel::get();
+        $data = GradeModel::orderBy('grade','ASC')->get();
         return view('pages.admin.grade.index', compact('data'));
     }
 
@@ -20,55 +21,61 @@ class Grade extends Controller
         return view("pages.admin.grade.form", compact("grade"));
     }
 
-    public function store(Request $request)
+    public function store()
     {
-        $validator = Validator::make($request->all(), [
-            'id_grade' => 'required|max:100',
-            'name_grade' => 'required',
+        $id = request('id');
+        $validator = Validator::make(request()->all(),[
+            'grade' => ['required'],
+            'tingkatan' => ['required'],
+            'level' => ['required'],
+            'persen' => ['required'],
+            'bg_color' => ['required']
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['code' => 422, 'message' => 'The given data was invalid.', 'data' => $validator->errors()], 422);
-        } else {
-            DB::beginTransaction();
-            try {
-                if (Auth::user()->peran_pengguna == 'Admin') {
-                    // $grade = new GradeModel;
-                    // $grade->no_training_module = $request->no_training_module;
-                    // $grade->id_skill_category = $request->id_skill_category;
-                    // $grade->training_module = $request->training_module;
-                    // $grade->save();
-                    $insert = [
-                        'id_grade' => $request->id_grade,
-                        'name_grade' => $request->name_grade,
-                    ];
-                    if (count($insert) > 0) {
-                        GradeModel::insert($insert);
-                    }
-                }
-                DB::commit();
-                return response()->json(['code' => 200, 'message' => 'Post Created successfully'], 200);
-            } catch (\Exception $e) {
-                return response()->json(['code' => 422, 'message' => $e->getMessage()], 422);
-            }
+        if($validator->fails())
+        {
+            $response = [
+                'code' => 400,
+                'status' => 'error',
+                'message' => $validator->errors()->first(),
+                'data' => NULL
+            ];
+            return response()->json($response);
         }
-    }
 
-    public function editGrade(Request $request)
-    {
-        $request->validate([
-            'id_grade' => 'required|max:100',
-            'name_grade' => 'required',
-        ]);
-        GradeModel::where("id_grade", $request->id_grade)
-            ->update([
-                'id_grade' => $request->id_grade,
-                'name_grade' => $request->name_grade,
+        if($id)
+        {
+            $data = GradeModel::where('id_grade',$id)->update([
+                'grade' => request('grade'),
+                'tingkatan' => request('tingkatan'),
+                'level' => request('level'),
+                'persen' => request('persen'),
+                'bg_color' => request('bg_color')
             ]);
-        // GradeModel::updateOrCreate(['id_grade' => $request->id_grade, "name_grade" => $request->id_name_grade]);
-        DB::commit();
+            $response = [
+                 'code' => 200,
+                 'status' => 'success',
+                 'message' => 'Grade  berhasil diupdate.',
+                 'data' => $data
+             ];
 
-        return response()->json(['code' => 200, 'message' => 'Post Created successfully'], 200);
+        }else{
+            $data = GradeModel::create([
+                'grade' => request('grade'),
+                'tingkatan' => request('tingkatan'),
+                'level' => request('level'),
+                'persen' => request('persen'),
+                'bg_color' => request('bg_color')
+            ]);
+             $response = [
+                 'code' => 200,
+                 'status' => 'success',
+                 'message' => 'Grade berhasil ditambahkan.',
+                 'data' => $data
+             ];
+        }
+
+        return response()->json($response);
     }
 
     public function show($id)
@@ -76,10 +83,28 @@ class Grade extends Controller
         $post = GradeModel::find($id);
         return response()->json($post);
     }
-    public function delete($id)
+
+    public function destroy()
     {
+        $id = request('id');
+        if(!$id)
+        {
+            $response = [
+                'code' => 400,
+                'status' => 'error',
+                'message' => 'Grade gagal dihapus.',
+                'data' => NULL
+            ];
+            return response()->json($response);
+        }
         $grade = GradeModel::where('id_grade', $id)->delete();
-        return redirect()->route('grade')->with(['success' => 'Grade Deleted successfully']);
+        $response = [
+            'code' => 200,
+            'status' => 'success',
+            'message' => 'Grade berhasil dihapus.',
+            'data' => NULL
+        ];
+        return response()->json($response);
     }
 
 }

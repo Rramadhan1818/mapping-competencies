@@ -1,48 +1,57 @@
 @extends('layouts.master')
 
-@section('title', 'Master Grade Page ')
+@section('title', 'Jabatan Page')
 
+@push('style')
+    <style>
+        .swal2-popup {
+            font-size: 2rem;
+        }
+
+    </style>
+@endpush
 @section('content')
+
     <div class="row">
-    </div>
-    <div class="row">
+
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title">Liga Circle Group</p>
+                    <p class="card-title">Job Title</p>
                     <div class="row">
                         <div class="col-md mb-2">
-                            <a class="btn btn-success float-right" href="javascript:void(0)" id="createNewItem"><i
-                                    class="icon-plus"></i> Tambah CG</a>
+                            <a class="btn btn-success float-right btnAdd" href="javascript:void(0)" id="createNewItem"><i
+                                    class="icon-plus"></i> Tambah
+                                Job Title</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
-                                <table class="display expandable-table table table-sm table-striped table-hover"
-                                    id="table-grade" style="width:100%">
+                                <table class="display expandable-table table table-striped table-hover" id="table-skill"
+                                    style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Circle Group</th>
-                                            <th>Department</th>
+                                            <th>No.#</th>
+                                            <th>Nama Job Title</th>
+                                            <th>Nama Department</th>
                                             <th width="15%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $data)
-                                            <tr id="row_{{ $data->id_cg }}">
-                                                <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $data->nama_cg }}</td>
-                                                <td>{{ $data->department->nama_department }}</td>
+                                        @foreach ($items as $item)
+                                            <tr id="row_{{ $item->id_job_title }}">
+                                                <th scope="row" class="text-center">{{ $loop->iteration }}</th>
+                                                <td>{{ $item->nama_job_title ?? '-' }}</td>
+                                                <td>{{ $item->department->nama_department ?? '-' }}</td>
                                                 <td>
-                                                    <button data-id="{{ $data->id_cg }}"
-                                                        data-nama="{{ $data->nama_cg }}"
-                                                        data-department="{{ $data->id_department }}"
-                                                        class="btn btn-inverse-success btn-icon mr-1 mr-1 btnEdit"><i
+                                                    <button data-id="{{ $item->id_job_title }}"
+                                                        data-department="{{ $item->id_department }}"
+                                                        data-namajobtitle="{{ $item->nama_job_title }}"
+                                                        class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 btnEdit"><i
                                                             class="icon-file menu-icon"></i></button>
-                                                    <button data-id="{{ $data->id_cg }}"
-                                                        class="btn btn-inverse-danger btnHapus btn-icon mr-1 cr-hapus">
+                                                    <button data-id="{{ $item->id_job_title }}"
+                                                        class="btn btn-inverse-danger btn-icon mr-1 cr-hapus btnHapus">
                                                         <i class="icon-trash">
                                                         </i></button>
                                                 </td>
@@ -59,7 +68,7 @@
     </div>
 
     {{-- Modal --}}
-    <div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-tambahLabel"
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modal-tambahLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
@@ -74,18 +83,18 @@
                     <input type="text" name="id" id="id" hidden>
                     <div class="modal-body">
                         <div class="form-row">
-                            <div class="col mb-3">
-                                <label>Nama CG</label>
-                                <input type="text" class="form-control form-control-sm" name="nama_cg"
-                                    placeholder="Nama Circle Group" id="nama_cg">
-                            </div>
-                        </div>
-                        <div class="form-row">
                             <div class="col">
                                 <label>Department</label>
                                 <select id="department" class="form-control form-control-sm" name="department">
-                                    <option value="">Pilih Department</option>
+                                    <option value="">Pilih department</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-row mt-3">
+                            <div class="col mb-3">
+                                <label>Nama Job Title</label>
+                                <input type="text" class="form-control form-control-sm" name="nama_job_title"
+                                    placeholder="Nama Job Title" id="nama_job_title">
                             </div>
                         </div>
                     </div>
@@ -100,6 +109,7 @@
 @endsection
 @push('script')
     <script>
+        $('#table-skill').DataTable();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -113,28 +123,14 @@
                 trigger: "hover focus"
             });
 
-            getDepartment();
         });
 
+        var modal = $('#myModal');
+        var modalTitle = $('#myModal .modal-title');
 
-        $('#table-grade').DataTable();
-        var modal = $('#modal-tambah');
-        var modalTitle = $('#modal-tambah .modal-title');
-
-        $('#createNewItem').on('click', function() {
-            modalTitle.text('Tambah Data CG');
-            modal.modal('show');
-        })
-
-        $('body').on('click', '.btnEdit', function() {
-            modalTitle.text('Edit Data CG');
-            var id = $(this).data('id');
-            var nama = $(this).data('nama');
-            var department = $(this).data('department');
-
-            $('#id').val(id);
-            $('#nama_cg').val(nama);
-            // get department
+        $('.btnAdd').on('click', function() {
+            $('#id').val('');
+            $('#nama_department').val('');
             $.ajax({
                 url: '{{ route('get.department') }}',
                 type: 'GET',
@@ -152,6 +148,35 @@
                     });
                 }
             })
+            modalTitle.text('Tambah Job Title');
+            modal.modal('show');
+        })
+
+        $('body').on('click', '.btnEdit', function() {
+            var id = $(this).data('id');
+            var department = $(this).data('department');
+            var nama_job_title = $(this).data('namajobtitle');
+            $.ajax({
+                url: '{{ route('get.department') }}',
+                type: 'GET',
+                dataType: 'JSON',
+                success: function(response) {
+                    $('#department').empty();
+                    response.data.forEach(el => {
+                        if (el.id_department == department) {
+                            $('#department').append('<option selected value="' + el
+                                .id_department + '">' + el.nama_department + '</option>');
+                        } else {
+                            $('#department').append('<option value="' + el.id_department +
+                                '">' + el.nama_department + '</option>');
+                        }
+                    });
+                }
+            })
+            modalTitle.text('Edit Job Title');
+            $('#id').val(id);
+            $('#nama_job_title').val(nama_job_title);
+            console.log(nama_job_title);
             modal.modal('show');
         })
 
@@ -168,7 +193,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '{{ route('CG.destroy') }}',
+                        url: '{{ route('jabatan.destroy') }}',
                         type: 'POST',
                         dataType: 'JSON',
                         data: {
@@ -193,16 +218,14 @@
             e.preventDefault();
             var form = $('#form').serialize();
             $.ajax({
-                url: '{{ route('CG.post') }}',
+                url: '{{ route('jabatan.store') }}',
                 type: "POST",
                 data: form,
                 success: function(response) {
-                    if (response.code == 200) {
-                        Swal.fire({
-                            icon: response.status,
-                            text: response.message
-                        })
-                    }
+                    Swal.fire({
+                        icon: response.status,
+                        text: response.message
+                    })
                     modal.modal('hide');
                     setTimeout(function() {
                         location.reload();
@@ -220,26 +243,10 @@
             });
         })
 
-
-        function getDepartment() {
-            $.ajax({
-                type: "GET",
-                url: "{{ route('get.department') }}",
-                success: function(res) {
-                    var option = "";
-                    for (let i = 0; i < res.data.length; i++) {
-                        option += '<option value="' + res.data[i].id_department + '">' + res.data[i]
-                            .nama_department + '</option>';
-                    }
-                    $('#department').html();
-                    $('#department').append(option);
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    console.log(xhr);
-                    alert(xhr.status);
-                    alert(thrownError);
-                }
-            })
-        }
+        $('#myModal').on('hidden.bs.modal', function() {
+            $('#id').empty();
+            $('#nama_job_title').val('');
+            $('#department').empty();
+        })
     </script>
 @endpush

@@ -12,7 +12,7 @@
                 <p class="card-title">Grade</p>
                 <div class="row">
                     <div class="col-md mb-2">
-                        <a class="btn btn-success float-right" href="javascript:void(0)" id="createNewItem" data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus"></i> Tambah Grade</a>
+                        <a class="btn btn-success float-right btnAdd" href="javascript:void(0)" ><i class="icon-plus"></i> Tambah Grade</a>
                     </div>
                 </div>
                 <div class="row">
@@ -23,45 +23,25 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Name Grade</th>
+                                        <th>Tingkatan</th>
+                                        <th>Level</th>
+                                        <th>Persen</th>
                                         <th  width="15%">Action</th>
-                                    </tr> 
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($data as $data)
-                                    <tr id="row_{{$data->id_grade}}"> 
+                                    <tr id="row_{{$data->id_grade}}">
                                         <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                                         <td>
-                                        @php
-                                            switch ($data->grade) {
-                                                case "Bronze":
-                                                    echo '<span class="badge badge-secondary">Bronze</span>';
-                                                    break;
-                                                case "Silver":
-                                                    echo '<span class="badge badge-secondary">Silver</span>';
-                                                    break;
-                                                case "Gold":
-                                                    echo '<span class="badge badge-warning">Gold</span>';
-                                                    break;
-                                                case "Platinum":
-                                                    echo '<span class="badge badge-warning">Platinum</span>';
-                                                    break;
-                                                case "Diamond":
-                                                    echo '<span class="badge badge-primary">Diamond</span>';
-                                                    break;
-                                                case "Elite":
-                                                    echo '<span class="badge badge-primary">Elite</span>';
-                                                    break;  
-                                                case "Master":
-                                                    echo '<span class="badge badge-success">Master</span>';
-                                                    break;  
-                                                default:
-                                                echo "Your favorite color is neither red, blue, nor green!";
-                                                }
-                                        @endphp
+                                            <span class="{{ $data->bg_color }}">{{ $data->grade }}</span>
                                         </td>
+                                        <td>{{ $data->tingkatan }}</td>
+                                        <td>{{ $data->level }}</td>
+                                        <td>{{ $data->persen }}</td>
                                         <td>
-                                            <button data-id="{{ $data->id_grade }}" onclick="editdata(this)" class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 Edit-button" data-toggle="modal" data-target="#modal-edit"><i class="icon-file menu-icon"></i></button>
-                                            <button data-id="{{ $data->id_grade }}" class="btn btn-inverse-danger btn-icon mr-1 cr-hapus" data-toggle="modal" data-target="#modal-hapus">
+                                            <button data-id="{{ $data->id_grade }}" data-grade="{{ $data->grade }}" data-level="{{ $data->level }}" data-tingkatan="{{ $data->tingkatan }}" data-persen="{{ $data->persen }}" data-bgcolor="{{ $data->bg_color }}" class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 Edit-button btnEdit"><i class="icon-file menu-icon"></i></button>
+                                            <button data-id="{{ $data->id_grade }}" class="btn btn-inverse-danger btn-icon mr-1 cr-hapus btnHapus">
                                                 <i class="icon-trash">
                                             </i></button>
                                         </td>
@@ -78,7 +58,7 @@
 </div>
 
 {{-- Modal --}}
-<div class="modal fade" id="modal-tambah" tabindex="-1" role="dialog" aria-labelledby="modal-tambahLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modal-tambahLabel" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
           <div class="modal-header p-3">
@@ -87,240 +67,157 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{!! route('Grade.post') !!}" method="POST" enctype="multipart/form-data">
+            <form action="javascript:void(0)" id="myForm" method="post">
                 @csrf
+                <input type="number" name="id" id="id" hidden>
             <div class="modal-body">
                 <div class="form-row">
                     <div class="col mb-3">
                         <label>Grade Name</label>
-                        <input type="text" class="form-control form-control-sm" name="grade" placeholder="Masukan nama grade">
+                        <input type="text" class="form-control form-control-sm" id="grade" name="grade" placeholder="Masukan nama grade">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label>Tingkatan</label>
+                        <input type="text" class="form-control form-control-sm" id="tingkatan" name="tingkatan" placeholder="Masukan Tingkatan">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label>Level</label>
+                        <input type="text" class="form-control form-control-sm" id="level" name="level" placeholder="Masukan level">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label>Persen</label>
+                        <input type="number" class="form-control form-control-sm" id="persen" name="persen" placeholder="1-100" min="1" max="100">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                        <label>Bg Color</label>
+                        <input type="text" class="form-control form-control-sm" id="bg_color" name="bg_color" placeholder="badge badge-success">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary btnSave">Save changes</button>
             </div>
         </form>
       </div>
     </div>
 </div>
 
-<div class="modal fade" id="modal-hapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17" aria-hidden="true">
-    <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel17">Hapus Data</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Yakin ingin menghapus data ini?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-                    <a href="" class="btn btn-success">Lanjutkan</a>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
 @endsection
 @push('script')
+
 <script>
+     $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip({
             animation: true,
             plaGradent: "top",
             trigger: "hover focus"
         });
+        $('#table-grade').DataTable();
+
+        var modal = $('#myModal');
+        var modalTitle = $('#myModal .modal-title');
+        $('.btnAdd').on('click', function(){
+            modalTitle.text('Tambah Data Grade');
+            modal.modal('show');
+        })
+
+        $('body').on('click','.btnEdit', function(){
+            var grade = $(this).data('grade');
+            var tingkatan = $(this).data('tingkatan');
+            var level = $(this).data('level');
+            var persen = $(this).data('persen');
+            var bgcolor = $(this).data('bgcolor');
+            var id =  $(this).data('id');
+            modalTitle.text('Edit Data Grade');
+            $('#id').val(id);
+            $('#grade').val(grade);
+            $('#tingkatan').val(tingkatan);
+            $('#level').val(level);
+            $('#persen').val(persen);
+            $('#bg_color').val(bgcolor);
+            modal.modal('show');
+        })
+
+
+        $('.btnSave').on('click', function(){
+            var form = $('#myForm');
+            $.ajax({
+                url: '{{ route('grade.store') }}',
+                type: 'POST',
+                dataType: 'JSON',
+                data: form.serialize(),
+                success: function(response){
+                    Swal.fire({
+                        icon: response.status,
+                        text: response.message
+                    })
+                    modal.modal('hide');
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1000);
+                }
+            })
+        })
+
+        $('body').on('click', '.btnHapus', function() {
+            var id = $(this).data('id');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('grade.destroy') }}',
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: {
+                            id
+                        },
+                        success: function(response) {
+                            Swal.fire(
+                                'Success',
+                                response.message,
+                                response.status
+                            )
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        }
+                    })
+                }
+            })
+        })
+
+        $('#myModal').on('hidden.bs.modal', function() {
+            $('#id').val('');
+            $('#grade').val('');
+            $('#tingkatan').val('');
+            $('#level').val('');
+            $('#persen').val('');
+            $('#bg_color').val('');
+        })
     });
 
-    
- $('#table-grade').DataTable();
 
-function editPost(event) {
-  var id  = $(event).data("id");
-  let _url = "{!!route('editGrade')!!}";
-  var GradeEditForm = $("#formEditGrade");
-  var formData = GradeEditForm.serialize();
-  $.ajax({
-    url: _url,
-    type: "post",
-    data: formData,
-    success: function(response) {
-      if(response.code == 200) {
-          Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Your work has been saved',
-              showConfirmButton: false,
-              timer: 1500
-          })
-          $('#modal-edit').modal('hide');
-          location.reload();
-      }
-    },
-    error:function (err) {
-      console.log(err)
-      Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: err.responseJSON.message,
-          showConfirmButton: false,
-          timer: 1500
-      })
-    }
-  });
-}
-
-function editdata(el) {
-  var id = $(el).attr("data-id");
-  $.ajax({
-      url:"{!!route('getFormEditGrade')!!}?id="+id,
-      mehtod:"get",
-      success:function (html) {
-          $("#form-edit").html(html);
-      }
-  })
-}
-
-function createPost() {
-  let _url     = `{{ route('Grade.post') }}`;
-  let _token   = $('meta[name="csrf-token"]').attr('content');
-
-    $.ajax({
-      url: _url,
-      type: "POST",
-      // data : $("#registerSubmit").serialize(),
-      data: {
-      //   id_Grade: id_Grade,
-        id_grade: $('#id_grade').val(),
-        name_grade: $('#name_grade').val(), 
-        _token: _token
-      },
-      success: function(response) {
-          if(response.code == 200) {
-              Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: 'Your work has been saved',
-                  showConfirmButton: false,
-                  timer: 1500
-              })
-          }
-          $('#title').val('');
-          $('#description').val('');
-          
-          $('#modal-tambah').modal('hide');
-          location.reload();
-      },
-      error: function(err) {
-          console.log(err)
-          Swal.fire({
-                  position: 'top-end',
-                  icon: 'error',
-                  title: err.responseJSON.message,
-                  showConfirmButton: false,
-                  timer: 1500
-              })
-      }
-    });
-}
-
-  $('#table-cr').on('click','.cr-hapus', function () {
-      var id = $(this).data('id');
-      $('#btnHapus').attr('data-id',id);
-  })
-
-  function deleteGrade(el) {
-      var id = $(el).attr("data-id");
-      var token = $("meta[name='csrf-token']").attr("content");
-      var rowid = '#row_'+id;
-      $.ajax({
-          url:"grade/grade-delete/"+id,
-          mehtod:"delete",
-          data: {
-              "id": id,
-              "_token": token,
-          },
-          success:function(res)
-          {
-              console.log(res);
-              $("#modal-hapus").modal('hide');
-              window.location.reload();
-              Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'Data berhasil di hapus',
-                  showConfirmButton: true,
-                  timer: 1500
-              })
-          }
-      })
-  }
- 
-
-  function getJabatan(){
-      $.ajax({
-          type: "GET",
-          url: "{{ route('get.jabatan') }}",
-          success: function(res) {
-              var option = "";
-              for (let i = 0; i < res.data.length; i++) {
-                  option += '<option value="'+res.data[i].id_job_title+'">'+res.data[i].nama_job_title+'</option>';
-              }
-              $("#id_job_title").html(option).selectpicker('refresh');
-          },
-          error: function (xhr, ajaxOptions, thrownError) {
-              Swal.fire({
-                  position: 'top-end',
-                  icon: 'error',
-                  title: response.responseJSON.errors,
-                  showConfirmButton: false,
-                  timer: 1500
-              })
-          }
-      })
-  }
-
-
-    // function initDatatable() {
-    //     var dtJson = $('#table-grade').DataTable({
-    //         ajax: "{{ route('Grade') }}",
-    //         autoWidth: false,
-    //         serverSide: true,
-    //         processing: true,
-    //         aaSorting: [
-    //             [0, "desc"]
-    //         ],
-    //         searching: true,
-    //         dom: '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-    //         displayLength: 10,
-    //         lengthMenu: [10, 15, 20],
-    //         language: {
-    //             paginate: {
-    //                 // remove previous & next text from pagination
-    //                 previous: '&nbsp;',
-    //                 next: '&nbsp;'
-    //             }
-    //         },
-    //         scrollX: true,
-    //         columns: [
-    //             {
-    //                 data: 'DT_RowIndex', name: 'DT_RowIndex'
-    //             },
-    //             {
-    //                 data: 'id_grade'
-    //             },
-    //             {
-    //                 data: 'name_grade'
-    //             },
-    //             {
-    //                 data: 'action'
-    //             }
-    //         ],
-    //     })
-    // }
 </script>
 @endpush
