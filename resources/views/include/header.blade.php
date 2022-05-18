@@ -82,6 +82,10 @@
                       <img src="{{$url}}" alt="profile" />
                   </a>
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                    <a href="{!!route('profile')!!}" class="dropdown-item">
+                        <i class="ti-user text-primary"></i>
+                        Profile
+                    </a>
                       <a class="dropdown-item">
                           <i class="ti-settings text-primary"></i>
                           Settings

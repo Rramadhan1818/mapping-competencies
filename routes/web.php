@@ -12,6 +12,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/get-card', 'Dashboard@card_profile')->name('Dashboard.card-profile');
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
+    Route::prefix("profile")->group(function(){
+        Route::get('/', 'ProfileController@profile')->name('profile');
+    });
+
     Route::prefix("member")->group(function(){
         Route::get('/', 'MemberCG@index')->name('Member');
         Route::get('/member/cgJson', 'MemberCG@cgJson')->name('Member.get');
