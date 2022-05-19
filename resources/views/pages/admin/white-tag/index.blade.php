@@ -32,11 +32,24 @@
     <div id="accordion" class="accordion">
         <div class="card">
             <div class="card-header card-title collapsed" data-toggle="collapse" href="#collapseOne">
-            Key Point General
-            </div>
-            <div id="collapseOne" class="card-body collapse" data-parent="#accordion" aria-expanded="true">
-                <img src="{{ asset('assets/images/general.png') }}" alt="General" class="mt-2 p-3" style="width:100%;display: block;margin-left: auto;margin-right: auto; ">
-                {{-- <img src="{{ asset('assets/images/General.png') }}" alt="General" class="img-accordion"> --}}
+            Key Point 
+        </div>
+        <div id="collapseOne" class="card-body collapse" data-parent="#accordion" aria-expanded="true">
+            <ul class="nav nav-pills mb-3">
+                <li class="nav-item active">
+                    <a class="nav-link active" data-toggle="tab" href="#functional" type="button">Functional</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#general" type="button">General</a>
+                </li>
+            </ul>
+            
+                <div class="tab-pane container fade in active show" id="functional">
+                    <img src="{{ asset('assets/images/functional.png') }}" alt="Functional" class="mt-2 p-3" style="width:100%;display: block;margin-left: auto;margin-right: auto; ">
+                </div>
+                <div class="tab-pane container fade" id="general">
+                    <img src="{{ asset('assets/images/general.png') }}" alt="General" class="mt-2 p-3" style="width:100%;display: block;margin-left: auto;margin-right: auto; ">
+                </div>
             </div>
         </div>
     </div>

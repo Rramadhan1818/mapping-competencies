@@ -154,8 +154,8 @@ h4 {
     </div>
   </div>
   <div class="row">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-4 stretch-card profile-card">
-      @foreach ($members as $member)
+    @foreach ($members as $member)
+    <div class="col-md-2 ms-6 stretch-card profile-card pl-0 pr-0">
         @php
           $url = "../storage/app/public/".$member->gambar;
           if ((isset($member->gambar) && $member->gambar != "") && file_exists($url)) {
@@ -165,17 +165,17 @@ h4 {
           }
         @endphp
         <div class="text-center card-box mr-3">
-          <div class="member-card pt-2 pb-2">
+          <div class="member-card" style="width: 150px">
             <div class="thumb-lg member-thumb mx-auto"><img src="{{$url}}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
               <div class="">
-                  <h5>{{$member->nama_pengguna}}</h4>
+                  <h5>{{ ucwords($member->nama_pengguna) }}</h4>
                   <p class="text-muted">{{$member->nama_department}}</span></p>
               </div>
             <button type="button" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light" data-toggle="modal" data-target="#modal-detail-user" onclick="detail({{$member->id}})">Detail</button>
           </div>
         </div>
+      </div>
       @endforeach
-    </div>
     <div class="modal fade" id="modal-detail-user" tabindex="-1" role="dialog" aria-labelledby="modal-detail-user" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
