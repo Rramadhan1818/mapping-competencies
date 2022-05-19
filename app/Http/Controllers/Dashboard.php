@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CG;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -11,11 +12,19 @@ class Dashboard extends Controller
 {
     public function index()
     {
-        // $dash = User::leftJoin('department as dp', 'users.id_department', '=', 'dp.id_department')
-        //     ->leftJoin('job_title as jt', 'users.id_job_title', '=', 'jt.id_job_title')
-        //     ->where('id', Auth::user()->id)
-        //     ->get(['users.*', 'dp.nama_department', 'jt.nama_job_title']);
-        // $dash = json_encode($dash);
+
+        $total_cg = DB::table('users')
+        ->select(array(DB::raw('COUNT(id_cg) as cg')))
+        ->get();
+
+        $jml_cg = DB::table('users')
+        ->leftJoin('cg as cg', 'users.id_cg', '=', 'cg.id_cg')
+        // ->select(array('id_cg', DB::raw('COUNT(id_cg) as cg')))
+        ->whereNotNull('users.id_cg')
+        ->orderBy('users.id_cg', 'DESC')
+        ->groupBy('users.id_cg')
+        ->get(array('users.id_cg', 'nama_cg', DB::raw('COUNT(users.id_cg) as cg')));
+
 
         $email = Auth::user()->email;
         $cg = Auth::user()->id_cg;
@@ -36,7 +45,13 @@ class Dashboard extends Controller
             ->leftJoin('job_title as jt', 'users.id_job_title', '=', 'jt.id_job_title')
             ->where('id_cg', $cg)
         ->get(['users.*', 'dp.*', 'jt.*']);
-        return view('pages.admin.dashboard', compact('data', 'jumlah','members'));
+        return view('pages.admin.dashboard', compact(
+            'data',
+            'jumlah',
+            'members',
+            'jml_cg',
+            'total_cg',
+        ));
     }
 
     public function card_profile()
