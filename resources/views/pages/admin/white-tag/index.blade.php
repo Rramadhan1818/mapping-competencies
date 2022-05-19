@@ -158,6 +158,7 @@
                                     <th rowspan="2">Competency</th>
                                     <th rowspan="2">Level</th>
                                     <th rowspan="2">Competency Group</th>
+                                    <th rowspan="2">Status</th>
                                     <th colspan="3" class="text-center">Action</th>
                                 </tr> 
                                 <tr>
@@ -199,6 +200,7 @@
                                 <th>Competency</th>
                                 <th>Level</th>
                                 <th>Competency Group</th>
+                                <th>Status</th>
                                 <th class="text-center">Start</th>
                                 <th class="text-center">Actual</th>
                                 <th class="text-center">Target</th>
@@ -345,6 +347,9 @@
               },
               {
                   data: 'training_module_group'
+              },
+              {
+                  data: 'tagingStatus'
               },
               {
                   data: 'start'

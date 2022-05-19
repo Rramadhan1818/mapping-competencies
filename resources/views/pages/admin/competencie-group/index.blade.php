@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Skill Category Page')
+@section('title', 'Competencie Group Page')
 
 @push('style')
     <style>
@@ -17,11 +17,12 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title">Skill Category</p>
+                    <p class="card-title">Competencie Group</p>
                     <div class="row">
                         <div class="col-md mb-2">
-                            <a class="btn btn-success float-right btnAdd" href="javascript:void(0)" id="createNewItem"><i class="icon-plus"></i> Tambah
-                                Skill Category</a>
+                            <a class="btn btn-success float-right btnAdd" href="javascript:void(0)" id="createNewItem"><i
+                                    class="icon-plus"></i> Tambah
+                                Competencie Group</a>
                         </div>
                     </div>
                     <div class="row">
@@ -32,20 +33,24 @@
                                     <thead>
                                         <tr>
                                             <th>No.#</th>
-                                            <th>Skill Category</th>
+                                            <th>skill_category</th>
+                                            <th>Nama Competencie Group</th>
                                             <th width="15%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $data)
-                                            <tr id="row_{{ $data->id_skill_category }}">
+                                        @foreach ($items as $item)
+                                            <tr id="row_{{ $item->id }}">
                                                 <th scope="row" class="text-center">{{ $loop->iteration }}</th>
-                                                <td>{{ $data->skill_category }}</td>
+                                                <td>{{ $item->skill_category->skill_category ?? '-' }}</td>
+                                                <td>{{ $item->name }}</td>
                                                 <td>
-                                                    <button data-id="{{ $data->id_skill_category }}" data-skillcategory="{{ $data->skill_category }}"
+                                                    <button data-id="{{ $item->id }}"
+                                                        data-skill_category="{{ $item->id_skill_category }}"
+                                                        data-name="{{ $item->name }}"
                                                         class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 btnEdit"><i
                                                             class="icon-file menu-icon"></i></button>
-                                                    <button data-id="{{ $data->id_skill_category }}"
+                                                    <button data-id="{{ $item->id }}"
                                                         class="btn btn-inverse-danger btn-icon mr-1 cr-hapus btnHapus">
                                                         <i class="icon-trash">
                                                         </i></button>
@@ -78,10 +83,18 @@
                     <input type="text" name="id" id="id" hidden>
                     <div class="modal-body">
                         <div class="form-row">
-                            <div class="col mb-3">
+                            <div class="col">
                                 <label>Skill Category</label>
-                                <input type="text" class="form-control form-control-sm" name="skill_category"
-                                    placeholder="Skill Category" id="skill_category">
+                                <select id="skill_category" class="form-control form-control-sm" name="skill_category">
+                                    <option value="">Pilih Skill Category</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row mt-3">
+                            <div class="col mb-3">
+                                <label>Competencie Name</label>
+                                <input type="text" class="form-control form-control-sm" name="name"
+                                    placeholder="Competencie Name" id="name">
                             </div>
                         </div>
                     </div>
@@ -109,26 +122,63 @@
                 plaGradent: "top",
                 trigger: "hover focus"
             });
+
         });
 
-
-        $('#table-grade').DataTable();
         var modal = $('#myModal');
         var modalTitle = $('#myModal .modal-title');
 
         $('.btnAdd').on('click', function() {
-            modalTitle.text('Tambah Skill Category');
+            $('#id').val('');
+            $('#name').val('');
+            $.ajax({
+                url: '{{ route('SkillCategory.get') }}',
+                type: 'GET',
+                dataType: 'JSON',
+                success: function(response) {
+                    console.log(response);
+                    $('#skill_category').empty();
+                    response.forEach(el => {
+                        if (el.id_skill_category == skill_category) {
+                            $('#skill_category').append('<option selected value="' + el
+                                .id_skill_category + '">' + el.skill_category + '</option>');
+                        } else {
+                            $('#skill_category').append('<option value="' + el.id_skill_category +
+                                '">' + el.skill_category + '</option>');
+                        }
+                    });
+                }
+            })
+            modalTitle.text('Tambah Competencie Group');
             modal.modal('show');
         })
 
         $('body').on('click', '.btnEdit', function() {
-            modalTitle.text('Edit Skill Category');
             var id = $(this).data('id');
-            var skill_category = $(this).data('skillcategory');
+            var skill_category = $(this).data('skill_category');
+            $.ajax({
+                url: '{{ route('SkillCategory.get') }}',
+                type: 'GET',
+                dataType: 'JSON',
+                success: function(response) {
+                    $('#skill_category').empty();
+                    response.forEach(el => {
+                        if (el.id_skill_category == skill_category) {
+                            $('#skill_category').append('<option selected value="' + el
+                                .id_skill_category + '">' + el.skill_category + '</option>');
+                        } else {
+                            $('#skill_category').append('<option value="' + el.id_skill_category +
+                                '">' + el.skill_category + '</option>');
+                        }
+                    });
+                }
+            })
+            modalTitle.text('Edit Competencie Group');
 
+            var name = $(this).data('name');
+            console.log(name);
             $('#id').val(id);
-            $('#skill_category').val(skill_category);
-            console.log(id);
+            $('#name').val(name);
             modal.modal('show');
         })
 
@@ -145,7 +195,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '{{ route('SkillCategory.delete') }}',
+                        url: '{{ route('competencie-groups.destroy') }}',
                         type: 'POST',
                         dataType: 'JSON',
                         data: {
@@ -170,16 +220,14 @@
             e.preventDefault();
             var form = $('#form').serialize();
             $.ajax({
-                url: '{{ route('SkillCategory.store') }}',
+                url: '{{ route('competencie-groups.store') }}',
                 type: "POST",
                 data: form,
                 success: function(response) {
-                    if (response.code == 200) {
-                        Swal.fire({
-                            icon: response.status,
-                            text: response.message
-                        })
-                    }
+                    Swal.fire({
+                        icon: response.status,
+                        text: response.message
+                    })
                     modal.modal('hide');
                     setTimeout(function() {
                         location.reload();
@@ -195,6 +243,12 @@
                     })
                 }
             });
+        })
+
+        $('#myModal').on('hidden.bs.modal', function() {
+            $('#id').empty();
+            $('#name').empty();
+            $('#skill_category').empty();
         })
     </script>
 @endpush

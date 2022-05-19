@@ -13,7 +13,7 @@
 @section('content')
 
 <div class="row">
-    
+
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -38,11 +38,11 @@
                                         <th>Competency Description</th>
                                         <th>Job Title</th>
                                         <th width="15%">Action</th>
-                                    </tr> 
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($data as $data)
-                                        <tr id="row_{{$data->id_curriculum}}"> 
+                                        <tr id="row_{{$data->id_curriculum}}">
                                             <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                                             <td>{{ $data->no_training_module  }}</td>
                                             <td>{{ $data->skill_category }}</td>
@@ -107,7 +107,9 @@
                     </div>
                     <div class="form-group col-md">
                         <label for="training_module_group">Competency Group</label>
-                        <input type="text" class="form-control" id="training_module_group" name="training_module_group" placeholder="New Employee Orientation, Ext" >
+                        <select id="training_module_group" class="form-control form-control-sm" name="training_module_group">
+                            <option value="">Pilih Competencie Group</option>
+                        </select>
                     </div>
                     <div class="form-group col-md">
                         <label for="noModule">Competency Desc</label>
@@ -172,6 +174,13 @@
 
 @endsection
 @push('script')
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script>
 <script>
 
  $('#table-cr').DataTable();
@@ -188,7 +197,6 @@
       success: function(response) {
         if(response.code == 200) {
             Swal.fire({
-                position: 'top-end',
                 icon: 'success',
                 title: 'Your work has been saved',
                 showConfirmButton: false,
@@ -234,7 +242,6 @@
         success: function(response) {
             if(response.code == 200) {
                 Swal.fire({
-                    position: 'top-end',
                     icon: 'success',
                     title: 'Your work has been saved',
                     showConfirmButton: false,
@@ -242,7 +249,7 @@
                 })
             }
             $('#no_training_module').val(''),
-            $('#id_skill_category').val(''), 
+            $('#id_skill_category').val(''),
             $('#training_module').val(''),
             $('#level').val(''),
             $('#training_module_group').val(''),
@@ -256,7 +263,6 @@
         error: function(err) {
             console.log(err)
             Swal.fire({
-                    position: 'top-end',
                     icon: 'error',
                     title: err.responseJSON.message,
                     showConfirmButton: false,
@@ -286,7 +292,6 @@
                 $("#modal-cr-hapus").modal('hide');
                 window.location.reload();
                 Swal.fire({
-                    position: 'center',
                     icon: 'success',
                     title: 'Data berhasil di hapus',
                     showConfirmButton: true,
@@ -311,7 +316,6 @@
                 },
                 error: function (response) {
                     Swal.fire({
-                        position: 'top-end',
                         icon: 'error',
                         title: response.responseJSON.errors,
                         showConfirmButton: false,
@@ -334,7 +338,6 @@
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 Swal.fire({
-                    position: 'top-end',
                     icon: 'error',
                     title: response.responseJSON.errors,
                     showConfirmButton: false,
@@ -344,11 +347,35 @@
         })
     }
 
-    $(document).ready(function() {        
+    $(function(){
+        $('#id_skill_category').on('change', function(){
+            var id_skill_category = $(this).val();
+            $.ajax({
+                url: '{{ route('competencie-groups.getBySkillCategory') }}',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    id: id_skill_category
+                },
+                success: function(response){
+                    $('#training_module_group').empty();
+                    var option = "";
+                    for (let i = 0; i < response.length; i++) {
+                        option += '<option value="'+response[i].name+'">'
+                            +response[i].name+'</option>';
+                    }
+                    $('#training_module_group').html();
+                    $('#training_module_group').append(option);
+                }
+            })
+        })
+    })
+
+    $(document).ready(function() {
         getJabatan();
         getSkill();
     });
-    
+
 </script>
 
 @endpush

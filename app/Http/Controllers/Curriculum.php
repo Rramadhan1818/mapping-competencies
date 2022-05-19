@@ -102,14 +102,14 @@ class Curriculum extends Controller
         ]);
         $jobTitleId = [];
         for($i = 0; $i < count($request->id_job_title); $i++){
-            array_push($jobTitleId,$request->id_job_title[$i]); 
+            array_push($jobTitleId,$request->id_job_title[$i]);
             CurriculumToJob::updateOrCreate(['id_curriculum'=>$request->id_curriculum,"id_job_title"=>$request->id_job_title[$i]]);
         }
         DB::commit();
         if(count($jobTitleId) > 0){
             CurriculumToJob::where("id_curriculum",$request->id_curriculum)->whereNotIn("id_job_title",$jobTitleId)->delete();
         }
-        
+
         return response()->json(['code' => 200, 'message' => 'Post Created successfully'], 200);
     }
 

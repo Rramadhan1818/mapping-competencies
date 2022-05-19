@@ -164,7 +164,8 @@ class WhiteTag extends Controller
             "curriculum.training_module as training_module","curriculum.training_module_group as training_module_group",
             "curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start",
             "white_tag.actual as actual","competencies_directory.target as target",
-            DB::raw("(SELECT COUNT(*) FROM taging_reason as tr where tr.id_white_tag = white_tag.id_white_tag) as cntTagingReason")
+            DB::raw("(SELECT COUNT(*) FROM taging_reason as tr where tr.id_white_tag = white_tag.id_white_tag) as cntTagingReason"),
+            DB::raw("(IF((white_tag.actual - competencies_directory.target) < 0,'Tidak Mencapai Target','Finish' )) as tagingStatus")
         ];
         $comps = CompetenciesDirectoryModel::select($select)
                                             ->join("curriculum",function ($join) use ($user,$between){
@@ -225,7 +226,11 @@ class WhiteTag extends Controller
     {
         $user = User::select("id","id_job_title")->where("id",$request->id)->first();
         $skillId = [1,2];
-        $data = CompetenciesDirectoryModel::select("curriculum.no_training_module as no_training","curriculum.training_module as training_module","curriculum.training_module_group as training_module_group","curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start","white_tag.actual as actual","competencies_directory.target as target",)
+        $select = [
+            "curriculum.no_training_module as no_training","curriculum.training_module as training_module","curriculum.training_module_group as training_module_group","curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start","white_tag.actual as actual","competencies_directory.target as target",
+            DB::raw("(IF((white_tag.actual - competencies_directory.target) < 0,'Tidak Mencapai Target','Finish' )) as tagingStatus")
+        ];
+        $data = CompetenciesDirectoryModel::select($select)
                                             ->join("curriculum",function ($join) use ($user,$skillId){
                                                 $join->on("curriculum.id_curriculum","competencies_directory.id_curriculum")
                                                     ->where("competencies_directory.id_job_title",$user->id_job_title)
@@ -312,9 +317,18 @@ class WhiteTag extends Controller
             }
             return $icon;
         })
-            
-        ->addIndexColumn()
-        ->rawColumns(['start','actual','target'])
+        ->addColumn('tagingStatus', function ($row) {
+            if (isset($row->tagingStatus)) {
+                if ($row->tagingStatus == 'Finish') {
+                    $label = '<span class="badge badge-success">' . $row->tagingStatus . '</span>';
+                    return $label;
+                } else {
+                    $label = '<span class="badge badge-secondary text-white">' . $row->tagingStatus . '</span>';
+                    return $label;
+                }
+            }
+        })
+        ->rawColumns(['start','actual','target','tagingStatus'])
         ->make(true);
         
     }
