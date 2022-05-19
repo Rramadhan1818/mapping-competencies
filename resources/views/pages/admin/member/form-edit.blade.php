@@ -70,63 +70,67 @@
     <div class="col-md-8 row">
         <div class="col-md-6 mb-3">
             <label>NIK</label>
-            <input type="text" class="form-control form-control-sm" name="nik" placeholder="Ex:10119912" value="{{$user->nik}}">
+            <input type="text" id="nik-edit" class="form-control form-control-sm" name="nik" placeholder="Ex:10119912" value="{{$user->nik}}">
+            <div class="invalid-feedback" id="feed-back-nik-edit"></div>
         </div>
-        {{-- <div class="col-md-6 mb-3">
-            <label>Password</label>
-            <input type="password" class="form-control form-control-sm" name="password" placeholder="Masukan Password" >
-        </div> --}}
         <div class="col-md-6 mb-3">
             <label>Peran Pengguna</label>
-            <select class="form-control form-control-sm" name="peran_pengguna">
+            <select class="form-control form-control-sm" id="peran-pengguna-edit" name="peran_pengguna">
                 <option value="3" {{($user->peran_pengguna == '3') ? 'selected' : ''}} >Admin</option>
                 <option value="2" {{($user->peran_pengguna == '2') ? 'selected' : ''}} >CG Leader</option>
                 <option value="1" {{($user->peran_pengguna == '1') ? 'selected' : ''}} >Pengguna</option>
             </select>
+            <div class="invalid-feedback" id="feed-back-peran-pengguna-edit"></div>
         </div>
         <div class="col-md-6 mb-3">
             <label>Tanggal Masuk</label>
-            <input type="date" id="birthday" name="tgl_masuk" class="form-control form-control-sm" value="{{$user->tgl_masuk}}">
+            <input type="date" id="entry-edit" name="tgl_masuk" class="form-control form-control-sm" value="{{$user->tgl_masuk}}">
+            <div class="invalid-feedback" id="feed-back-entry-edit"></div>
         </div>
     </div>
 </div>
 <div class="form-row">
     <div class="col-md-6 mb-3">
         <label>Nama Karyawan</label>
-        <input type="text" class="form-control form-control-sm" name="nama_pengguna" placeholder="Nama Karyawan" value="{{$user->nama_pengguna}}">
+        <input type="text" id="nama-pengguna-edit" class="form-control form-control-sm" name="nama_pengguna" placeholder="Nama Karyawan" value="{{$user->nama_pengguna}}">
+        <div class="invalid-feedback" id="feed-back-nama-pengguna-edit"></div>
     </div>
     <div class="col-md-6 mb-3">
         <label>Email</label>
-        <input type="text" name="email" class="form-control form-control-sm" placeholder="nama@gmail.com" value="{{$user->email}}">
+        <input type="text" id="email-edit" name="email" class="form-control form-control-sm" placeholder="nama@gmail.com" value="{{$user->email}}">
+        <div class="invalid-feedback" id="feed-back-email-edit"></div>
     </div>
 </div>
 <div class="form-row">
     <div class="col-md-4 mb-3">
         <label>Divisi</label>
-        <select id="divisi" class="form-control form-control-sm" name="divisi">
+        <select id="divisi-edit" class="form-control form-control-sm" name="divisi">
             <option value="">Pilih Divisi</option>
             @foreach ($divisi as $item)
                 <option {{($user->id_divisi == $item->id_divisi) ? 'selected' : ''}} value="{{$item->id_divisi}}">{{$item->nama_divisi}}</option>
             @endforeach
         </select>
+        <div class="invalid-feedback" id="feed-back-divisi-edit"></div>
     </div>
     <div class="col-md-4 mb-3">
         <label>Jabatan</label>
-        <select id="jabatan" class="form-control form-control-sm" name="job_title">
+        <select id="jabatan-edit" class="form-control form-control-sm" name="job_title">
             <option value="">Pilih Jabatan</option>
             @foreach ($jabatans as $item)
-                <option {{($user->id_job_title == $item->id_job_title) ? 'selected' : ''}} value="{{$item->id_job_title}}">{{$item->id_job_title}}</option>
+                <option {{($user->id_job_title == $item->id_job_title) ? 'selected' : ''}} value="{{$item->id_job_title}}">{{$item->nama_job_title}}</option>
             @endforeach
         </select>
+        <div class="invalid-feedback" id="feed-back-jabatan-edit"></div>
     </div>
     <div class="col-md-4 mb-3">
         <label>Level</label>
-        <select id="level" class="form-control form-control-sm" name="level">
+        <select id="level-edit" class="form-control form-control-sm" name="level">
             <option value="">Pilih Level</option>
             @foreach ($levels as $item)
                 <option value="{{$item->id_level}}" {{($user->id_level == $item->id_level) ? 'selected' : ''}}>{{$item->nama_level}}</option>
             @endforeach
         </select>
+        <div class="invalid-feedback" id="feed-back-level-edit"></div>
     </div>
 </div>
 <div class="form-row">
@@ -138,6 +142,7 @@
                 <option value="{{$item->id_department}}" {{($user->id_department == $item->id_department) ? 'selected' : ''}} >{{$item->nama_department}}</option>
             @endforeach
         </select>
+        <div class="invalid-feedback" id="feed-back-department-edit"></div>
     </div>
     <div class="col-md-4 mb-3">
         <label>Sub Department</label>
@@ -147,15 +152,17 @@
                 <option value="{{$item->id_subdepartment}}" {{($user->id_sub_department == $item->id_subdepartment) ? 'selected' : ''}} >{{$item->nama_subdepartment}}</option>
             @endforeach
         </select>
+        <div class="invalid-feedback" id="feed-back-sub-department-edit"></div>
     </div>
     <div class="col-md-4 mb-3">
         <label>Liga CG</label>
-        <select id="cg" class="form-control form-control-sm" name="cg">
+        <select id="cg-edit" class="form-control form-control-sm" name="cg">
             <option value="">Pilih CG Name</option>
             @foreach ($cgMaster as $item)
                 <option value="{{$item->id_cg}}" {{($user->id_cg == $item->id_cg) ? 'selected' : ''}} >{{$item->nama_cg}}</option>
             @endforeach
         </select>
+        <div class="invalid-feedback" id="feed-back-cg-edit"></div>
     </div>
 </div>
 <div class="modal fade" id="modal-edit-crop" tabindex="7" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">

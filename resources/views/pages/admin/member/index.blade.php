@@ -121,34 +121,40 @@
                         <div class="col-md-8 row">
                             <div class="col-md-6 mb-3">
                                 <label>NIK</label>
-                                <input type="text" class="form-control form-control-sm" name="nik" placeholder="10119912">
+                                <input type="text" id="nik" class="form-control form-control-sm" name="nik" placeholder="10119912">
+                                <div class="invalid-feedback" id="feed-back-nik"></div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Password</label>
-                                <input type="password" class="form-control form-control-sm" name="password" placeholder="Masukan Password">
+                                <input type="password" id="password" class="form-control form-control-sm"  name="password" placeholder="Masukan Password">
+                                <div class="invalid-feedback" id="feed-back-password"></div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Peran Pengguna</label>
-                                <select class="form-control form-control-sm" name="peran_pengguna">
+                                <select class="form-control form-control-sm" name="peran_pengguna" id="peran_pengguna">
                                     <option value="3">Admin</option>
                                     <option value="2">CG Leader</option>
                                     <option value="1">Pengguna</option>
                                 </select>
+                                <div class="invalid-feedback" id="feed-back-peran-pengguna"></div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Tanggal Masuk</label>
-                                <input type="date" id="birthday" name="tgl_masuk" class="form-control form-control-sm">
+                                <input type="date" id="entry" name="tgl_masuk" class="form-control form-control-sm">
+                                <div class="invalid-feedback" id="feed-back-entry"></div>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label>Nama Karyawan</label>
-                            <input type="text" class="form-control form-control-sm" name="nama_pengguna" placeholder="Nama Karyawan">
+                            <input type="text" id="nama-pengguna" class="form-control form-control-sm" name="nama_pengguna" placeholder="Nama Karyawan">
+                            <div class="invalid-feedback" id="feed-back-nama-pengguna"></div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Email</label>
-                            <input type="text" name="email" class="form-control form-control-sm" placeholder="nama@gmail.com">
+                            <input type="text" id="email" name="email" class="form-control form-control-sm" placeholder="nama@gmail.com">
+                            <div class="invalid-feedback" id="feed-back-email"></div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -157,18 +163,21 @@
                             <select id="divisi" class="form-control form-control-sm" name="divisi">
                                 <option value="">Pilih Divisi</option>
                             </select>
+                            <div class="invalid-feedback" id="feed-back-divisi"></div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label>Jabatan</label>
                             <select id="jabatan" class="form-control form-control-sm" name="job_title">
                                 <option value="">Pilih Jabatan</option>
                             </select>
+                            <div class="invalid-feedback" id="feed-back-jabatan"></div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label>Level</label>
                             <select id="level" class="form-control form-control-sm" name="level">
                                 <option value="">Pilih Level</option>
                             </select>
+                            <div class="invalid-feedback" id="feed-back-level"></div>
                         </div>
                     </div>
                     <div class="form-row">
@@ -177,18 +186,21 @@
                             <select id="department" class="form-control form-control-sm" name="department">
                                 <option value="">Pilih Department</option>
                             </select>
+                            <div class="invalid-feedback" id="feed-back-department"></div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label>Sub Department</label>
                             <select id="sub-department" class="form-control form-control-sm" name="sub_department">
                                 <option value="">Pilih Sub Dept</option>
                             </select>
+                            <div class="invalid-feedback" id="feed-back-sub-department"></div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label>Liga CG</label>
                             <select id="cg" class="form-control form-control-sm" name="cg">
                                 <option value="">Pilih CG Name</option>
                             </select>
+                            <div class="invalid-feedback" id="feed-back-cg"></div>
                         </div>
                     </div>
                 </div>
@@ -531,6 +543,31 @@
         var form = $("#formPost")
         const url = form.attr("action");
         const formData = form.serialize();
+        $('#feed-back-nik').html('')
+        $('#feed-back-password').html('')
+        $('#feed-back-peran-pengguna').html('')
+        $('#feed-back-entry').html('')
+        $('#feed-back-nama-pengguna').html('')
+        $('#feed-back-email').html('')
+        $('#feed-back-divisi').html('')
+        $('#feed-back-jabatan').html('')
+        $('#feed-back-level').html('')
+        $('#feed-back-department').html('')
+        $('#feed-back-sub-department').html('')
+        $('#feed-back-cg').html('')
+
+        $('#nik').removeClass('is-invalid')
+        $('#password').removeClass('is-invalid')
+        $('#peran-pengguna').removeClass('is-invalid')
+        $('#entry').removeClass('is-invalid')
+        $('#nama-pengguna').removeClass('is-invalid')
+        $('#email').removeClass('is-invalid')
+        $('#divisi').removeClass('is-invalid')
+        $('#jabatan').removeClass('is-invalid')
+        $('#level').removeClass('is-invalid')
+        $('#department').removeClass('is-invalid')
+        $('#sub-department').removeClass('is-invalid')
+        $('#cg').removeClass('is-invalid')
         $.ajax({
             url:url,
             type:"POST",
@@ -550,14 +587,79 @@
                     timer:1500
                 });
             },
-            error:function (err) {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: err.responseJSON.message,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+            error:function (request,status,error) {
+                var errors = request.responseJSON.errors;
+                var message = request.responseJSON.message;
+                if(message == "The given data was invalid."){
+                    if(errors.nik){ 
+                        $( '#feed-back-nik' ).html(errors.nik[0]); 
+                        $( '#feed-back-nik' ).show();
+                        $( '#nik' ).addClass('is-invalid');
+                    }
+                    if(errors.password){
+                        $( '#feed-back-password' ).html(errors.password[0]); 
+                        $( '#feed-back-password' ).show();
+                        $( '#password' ).addClass('is-invalid');
+                    }
+                    if(errors.peran_pengguna){
+                        $( '#feed-back-peran-pengguna' ).html(errors.peran_pengguna[0]); 
+                        $( '#feed-back-peran-pengguna' ).show();
+                        $( '#peran-pengguna' ).addClass('is-invalid');
+                    }
+                    if(errors.tgl_masuk){
+                        $( '#feed-back-entry' ).html(errors.tgl_masuk[0]); 
+                        $( '#feed-back-entry' ).show();
+                        $( '#entry' ).addClass('is-invalid');
+                    }
+                    if(errors.nama_pengguna){
+                        $( '#feed-back-nama-pengguna' ).html(errors.nama_pengguna[0]); 
+                        $( '#feed-back-nama-pengguna' ).show();
+                        $( '#nama-pengguna' ).addClass('is-invalid');
+                    }
+                    if(errors.email){
+                        $( '#feed-back-email' ).html(errors.email[0]); 
+                        $( '#feed-back-email' ).show();
+                        $( '#email' ).addClass('is-invalid');
+                    }
+                    if(errors.divisi){
+                        $( '#feed-back-divisi' ).html(errors.divisi[0]); 
+                        $( '#feed-back-divisi' ).show();
+                        $( '#divisi' ).addClass('is-invalid');
+                    }
+                    if(errors.job_title){
+                        $( '#feed-back-jabatan' ).html(errors.job_title[0]); 
+                        $( '#feed-back-jabatan' ).show();
+                        $( '#jabatan' ).addClass('is-invalid');
+                    }
+                    if(errors.level){
+                        $( '#feed-back-level' ).html(errors.level[0]); 
+                        $( '#feed-back-level' ).show();
+                        $( '#level' ).addClass('is-invalid');
+                    }
+                    if(errors.department){
+                        $( '#feed-back-department' ).html(errors.department[0]); 
+                        $( '#feed-back-department' ).show();
+                        $( '#department' ).addClass('is-invalid');
+                    }
+                    if(errors.sub_department){
+                        $( '#feed-back-sub-department' ).html(errors.sub_department[0]); 
+                        $( '#feed-back-sub-department' ).show();
+                        $( '#sub-department' ).addClass('is-invalid');
+                    }
+                    if(errors.cg){
+                        $( '#feed-back-cg' ).html(errors.cg[0]); 
+                        $( '#feed-back-cg' ).show();
+                        $( '#cg' ).addClass('is-invalid');
+                    }
+                }else{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Terjadi kesalahan saat penyimpanan data',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             }
         });
     })
@@ -567,6 +669,29 @@
         var form = $("#formEdit")
         const url = form.attr("action");
         var formData = form.serialize();
+        $('#feed-back-nik-edit').html('')
+        $('#feed-back-peran-pengguna-edit').html('')
+        $('#feed-back-entry-edit').html('')
+        $('#feed-back-nama-pengguna-edit').html('')
+        $('#feed-back-email-edit').html('')
+        $('#feed-back-divisi-edit').html('')
+        $('#feed-back-jabatan-edit').html('')
+        $('#feed-back-level-edit').html('')
+        $('#feed-back-department-edit').html('')
+        $('#feed-back-sub-department-edit').html('')
+        $('#feed-back-cg-edit').html('')
+
+        $('#nik-edit').removeClass('is-invalid')
+        $('#peran-pengguna-edit').removeClass('is-invalid')
+        $('#entry-edit').removeClass('is-invalid')
+        $('#nama-pengguna-edit').removeClass('is-invalid')
+        $('#email-edit').removeClass('is-invalid')
+        $('#divisi-edit').removeClass('is-invalid')
+        $('#jabatan-edit').removeClass('is-invalid')
+        $('#level-edit').removeClass('is-invalid')
+        $('#department-edit').removeClass('is-invalid')
+        $('#sub-department-edit').removeClass('is-invalid')
+        $('#cg-edit').removeClass('is-invalid')
         $.ajax({
             url:url,
             type:"post",
@@ -584,14 +709,72 @@
                     timer:1500
                 });
             },
-            error:function (err) {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: err.responseJSON.message,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+            error:function (request,status,error) {
+                if(message == "The given data was invalid."){
+                    if(errors.nik){ 
+                        $( '#feed-back-nik-edit' ).html(errors.nik[0]); 
+                        $( '#feed-back-nik-edit' ).show();
+                        $( '#nik-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.peran_pengguna){
+                        $( '#feed-back-peran-pengguna-edit' ).html(errors.peran_pengguna-edit[0]); 
+                        $( '#feed-back-peran-pengguna-edit' ).show();
+                        $( '#peran-pengguna-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.tgl_masuk){
+                        $( '#feed-back-entry-edit' ).html(errors.tgl_masuk[0]); 
+                        $( '#feed-back-entry-edit' ).show();
+                        $( '#entry-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.nama_pengguna){
+                        $( '#feed-back-nama-pengguna-edit' ).html(errors.nama_pengguna[0]); 
+                        $( '#feed-back-nama-pengguna-edit' ).show();
+                        $( '#nama-pengguna-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.email){
+                        $( '#feed-back-email-edit' ).html(errors.email[0]); 
+                        $( '#feed-back-email-edit' ).show();
+                        $( '#email-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.divisi){
+                        $( '#feed-back-divisi-edit' ).html(errors.divisi[0]); 
+                        $( '#feed-back-divisi-edit' ).show();
+                        $( '#divisi-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.job_title){
+                        $( '#feed-back-jabatan-edit' ).html(errors.job_title[0]); 
+                        $( '#feed-back-jabatan-edit' ).show();
+                        $( '#jabatan-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.level){
+                        $( '#feed-back-level-edit' ).html(errors.level[0]); 
+                        $( '#feed-back-level-edit' ).show();
+                        $( '#level-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.department){
+                        $( '#feed-back-department-edit' ).html(errors.department[0]); 
+                        $( '#feed-back-department-edit' ).show();
+                        $( '#department-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.sub_department){
+                        $( '#feed-back-sub-department-edit' ).html(errors.sub_department[0]); 
+                        $( '#feed-back-sub-department-edit' ).show();
+                        $( '#sub-department-edit' ).addClass('is-invalid');
+                    }
+                    if(errors.cg){
+                        $( '#feed-back-cg-edit' ).html(errors.cg[0]); 
+                        $( '#feed-back-cg-edit' ).show();
+                        $( '#cg-edit' ).addClass('is-invalid');
+                    }
+                }else{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Terjadi kesalahan saat penyimpanan data',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             }
         })
     })

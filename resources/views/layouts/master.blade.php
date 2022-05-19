@@ -34,6 +34,7 @@
     </div>
   </div>
   @include('include.script')
+  @include('include.footer')
   @stack('script')
 </body>
 
