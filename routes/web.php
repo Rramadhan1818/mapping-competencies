@@ -97,6 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix("skill-categoty")->group(function () {
         Route::get('/', 'SkillCategory@index')->name('SkillCategory');
+        Route::get('/get','SkillCategory@get')->name('SkillCategory.get');
         Route::post('/create','SkillCategory@store')->name('SkillCategory.store');
         Route::post('/delete', 'SkillCategory@delete')->name('SkillCategory.delete');
     });
@@ -152,6 +153,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'LevelController@index')->name('level.index');
         Route::post('/create', 'LevelController@store')->name('level.store');
         Route::post('/delete','LevelController@destroy')->name('level.destroy');
+    });
+
+    // sub department
+    Route::prefix("competencie-groups")->group(function () {
+        Route::get('/', 'CompetencieGroupController@index')->name('competencie-groups.index');
+        Route::post('/create', 'CompetencieGroupController@store')->name('competencie-groups.store');
+        Route::post('/delete','CompetencieGroupController@destroy')->name('competencie-groups.destroy');
+        Route::post('/get-skill','CompetencieGroupController@getBySkillCategory')->name('competencie-groups.getBySkillCategory');
     });
 
 });

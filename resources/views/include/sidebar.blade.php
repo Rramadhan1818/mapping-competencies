@@ -26,6 +26,7 @@
                         <li class="nav-item"> <a class="nav-link" href="{{ route('CG') }}">Circle Group</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('grade.index') }}">Grade</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('SkillCategory') }}">Skill Category</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('competencie-groups.index') }}">Compentencie Group</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('department.index') }}">Department</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('sub-department.index') }}">Sub Department</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('divisi.index') }}">Divisi</a></li>
