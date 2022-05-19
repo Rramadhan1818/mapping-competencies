@@ -310,7 +310,7 @@
 @endsection
 
 @push('script')
-<script src="https://unpkg.com/cropperjs"></script>
+<script src="{{asset('assets/js/cropper-v2.js')}}"></script>
 <script type="text/javascript">
     
     var role = '{{ Auth::user()->peran_pengguna}}';

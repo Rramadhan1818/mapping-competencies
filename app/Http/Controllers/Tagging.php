@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 use App\WhiteTagModel;
 use App\TagingReason;
-use DB;
-use Response;
-use Auth;
-use Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Exports\TaggingListExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\Datatables\Datatables;
