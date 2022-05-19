@@ -21,6 +21,12 @@ class SkillCategory extends Controller
         return view("pages.admin.skill-category.form", compact("skill_category", "skills", "jabatans"));
     }
 
+    public function get()
+    {
+        $items = SkillCategoryModel::orderBy('skill_category')->get();
+        return response()->json($items);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make(request()->all(),[

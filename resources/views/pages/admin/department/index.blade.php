@@ -162,7 +162,6 @@
                 dataType: 'JSON',
                 success: function(response) {
                     $('#divisi').empty();
-                    console.log(response);
                     response.data.forEach(el => {
                         if (el.id_divisi == divisi) {
                             $('#divisi').append('<option selected value="' + el
