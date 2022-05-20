@@ -15,9 +15,6 @@ use App\Level;
 use App\SubDepartment;
 use App\Department;
 use App\WhiteTagModel;
-use Validator;
-use Illuminate\Support\Facades\Auth;
-
 class MemberCG extends Controller
 {
     public function index(Request $request)

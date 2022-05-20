@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\WhiteTagModel;
 use App\Exports\WhiteTagExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\CompetenciesDirectoryModel;
-use Validator;
-use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
-use Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 

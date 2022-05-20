@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\CG;
 use App\WhiteTagModel;
 use App\TagingReason;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +13,6 @@ use App\Exports\TaggingListExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\Datatables\Datatables;
 
-
 use Illuminate\Http\Request;
 
 class Tagging extends Controller
@@ -20,8 +21,12 @@ class Tagging extends Controller
         return view ("pages.admin.taging-list.index");
     }
 
-    public function tagingJson()
+    public function tagingJson(Request $request)
     {
+        $where = "white_tag.actual < cd.target OR (SELECT COUNT(*) FROM taging_reason where white_tag.id_white_tag = taging_reason.id_white_tag) > 0";
+        if(isset($request->type) && $request->type == 'cg'){
+            $where .= " AND users.id_cg = '".Auth::user()->id_cg."'";
+        }
         $select = [
             "id_taging_reason","white_tag.id_white_tag","tr.no_taging as noTaging","nama_pengguna as employee_name",
             "skill_category","training_module",
@@ -36,7 +41,7 @@ class Tagging extends Controller
                             ->join("users","users.id","white_tag.id_user")
                             ->join("curriculum","curriculum.id_curriculum","cd.id_curriculum")
                             ->join("skill_category as sc","sc.id_skill_category","curriculum.id_skill_category")
-                            ->whereRaw("white_tag.actual < cd.target OR (SELECT COUNT(*) FROM taging_reason where white_tag.id_white_tag = taging_reason.id_white_tag) > 0")
+                            ->whereRaw($where)
                             ->get();
 
         return Datatables::of($data)
@@ -233,24 +238,28 @@ class Tagging extends Controller
     public function exportTaggingList(Request $request)
     {
         $this->validate($request,[
-            "category"=>"required|in:0,1,2"
+            "category"=>"required|in:0,1,2",
+            "all"=>"required|in:0,1"
         ]);
-
-        $dateTime = date("d-m-Y H:i");        
+        $type = "";
+        if($request->all == 0){
+            $cg = CG::where("id_cg",Auth::user()->id_cg)->first();
+            $type = "(".$cg->nama_cg.")";
+        }
+        $dateTime = date("d-m-Y H:i"); 
         switch ($request->category) {
             case '0':
-                $fileName = "Tagging List Semua (".$dateTime.").xlsx";
+                $fileName = "Tagging List ".$type." Semua (".$dateTime.").xlsx";
             break;
             case '1':
-                $fileName = "Tagging List Belum Finish (".$dateTime.").xlsx";
+                $fileName = "Tagging List ".$type." Belum Finish (".$dateTime.").xlsx";
             break;
             case '2':
-                $fileName = "Tagging List Finish (".$dateTime.").xlsx";
+                $fileName = "Tagging List ".$type." Finish (".$dateTime.").xlsx";
             break;
         }
-
-        return Excel::download(new TaggingListExport($request->category), $fileName);
-        return redirect()->route('TagList');
+        return Excel::download(new TaggingListExport($request->category,$request->all), $fileName);
+        return redirect()->back();
     }
 
     public function taggingPrint(Request $request)

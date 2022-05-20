@@ -83,10 +83,6 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group col-md">
-                        <label for="noModule">No Competency</label>
-                        <input type="text" class="form-control" id="no_training_module" name="no_training_module" placeholder="004/KMI/HRD-RT/SAL/004" >
-                    </div>
-                    <div class="form-group col-md">
                         <label for="skillCategory">Skill Category</label>
                         <select id="id_skill_category" class="form-control form-control-sm" name="id_skill_category">
                             <option value="">Pilih Skill Category</option>

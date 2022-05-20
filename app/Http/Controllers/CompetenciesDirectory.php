@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CompetenciesDirectoryModel;
 use App\CurriculumModel;
-use App\Jabatan;
 use App\CurriculumToJob;
-use Validator;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 
 class CompetenciesDirectory extends Controller
@@ -141,7 +139,6 @@ class CompetenciesDirectory extends Controller
 
     public function detail(Request $request)
     {
-        // 081312468147
         $request->validate([
             "id" => "required|numeric"
         ]);
