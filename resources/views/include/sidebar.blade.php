@@ -30,7 +30,7 @@
                         <li class="nav-item"> <a class="nav-link" href="{{ route('department.index') }}">Department</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('sub-department.index') }}">Sub Department</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('divisi.index') }}">Divisi</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('jabatan.index') }}">Jabatan</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('jabatan.index') }}">Job Title</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('level.index') }}">Level</a></li>
                       </ul>
                     </div>

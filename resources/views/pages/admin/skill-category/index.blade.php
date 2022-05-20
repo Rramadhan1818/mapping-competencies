@@ -20,7 +20,8 @@
                     <p class="card-title">Skill Category</p>
                     <div class="row">
                         <div class="col-md mb-2">
-                            <a class="btn btn-success float-right btnAdd" href="javascript:void(0)" id="createNewItem"><i class="icon-plus"></i> Tambah
+                            <a class="btn btn-success float-right btnAdd" href="javascript:void(0)" id="createNewItem"><i
+                                    class="icon-plus"></i> Tambah
                                 Skill Category</a>
                         </div>
                     </div>
@@ -31,7 +32,7 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No.#</th>
+                                            <th width="10">No.#</th>
                                             <th>Skill Category</th>
                                             <th width="15%">Action</th>
                                         </tr>
@@ -42,7 +43,8 @@
                                                 <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                                                 <td>{{ $data->skill_category }}</td>
                                                 <td>
-                                                    <button data-id="{{ $data->id_skill_category }}" data-skillcategory="{{ $data->skill_category }}"
+                                                    <button data-id="{{ $data->id_skill_category }}"
+                                                        data-skillcategory="{{ $data->skill_category }}"
                                                         class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 btnEdit"><i
                                                             class="icon-file menu-icon"></i></button>
                                                     <button data-id="{{ $data->id_skill_category }}"
@@ -152,11 +154,10 @@
                             id
                         },
                         success: function(response) {
-                            Swal.fire(
-                                'Success',
-                                response.message,
-                                response.status
-                            )
+                            Swal.fire({
+                                icon: response.status,
+                                text: response.message
+                            })
                             setTimeout(function() {
                                 location.reload();
                             }, 1000);

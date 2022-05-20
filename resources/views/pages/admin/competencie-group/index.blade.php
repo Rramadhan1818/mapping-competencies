@@ -32,7 +32,7 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No.#</th>
+                                            <th width="10">No.#</th>
                                             <th>skill_category</th>
                                             <th>Nama Competencie Group</th>
                                             <th width="15%">Action</th>
@@ -143,7 +143,8 @@
                             $('#skill_category').append('<option selected value="' + el
                                 .id_skill_category + '">' + el.skill_category + '</option>');
                         } else {
-                            $('#skill_category').append('<option value="' + el.id_skill_category +
+                            $('#skill_category').append('<option value="' + el
+                                .id_skill_category +
                                 '">' + el.skill_category + '</option>');
                         }
                     });
@@ -167,7 +168,8 @@
                             $('#skill_category').append('<option selected value="' + el
                                 .id_skill_category + '">' + el.skill_category + '</option>');
                         } else {
-                            $('#skill_category').append('<option value="' + el.id_skill_category +
+                            $('#skill_category').append('<option value="' + el
+                                .id_skill_category +
                                 '">' + el.skill_category + '</option>');
                         }
                     });
@@ -202,11 +204,10 @@
                             id
                         },
                         success: function(response) {
-                            Swal.fire(
-                                'Success',
-                                response.message,
-                                response.status
-                            )
+                            Swal.fire({
+                                icon: response.status,
+                                text: response.message
+                            })
                             setTimeout(function() {
                                 location.reload();
                             }, 1000);

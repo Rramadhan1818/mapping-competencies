@@ -32,7 +32,7 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No.#</th>
+                                            <th width="10">No.#</th>
                                             <th>Nama Job Title</th>
                                             <th>Nama Department</th>
                                             <th width="15%">Action</th>
@@ -200,11 +200,10 @@
                             id
                         },
                         success: function(response) {
-                            Swal.fire(
-                                'Success',
-                                response.message,
-                                response.status
-                            )
+                            Swal.fire({
+                                icon: response.status,
+                                text: response.message
+                            })
                             setTimeout(function() {
                                 location.reload();
                             }, 1000);

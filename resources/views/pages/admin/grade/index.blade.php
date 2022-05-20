@@ -21,7 +21,7 @@
                             <table class="display expandable-table table table-sm table-striped table-hover" id="table-grade" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No.</th>
+                                        <th width="10">No.</th>
                                         <th>Name Grade</th>
                                         <th>Tingkatan</th>
                                         <th>Level</th>

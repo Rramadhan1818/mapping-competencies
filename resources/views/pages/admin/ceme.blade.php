@@ -193,10 +193,9 @@
 
         function initDatatable() {
             var q = '{{ $q }}';
-            if(q != '')
-            {
+            if (q != '') {
                 var ajaxRoute = '{{ route('ceme.json.all') }}';
-            }else{
+            } else {
                 var ajaxRoute = '{{ route('ceme.json') }}';
             }
             var dtJson = $('#table-ceme').DataTable({
@@ -339,11 +338,10 @@
                 data: formAddJobTitle,
                 success: function(response) {
                     if (response.status == 'success') {
-                        Swal.fire(
-                            'Success',
-                            response.message,
-                            response.status
-                        )
+                        Swal.fire({
+                            icon: response.status,
+                            text: response.message
+                        })
 
                         // kosongin data user job title
                         $('.trJob').text('');
@@ -425,11 +423,10 @@
                             id
                         },
                         success: function(response) {
-                            Swal.fire(
-                                'Success',
-                                response.message,
-                                response.status
-                            )
+                            Swal.fire({
+                                icon: response.status,
+                                text: response.message
+                            })
                             // kosongin data user job title
                             $('.trJob').text('');
                             var u_id = response.data.user_id;
@@ -537,11 +534,10 @@
                 data: formUpdateJobTitle.serialize(),
                 success: function(response) {
                     if (response.status == 'success') {
-                        Swal.fire(
-                            'Success',
-                            response.message,
-                            response.status
-                        )
+                        Swal.fire({
+                            icon: response.status,
+                            text: response.message
+                        })
 
                         $('#modalEditJobTitle').modal('hide');
                         // kosongin data user job title
