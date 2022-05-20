@@ -3,6 +3,7 @@
 namespace App\Exports;
 use App\WhiteTagModel;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -18,9 +19,11 @@ class TaggingListExport implements FromCollection, WithStyles, WithHeadings, Wit
     */
 
     protected $category;
+    protected $all;
 
-    function __construct($category) {
+    function __construct($category,$all) {
         $this->category = $category;
+        $this->all = $all;
     }
 
     public function collection()
@@ -32,7 +35,7 @@ class TaggingListExport implements FromCollection, WithStyles, WithHeadings, Wit
         ];
         switch ($this->category) {
             case '0':
-                $whereRaw = "white_tag.actual < cd.target OR (SELECT COUNT(*) FROM taging_reason where white_tag.id_white_tag = taging_reason.id_white_tag) > 0";
+                $whereRaw = "(white_tag.actual < cd.target) OR (SELECT COUNT(*) FROM taging_reason where white_tag.id_white_tag = taging_reason.id_white_tag) > 0";
             break;
             case '1':
                 $whereRaw = "(white_tag.actual < cd.target) AND (SELECT COUNT(*) FROM taging_reason where white_tag.id_white_tag = taging_reason.id_white_tag) <= 0";
@@ -42,6 +45,9 @@ class TaggingListExport implements FromCollection, WithStyles, WithHeadings, Wit
             break;
         }
 
+        if($this->all == 0){
+            $whereRaw .= " AND users.id_cg = '".Auth::user()->id_cg."'";
+        }
         $data = WhiteTagModel::select($select)
         ->join("competencies_directory as cd",function ($join){
                                 $join->on("cd.id_directory","white_tag.id_directory");

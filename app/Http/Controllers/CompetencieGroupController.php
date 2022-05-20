@@ -92,7 +92,6 @@ class CompetencieGroupController extends Controller
     {
         $id = request('id');
         $items = CompetencieGroup::where('id_skill_category',$id)->get();
-
         return response()->json($items);
     }
 }

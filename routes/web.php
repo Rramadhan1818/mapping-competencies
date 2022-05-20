@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/form','Tagging@formTaggingList')->name('tagingForm');
         Route::post('/action','Tagging@actionTagingList')->name('actionTagingList');
         Route::get('/detail','Tagging@detail')->name('tagingDetail');
-        Route::get('/export-white-tag','Tagging@exportTaggingList')->middleware(['isAdmin'])->name('exportTaggingList');
+        Route::get('/export-tagging','Tagging@exportTaggingList')->middleware(['isAdmin'])->name('exportTaggingList');
         Route::get('/tagging-print','Tagging@taggingPrint')->middleware(['isAdmin'])->name('taggingPrint');
     });
 

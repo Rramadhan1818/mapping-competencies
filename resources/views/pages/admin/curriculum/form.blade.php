@@ -1,9 +1,9 @@
 <input type="hidden" name="id_curriculum" value="{{ $curriculum->id_curriculum }}">
-<div class="form-group col-md">
+{{-- <div class="form-group col-md">
     <label for="noModule">No Competency</label>
     <input type="text" class="form-control" id="no_training_module" name="no_training_module"
         placeholder="004/KMI/HRD-RT/SAL/004" value="{{ $curriculum->no_training_module }}">
-</div>
+</div> --}}
 <div class="form-group col-md">
     <label for="skillCategory">Skill Category</label>
     <select id="id_skill_category2" class="form-control form-control-sm" name="id_skill_category">

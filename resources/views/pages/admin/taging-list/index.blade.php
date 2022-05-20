@@ -9,30 +9,65 @@
         <div class="card">
             <div class="card-body">
                 <p class="card-title">Tagging List</p>
+                <ul class="nav nav-pills mb-3">
+                    <li class="nav-item active">
+                        <a class="nav-link active" data-toggle="tab" href="#pills-home" type="button">Tagging All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#pills-profile" type="button">Tagging CG</a>
+                    </li>
+                </ul>
                 <div class="row">
-                    <div class="col-12">
-                        @if(Auth::user()->peran_pengguna == '1')
-                            <button class="btn btn-inverse-info float-left mb-2" data-toggle="modal" data-target="#modal-export">Export</button>
-                        @endif
-                        <div class="table-responsive">
-                            <table class="display nowrap expandable-table table-striped table-hover" id="table-taging-list" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No Taging</th>
-                                        <th>Employee Name</th>
-                                        <th>Skill Category</th>
-                                        <th>Competency</th>
-                                        <th>Level</th>
-                                        <th>Competenc Group</th>
-                                        <th>Actual</th>
-                                        <th>Target</th>
-                                        <th>Gap</th>
-                                        <th style="width: max-content" class="text-center">Tagging Status</th>
-                                        <th style="width: max-content" class="text-center">Action</th>
-                                    </tr> 
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                    <div class="col-12 flex">
+                        <div class="tab-pane container fade in active show" id="pills-home">
+                            @if(Auth::user()->peran_pengguna == '1')
+                                <button class="btn btn-inverse-info float-left mb-2" data-toggle="modal" data-target="#modal-export">Export</button>
+                            @endif
+                            <div class="table-responsive">
+                                <table class="display nowrap expandable-table table-striped table-hover" id="table-taging-list" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No Taging</th>
+                                            <th>Employee Name</th>
+                                            <th>Skill Category</th>
+                                            <th>Competency</th>
+                                            <th>Level</th>
+                                            <th>Competenc Group</th>
+                                            <th>Actual</th>
+                                            <th>Target</th>
+                                            <th>Gap</th>
+                                            <th style="width: max-content" class="text-center">Tagging Status</th>
+                                            <th style="width: max-content" class="text-center">Action</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane container fade" id="pills-profile">
+                            @if(Auth::user()->peran_pengguna == '1')
+                                <button class="btn btn-inverse-info float-left mb-2" data-toggle="modal" data-target="#modal-export-cg">Export</button>
+                            @endif
+                            <div class="table-responsive">
+                                <table class="display nowrap expandable-table table-striped table-hover" id="table-taging-list-cg" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No Taging</th>
+                                            <th>Employee Name</th>
+                                            <th>Skill Category</th>
+                                            <th>Competency</th>
+                                            <th>Level</th>
+                                            <th>Competenc Group</th>
+                                            <th>Actual</th>
+                                            <th>Target</th>
+                                            <th>Gap</th>
+                                            <th style="width: max-content" class="text-center">Tagging Status</th>
+                                            <th style="width: max-content" class="text-center">Action</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,12 +102,44 @@
     <div class="modal-dialog modal-lg" role="document" style="width:45%">
         <div class="modal-content">
             <div class="modal-header p-3">
-                <h5 class="modal-title" id="modal-exportLabel">Export White Tag</h5>
+                <h5 class="modal-title" id="modal-exportLabel">Export Tagging List</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="{!!route("exportTaggingList")!!}" method="get">
+                <input type="hidden" name="all" value="1">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <label for="category">Kategori Export</label>
+                        <select name="category" id="category" class="form-control form-control-sm" required>
+                            <option value="">Pilih Kateori Export</option>
+                            <option value="0">Semua</option>
+                            <option value="1">Belum Finish</option>
+                            <option value="2">Finish</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Export</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-export-cg" tabindex="-1" role="dialog" aria-labelledby="modal-exportLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" style="width:45%">
+        <div class="modal-content">
+            <div class="modal-header p-3">
+                <h5 class="modal-title" id="modal-exportLabel">Export Tagging List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{!!route("exportTaggingList")!!}" method="get">
+                <input type="hidden" name="all" value="0">
                 <div class="modal-body">
                     <div class="form-row">
                         <label for="category">Kategori Export</label>
@@ -117,7 +184,21 @@
 @push('script')
 <script type="text/javascript">
   $(document).ready(function () {
+    $(".nav-pills a").click(function(){
+        $(this).tab('show');
+    });
+    $('.nav-pills a').on('show.bs.tab', function(){
+        $('.tab-pane').each(function(i,obj){
+            if(!$(this).hasClass("active")){
+                $(this).show()
+            }else{
+                $(this).hide()
+            }
+        });
+    })
+
       iniDatatable();
+      tagingCgDataTable();
       $("#formSubmit").click(function (e) {
           e.preventDefault();
           var tagingForm = $("#formTaging");
@@ -304,7 +385,6 @@
   }
       
   function iniDatatable() {
-
       var dtJson = $('#table-taging-list').DataTable({
           ajax: "{{ route('taggingJson') }}",
           responsive:true,
@@ -362,5 +442,64 @@
           ]
       });
   }
+
+    function tagingCgDataTable() {
+        var dtJson = $('#table-taging-list-cg').DataTable({
+          ajax: "{{ route('taggingJson') }}?type=cg",
+          responsive:true,
+          serverSide: true,
+          processing: true,
+          aaSorting: [
+              [0, "desc"]
+          ],
+          searching: true,
+          dom: '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+          displayLength: 11,
+          // lengthMenu: [10, 15, 20],
+          language: {
+              paginate: {
+                  // remove previous & next text from pagination
+                  previous: '&nbsp;',
+                  next: '&nbsp;'
+              }
+          },
+          scrollX: true,
+          columns: [
+              {
+                  data: 'noTaging',
+              },
+              {
+                  data: 'employee_name'
+              },
+              {
+                  data: 'skill_category'
+              },
+              {
+                  data: 'training_module'
+              },
+              {
+                  data: 'level'
+              },
+              {
+                  data: 'training_module_group'
+              },
+              {
+                  data: 'actual'
+              },
+              {
+                  data: 'target'
+              },
+              {
+                  data: 'actualTarget'
+              },
+              {
+                 data: 'tagingStatus'
+              },
+              {
+                 data: 'action'
+              }
+          ]
+      });
+    }
 </script>
 @endpush
