@@ -21,7 +21,7 @@ class Dashboard extends Controller
         ->leftJoin('cg as cg', 'users.id_cg', '=', 'cg.id_cg')
         // ->select(array('id_cg', DB::raw('COUNT(id_cg) as cg')))
         ->whereNotNull('users.id_cg')
-        ->orderBy('users.id_cg', 'DESC')
+            ->orderBy('cg', 'DESC')
         ->groupBy('users.id_cg')
         ->get(array('users.id_cg', 'nama_cg', DB::raw('COUNT(users.id_cg) as cg')));
 
