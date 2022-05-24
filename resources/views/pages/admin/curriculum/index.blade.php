@@ -111,9 +111,9 @@
                             <label for="noModule">Level</label>
                             <select class="form-control form-control-sm" id="level" name="level">
                                 <option value="">Pilih Level</option>
-                                <option value="I">I</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
+                                <option value="B">B (Basic)</option>
+                                <option value="I">I (Intermediate)</option>
+                                <option value="A">A (Advance)</option>
                             </select>
                         </div>
                         <div class="form-group col-md">

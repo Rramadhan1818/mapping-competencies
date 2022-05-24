@@ -23,9 +23,9 @@
     <label for="noModule">Level</label>
     <select class="form-control form-control-sm" id="level" name="level">
         <option value="">Pilih Level</option>
-        <option {{ $curriculum->level == 'I' ? 'selected' : '' }} value="I">I</option>
-        <option {{ $curriculum->level == 'A' ? 'selected' : '' }} value="A">A</option>
-        <option {{ $curriculum->level == 'B' ? 'selected' : '' }} value="B">B</option>
+        <option {{ $curriculum->level == 'B' ? 'selected' : '' }} value="B">B (Basic)</option>
+        <option {{ $curriculum->level == 'I' ? 'selected' : '' }} value="I">I (Intermediate)</option>
+        <option {{ $curriculum->level == 'A' ? 'selected' : '' }} value="A">A (Advance)</option>
     </select>
 </div>
 <div class="form-group col-md">

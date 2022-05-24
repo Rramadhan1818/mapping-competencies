@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2022 at 02:29 PM
+-- Generation Time: May 24, 2022 at 04:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -57,15 +57,16 @@ INSERT INTO `cg` (`id_cg`, `nama_cg`, `id_department`, `created_at`, `updated_at
 ('CG_0015', 'Gemasd', 'DP-0004', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
 ('CG_0016', 'Ganimeda', 'DP-0007', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
 ('CG_0017', 'Cepot Warrior', 'DP-0005', '2022-03-07 04:32:41', '2022-05-19 03:34:27'),
-('CG_0018', 'RM', 'DP-0006', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
+('CG_0018', 'RM-MAJOR', 'DP-0006', '2022-03-07 04:32:41', '2022-05-22 12:11:50'),
 ('CG_0019', 'Matrix', 'DP-0009', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
 ('CG_0020', 'Rising Star', 'DP-0002', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
 ('CG_0021', 'TPM', 'DP-0002', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
 ('CG_0022', 'Effervescent', 'DP-0008', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
 ('CG_0023', 'Office PRD', 'DP-0004', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
-('CG_0024', 'RM', 'DP-0006', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
+('CG_0024', 'RM-MINOR', 'DP-0006', '2022-03-07 04:32:41', '2022-05-22 11:36:34'),
 ('CG_0025', 'PM', 'DP-0006', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
-('CG_0026', 'E-Max', 'DP-0004', '2022-03-07 04:32:41', '2022-03-07 11:32:41');
+('CG_0026', 'E-Max', 'DP-0004', '2022-03-07 04:32:41', '2022-03-07 11:32:41'),
+('CG_0027', 'FI', 'DP-0002', '2022-05-22 21:28:17', '2022-05-23 04:28:17');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,58 @@ INSERT INTO `competencies_directory` (`id_directory`, `id_curriculum`, `id_job_t
 (212, 37, 'JT-0006', '2', 4),
 (213, 37, 'JT-0006', '3', 5),
 (214, 37, 'JT-0006', '4', 5),
-(215, 37, 'JT-0006', '5', 5);
+(215, 37, 'JT-0006', '5', 5),
+(216, 38, 'JT-0049', '0', 1),
+(217, 38, 'JT-0049', '1', 1),
+(218, 38, 'JT-0049', '2', 2),
+(219, 38, 'JT-0049', '3', 3),
+(220, 38, 'JT-0049', '4', 4),
+(221, 38, 'JT-0049', '5', 5),
+(222, 38, 'JT-0055', '0', 1),
+(223, 38, 'JT-0055', '1', 2),
+(224, 38, 'JT-0055', '2', 3),
+(225, 38, 'JT-0055', '3', 5),
+(226, 38, 'JT-0055', '4', 5),
+(227, 38, 'JT-0055', '5', 5),
+(228, 40, 'JT-0049', '0', 0),
+(229, 40, 'JT-0049', '1', 2),
+(230, 40, 'JT-0049', '2', 2),
+(231, 40, 'JT-0049', '3', 3),
+(232, 40, 'JT-0049', '4', 4),
+(233, 40, 'JT-0049', '5', 5),
+(234, 40, 'JT-0046', '0', 0),
+(235, 40, 'JT-0046', '1', 2),
+(236, 40, 'JT-0046', '2', 3),
+(237, 40, 'JT-0046', '3', 4),
+(238, 40, 'JT-0046', '4', 5),
+(239, 40, 'JT-0046', '5', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `competencie_groups`
+--
+
+CREATE TABLE `competencie_groups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_skill_category` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `competencie_groups`
+--
+
+INSERT INTO `competencie_groups` (`id`, `id_skill_category`, `name`, `created_at`, `updated_at`) VALUES
+(3, 2, 'General', '2022-05-22 08:29:58', '2022-05-22 08:29:58'),
+(4, 2, 'General MNF', '2022-05-22 08:30:09', '2022-05-22 08:30:09'),
+(5, 2, 'General Corporate', '2022-05-22 08:30:26', '2022-05-22 08:30:26'),
+(6, 2, 'TPM', '2022-05-22 08:30:38', '2022-05-22 08:30:38'),
+(7, 2, 'Focus Improvement', '2022-05-22 08:30:54', '2022-05-22 08:30:54'),
+(8, 1, 'Technical', '2022-05-22 08:31:10', '2022-05-22 08:31:10'),
+(9, 1, 'Basic Maintenance', '2022-05-22 08:31:24', '2022-05-22 08:31:24');
 
 -- --------------------------------------------------------
 
@@ -160,7 +212,8 @@ CREATE TABLE `curriculum` (
 --
 
 INSERT INTO `curriculum` (`id_curriculum`, `no_training_module`, `id_skill_category`, `training_module`, `level`, `type_curriculum`, `training_module_group`, `training_module_desc`, `id_job_title`, `created_at`, `updated_At`) VALUES
-(38, '123', 1, 'Belajar Ngoding', 'B', '', '4.0', 'Mantap', '', '2022-05-18 21:17:16', '2022-05-18 21:17:16');
+(39, '124/KMI/FUNC', 1, 'Nyenyenye', 'A', '', 'Technical', 'erwrew', '', '2022-05-20 05:48:24', '2022-05-20 05:48:24'),
+(40, '125/KMI/FUNC', 1, 'Company Strategy', 'B', '', 'Technical', 'Belajar tentang strategy yang ada di perusahaan', '', '2022-05-23 19:03:06', '2022-05-23 19:03:06');
 
 -- --------------------------------------------------------
 
@@ -179,8 +232,14 @@ CREATE TABLE `curriculum_to_job` (
 --
 
 INSERT INTO `curriculum_to_job` (`id_ctb`, `id_curriculum`, `id_job_title`) VALUES
-(21, 38, 'JT-0049'),
-(22, 38, 'JT-0055');
+(23, 39, 'JT-0049'),
+(24, 39, 'JT-0153'),
+(25, 40, 'JT-0046'),
+(26, 40, 'JT-0047'),
+(27, 40, 'JT-0049'),
+(28, 40, 'JT-0054'),
+(29, 40, 'JT-0088'),
+(30, 40, 'JT-0153');
 
 -- --------------------------------------------------------
 
@@ -265,6 +324,36 @@ CREATE TABLE `grade` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grade`
+--
+
+INSERT INTO `grade` (`id_grade`, `tingkatan`, `level`, `persen`, `grade`, `bg_color`, `created_at`, `updated_at`) VALUES
+(8, 'Operator', 'B', 100, 'SERSAN DUA', 'badge badge-secondary', '2022-05-22 14:54:41', '2022-05-22 08:20:21'),
+(9, 'Operator', 'I', 85, 'SERSAN SATU', 'badge badge-danger', '2022-05-22 14:54:41', '2022-05-22 14:54:41'),
+(10, 'Operator', 'A', 75, 'SERSAN KEPALA', 'badge badge-warning', '2022-05-22 14:54:41', '2022-05-22 14:54:41'),
+(11, 'Technician', 'B', 100, 'SERSAN DUA', 'badge badge-secondary', '2022-05-22 15:02:13', '2022-05-22 08:20:32'),
+(12, 'Technician', 'I', 85, 'SERSAN SATU', 'badge badge-danger', '2022-05-22 15:02:13', '2022-05-22 15:02:13'),
+(13, 'Technician', 'A', 75, 'SERSAN KEPALA', 'badge badge-warning', '2022-05-22 15:02:13', '2022-05-22 15:02:13'),
+(14, 'Analyst', 'B', 100, 'SERSAN DUA', 'badge badge-secondary', '2022-05-22 15:11:56', '2022-05-22 08:20:42'),
+(15, 'Analyst', 'I', 85, 'SERSAN SATU', 'badge badge-danger', '2022-05-22 15:11:56', '2022-05-22 08:12:11'),
+(16, 'Analyst', 'A', 75, 'SERSAN KEPALA', 'badge badge-warning', '2022-05-22 15:11:56', '2022-05-22 08:17:38'),
+(17, 'Admin', 'B', 100, 'SERSAN DUA', 'badge badge-secondary', '2022-05-22 15:15:43', '2022-05-22 08:20:51'),
+(18, 'Admin', 'I', 85, 'SERSAN SATU', 'badge badge-danger', '2022-05-22 15:15:43', '2022-05-22 15:15:43'),
+(19, 'Admin', 'A', 75, 'SERSAN KEPALA', 'badge badge-warning', '2022-05-22 15:15:43', '2022-05-22 08:17:46'),
+(20, 'LEADER', 'B', 100, 'LETNAN DUA', 'badge badge-success', '2022-05-22 15:19:14', '2022-05-22 08:19:35'),
+(21, 'LEADER', 'I', 85, 'LETNAN SATU', 'badge badge-info', '2022-05-22 15:19:14', '2022-05-22 08:22:31'),
+(22, 'LEADER', 'A', 75, 'KAPTEN', 'badge badge-primary', '2022-05-22 15:19:14', '2022-05-22 15:19:14'),
+(23, 'STAFF', 'B', 100, 'LETNAN DUA', 'badge badge-success', '2022-05-22 15:22:14', '2022-05-22 08:22:53'),
+(24, 'STAFF', 'I', 85, 'LETNAN SATU', 'badge badge-info', '2022-05-22 15:22:14', '2022-05-22 15:22:14'),
+(25, 'STAFF', 'I', 75, 'KAPTEN', 'badge badge-primary', '2022-05-22 15:22:14', '2022-05-22 15:22:14'),
+(26, 'Supervisor', 'B', 100, 'MAYOR', 'badge badge-dark', '2022-05-22 08:24:32', '2022-05-22 08:24:32'),
+(27, 'Supervisor', 'I', 85, 'LETNAN KOLONEL', 'badge badge-dark', '2022-05-22 08:25:03', '2022-05-22 08:25:03'),
+(28, 'Supervisor', 'A', 75, 'KOLONEL', 'badge badge-dark', '2022-05-22 08:26:01', '2022-05-22 08:26:01'),
+(29, 'DEPT HEAD', 'B', 100, 'PANGLIMA', 'badge badge-light', '2022-05-22 08:26:53', '2022-05-22 08:26:53'),
+(30, 'DEPT HEAD', 'I', 85, 'PANGLIMA', 'badge badge-light', '2022-05-22 08:27:10', '2022-05-22 08:27:10'),
+(31, 'DEPT HEAD', 'A', 75, 'PANGLIMA', 'badge badge-light', '2022-05-22 08:27:25', '2022-05-22 08:27:25');
 
 -- --------------------------------------------------------
 
@@ -472,7 +561,8 @@ CREATE TABLE `job_title_users` (
 
 INSERT INTO `job_title_users` (`id`, `user_id`, `job_title_id`, `value`, `created_at`, `updated_at`) VALUES
 (2, 1, 'JT-0055', 4, '2022-05-11 01:56:00', '2022-05-11 01:56:00'),
-(3, 1, 'JT-0069', 2, '2022-05-18 01:09:38', '2022-05-18 01:09:38');
+(3, 1, 'JT-0069', 2, '2022-05-18 01:09:38', '2022-05-18 01:09:38'),
+(4, 1, 'JT-0086', 4, '2022-05-23 19:18:36', '2022-05-23 19:18:36');
 
 -- --------------------------------------------------------
 
@@ -526,7 +616,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2022_05_09_050852_create_job_title_users_table', 2),
 (6, '2022_05_13_035113_change_updatedad_from_cg_table', 3),
 (7, '2022_05_17_074159_add_bgcolor_from_grade_table', 3),
-(8, '2022_05_17_084953_change_edited_from_sub_department_table', 3);
+(8, '2022_05_17_084953_change_edited_from_sub_department_table', 3),
+(9, '2022_05_19_042606_create_competentie_groups_table', 4);
 
 -- --------------------------------------------------------
 
@@ -576,7 +667,7 @@ CREATE TABLE `skill_category` (
 --
 
 INSERT INTO `skill_category` (`id_skill_category`, `skill_category`) VALUES
-(1, 'Technical Skills'),
+(1, 'Functional Skills'),
 (2, 'General Skills');
 
 -- --------------------------------------------------------
@@ -695,327 +786,325 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nik`, `nama_pengguna`, `peran_pengguna`, `email`, `email_verified_at`, `password`, `tgl_masuk`, `id_job_title`, `id_divisi`, `id_cg`, `id_department`, `id_sub_department`, `id_level`, `status`, `gambar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'K210300063', 'REZKI RAMADHAN', '1', 'rramadhan1818@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-03-01', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, '4gJ3GOQqTuWsDtj.png', NULL, '2022-03-05 09:58:33', '2022-05-18 00:00:35'),
-(2, 'K200900257', 'CHANDRA PRAWIRA', '1', 'chandra@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-03-11', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, 'E72Vo5k8MkUKjCm.png', NULL, '2022-03-11 01:46:24', '2022-05-18 00:01:32'),
-(3, '050700014', 'DIDIK BUDIARTO', NULL, 'didik.budiarto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0149', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, '051000017', 'I GEDE PUTU EKA PUTRA', NULL, 'igedeputu.ekaputra@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0076', NULL, NULL, 'DP-0010', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '060500014', 'YUDHA AGUS TRI BASUKI', NULL, 'yud.agus@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0062', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, '060500015', 'APOLONIA LAURENSIA LUNAWATI. N', NULL, 'laurensia.lunawati2007@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0067', NULL, NULL, 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '060700017', 'SRI REJEKI', NULL, 'jeckie78@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0163', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, '060800020', 'YUNIARTO', NULL, 'yuniartorasian72@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0068', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, '060800022', 'YAYAN', NULL, 'yayan.jan123@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0109', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, '060900024', 'NURHASAN', NULL, 'bungzoe83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0020', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, '060900025', 'DENY MUHAMAD MULYADI', NULL, 'muhamadmulyadi80@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0119', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, '061000028', 'SUHATMAN', '1', 'suhatman7@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0144', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:12:36'),
-(13, '061100030', 'AFRIAN CHANDRA IDRIS', NULL, 'afrian81@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0066', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, '061100031', 'DARYONO', NULL, 'daryono7706@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0003', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(15, '061100032', 'MUHAMAD EFENDI', '1', 'efendimuhamad7608@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0018', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:29:28'),
-(16, '061100033', 'USEP JAYADI', NULL, 'jayadiusep3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0025', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, '061100034', 'TIWIK SUYANTI', NULL, 'tiwik.suyanti@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0160', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, '061100035', 'MAMAN SULAEMAN', NULL, 'kang.maman24@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0164', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, '061200036', 'ADE SAPRUDIN', NULL, 'adesfadil123@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0015', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, '061200037', 'ASEP CAHYAN', '1', 'asepcahyan9@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0114', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:04:28'),
-(21, '061200038', 'SAMIDI', '1', 'samidiasemo@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0020', 'DV_0002', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:29:13'),
-(22, '061200039', 'SUNGATNO', NULL, 'sungatnohadi76@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0096', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(23, '061200040', 'ZAINI', NULL, 'zaeniaja66@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0040', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, '061200041', 'MUNADIH', '1', 'munadihmumun@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0140', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:11:45'),
-(25, '061200042', 'NANDANG SUTISNA', NULL, 'nsanandangsutisna@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0020', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(26, '061200043', 'YUNUS JOHN BILORO', '1', 'yunusjohn50@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0024', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 03:03:56'),
-(27, '061200045', 'KUSNADI RUDI', NULL, 'k.rudikri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, '070100001', 'ADI SETIAHADI', NULL, 'this1s4di@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0159', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, '070100004', 'AGUS TURANTO', NULL, 'aturanto2007@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0078', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(30, '070100007', 'EKO WAHYUDI', NULL, 'echowahyudi32@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0156', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, '070100012', 'EDI WIBOWO JOKO PRASETYO', NULL, 'ofalputra30@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0158', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(32, '070100013', 'AGUS RIYANTO', NULL, 'aroryoto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0088', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(33, '070100015', 'RADEN ABBAS FAUZI', '1', 'fauzibbas@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:19:17'),
-(34, '070100024', 'YUSUF HAMDANI', NULL, 'yusufarfan030284@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0036', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(35, '070200028', 'JAKARIA (SK)', NULL, 'skjakaria027@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0147', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(36, '070200029', 'RAHMAT NURHIDAYAT', NULL, 'rahmatar315@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0013', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, '070200030', 'ARDIAN', NULL, 'ardian.kmi.wh@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0133', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(38, '070200031', 'YULIANTO', NULL, 'bombersolokrajan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0138', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, '070300033', 'ASEP HAEDAR', NULL, 'haedar0210@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0036', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(40, '070300036', 'JOJON DARSONO YOGA JAYA', NULL, 'jojondarsono11@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(41, '070400065', 'MARLENY PATANDUNG', NULL, 'mpatandung@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0122', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(42, '070400068', 'DWI ISDARYANTO', NULL, 'dwi2.isdaryanto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0134', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(43, '070500078', 'NAFIS SURACHMAN', NULL, 'nafis_lopon@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0066', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(44, '070600083', 'HENDI ISKANDAR', NULL, 'hendi.iskandar.umb12@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0090', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(45, '080900029', 'ADE NANDAR', '1', 'adenandar78@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0025', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 02:17:26'),
-(46, '080900030', 'BUGI NOVRIYANTO', NULL, 'bubugigi17@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0041', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(47, '080900031', 'DWI KURNIAWAN', NULL, 'dwi_kmi@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0161', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(48, '080900032', 'FEBI DIANA', NULL, 'febidiana3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0042', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(49, '080900033', 'LINDA LABORA', '1', 'ndalabora1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0141', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:05:07'),
-(50, '081000037', 'DIAWAN', NULL, 'diawan.only86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0129', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(51, '081000038', 'AGUS FIRMANSYAH', NULL, 'agus_k99@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0100', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(52, '090593002', 'HALILY SOFYAN AL HASAN', NULL, 'halleymalmsteen@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0111', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(53, '100192702', 'AGUNG HARTANTO', NULL, 'agunghartanto83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0009', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(54, '100192704', 'IKA OKTAFIANTI', NULL, 'okta.arisandy01@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0087', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(55, '100192705', 'SAEPULLAH', NULL, 'saepullahsaepullah8@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0013', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(56, '100200007', 'BURHANUDIN', NULL, 'pay.burhan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0068', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(57, '100300009', 'NAZARUDIN RACHMAN SIDIK', NULL, 'fiasco.missing@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0061', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(58, '100492706', 'SEPTIAN EKO PRIATNA', NULL, 'septian.gates@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0095', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(59, '100692707', 'IWAN HERMAWAN', NULL, 'iwan.hermawan963@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(60, '100892708', 'DEDE DODI GINANJAR', NULL, 'd2ginanjar@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0083', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(61, '100892709', 'RAHMAT KURNIAWAN', '1', 'zikrikurniawan08@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0025', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:16:30'),
-(62, '100892710', 'SOLEHUDIN', NULL, 'solehudinkmi1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0025', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(63, '100992711', 'SITI RIZKIANA NURANNISA', NULL, 'nurannisarizkiana@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(64, '110191206', 'AGA WALESSA', NULL, 'walessaaga@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0118', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(65, '110191207', 'MAULANA ABDUL SALIM', '1', 'muhammadkarim354@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0008', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:51:13'),
-(66, '110191208', 'UUM UMBARA', '1', 'umbarathea722@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0009', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:48:01'),
-(67, '110191209', 'YERI KUSNADI', NULL, 'yerikusnadi888@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0079', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(68, '110891211', 'ADE HUMAENI', '1', 'leaderpacking40@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0144', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 03:14:52'),
-(69, '110891212', 'MARKUS', NULL, 'markusmuji8179@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0004', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(70, '110900055', 'HERMANSYAH', NULL, 'h3rm4n21@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0053', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(71, '111200086', 'SADHU PUTRI SUSANTI', NULL, 'sadhuputri0405@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0044', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(72, '120192502', 'ADRI FIRMANSYAH', '1', 'adrifirmansyah16@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0148', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-17 22:53:41'),
-(73, '120192503', 'ARDISON', NULL, 'ardison0984@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0005', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(74, '120192504', 'EKO ARIES SANTOSO', NULL, 'arieseko98@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0109', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(75, '120192505', 'JAJANG ABDUL ROHMAN', NULL, 'zikrakhalida28@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0031', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(76, '120192506', 'NURJANAH', '1', 'noerjhen@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0152', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:01:54'),
-(77, '120192507', 'SAEPUDIN', '1', 'saepudina631@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0072', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:36:13'),
-(78, '120192508', 'TARMAN SUTISNA', '1', 'tarman.sutisna84@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0012', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:10:07'),
-(79, '120192509', 'USEP YUSEPA', '1', 'usepyusepa66@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0114', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:14:15'),
-(80, '120192510', 'YAYAT HIDAYAT', '1', 'yayat2836@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0024', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 02:15:35'),
-(81, '120200010', 'AGUNG JOKO SUPRIHANTO', NULL, 'agung.joko.tin42@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0112', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(82, '120292511', 'AHMAD SAHRONI', NULL, 'assahroni78@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0083', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(83, '120292512', 'DENY SUPRAPTO', NULL, 'dhenysoeprapto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0097', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(84, '120292513', 'DIAN SANJAYA', '1', 'diansanjaya1984@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0072', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 02:35:42'),
-(85, '120292514', 'HERMAWAN', NULL, 'hermawan2231@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0013', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(86, '120292515', 'RUDI SUGIARTO', NULL, 'tabotie88@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0052', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(87, '120292516', 'YAYAT NURHIDAYAT', NULL, 'ynurhidayat321@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0036', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(88, '120292517', 'YUANITA JOHAN', NULL, 'yuanita.johan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0075', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(89, '120292518', 'ZAINI ARDHIANSYAH', NULL, 'zainiardhiansyah@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0042', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(90, '120500031', 'AKHMAD MAKHALI', NULL, 'ommak82@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0056', NULL, NULL, 'DP-0009', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(91, '120692519', 'DINA MUSTIKA WENI', NULL, 'dina.desu@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(92, '120692521', 'WEMPI NUR HIDAYAT', NULL, 'wempinur@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0133', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(93, '120892522', 'KARYA SETIAWAN', NULL, 'karyastiawan07@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0015', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(94, '120892523', 'MUKTI WIBOWO', NULL, 'wibowomukti26@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0121', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(95, '120892524', 'VICKRY JANI HARIYANTO', NULL, 'vickryjani@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0032', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(96, '120992525', 'ARDIKA FAUDIN', '1', 'ardika.f.89@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0080', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:13:25'),
-(97, '120992526', 'BAYU SEPTO PRASETYO', NULL, 'bayusepto16@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0137', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(98, '121092527', 'BUDI MAULANA NUGRAHA', NULL, 'budimaulananugraha@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0066', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(99, '121092528', 'DODI ISKANDAR', NULL, 'reisyhafebkiranicuakep@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(100, '121092529', 'SUSANTO RONNI', NULL, 'daffasusanto20@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0003', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(101, '121192530', 'DEDE KUSNANDAR', '1', 'dedekusnandarinsun@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:08:32'),
-(102, '121192531', 'GUMILAR INDRA FEBRIANSYAH', '1', 'gumilarif@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0029', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:51:46'),
-(103, '121192532', 'KARNAEN', NULL, 'karnaen1976@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0103', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(104, '121192533', 'MUHAMMAD SHANDI SUMANTRI', '1', 'shand.milano@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:21:00'),
-(105, '121192534', 'ONDI NUGROHO', NULL, 'ondix.lau@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(106, '121192535', 'RISNAWATI', '1', 'wrisna97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0115', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:58:03'),
-(107, '121192536', 'RUDI RAHMAN', '1', 'rudirahman0879@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:07:35'),
-(108, '121192537', 'SUGIANTO', NULL, 'zhie46@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0114', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(109, '121192538', 'SULISWANTO', '1', 'suliswanto1503@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:37:32'),
-(110, '121192539', 'YUSUP SYAHRONI', '1', 'yusufsyahroni4787@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0072', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:18:27'),
-(111, '121192540', 'ZENAL MULYANA', '1', 'zenal.kenil83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:05:22'),
-(112, '121192541', 'RIESTA SHASYA FAUZIAH', NULL, 'riestashasya@ymail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(113, '130100005', 'AMBAR KUSUMO NUGROHO', NULL, 'aknugroho@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0082', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(114, '130193003', 'ADE NANA SUMARNA', NULL, 'andealova77@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0005', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(115, '130193004', 'AGUS AKBAR', NULL, 'agus.akbar1986@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0131', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(116, '130193005', 'AGUS PRASETIYO', NULL, 'prast.we@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0145', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(117, '130193006', 'APANDI', NULL, 'apandialfathar34@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0004', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(118, '130193007', 'ASMI LASARI', '1', 'asmilasari23@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0115', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:17:16'),
-(119, '130193008', 'DANI PURWANEGARA', NULL, 'danipurwanegara7@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0128', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(120, '130193009', 'DEDEN SETIA JAYA SOMANTRI', NULL, 'dedensetiajaya09747@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0031', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(121, '130193010', 'DEVI SAFITRI SUNDARI', '1', 'devisafitri798@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0115', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:01:07'),
-(122, '130193011', 'DIDI SUPRIADI', NULL, 'didi_supriadi@live.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0007', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(123, '130193012', 'DWIKI ARIA DARMAWAN', '1', 'wickyarya17@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:36:56'),
-(124, '130193013', 'ERFAN KIMA BAHTERA', NULL, 'bahteraerfan87@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(125, '130193014', 'ERIS MOCHAMAD FIRDAUS', NULL, 'erisfirdaus@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0097', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(126, '130193015', 'FARIZ FAUZI PRATAMA', NULL, 'farizfauzipratama@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0095', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(127, '130193016', 'FEBRIANGGONO DANNY SETIYADI', '1', 'dannyarieanti@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:06:02'),
-(128, '130193017', 'HADI', NULL, 'hadi180286@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0125', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(129, '130193018', 'HERU AHMAD SAPRUDIN', '1', 'ureh.rafael46@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:25:18'),
-(130, '130193019', 'JAKARIA (CK)', NULL, 'zakariyahck@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0079', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(131, '130193020', 'KANDA', NULL, 'kandadoank69@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0124', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(132, '130193021', 'KUSNADI', NULL, 'koesdoank77@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0131', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(133, '130193022', 'MADA', '1', 'madamoza39@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:38:08'),
-(134, '130193023', 'MUHAMAD SYAIFUL ANWAR', NULL, 'evfuel@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0031', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(135, '130193024', 'NUR FAJRI', NULL, 'nurf99732@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0004', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(136, '130193025', 'PRIYANTO', NULL, 'priyanto2687@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(137, '130193026', 'RIDWAN', '1', 'kiansantang934@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0017', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:29:44'),
-(138, '130193027', 'RUDI SETIAWAN', '1', 'rudisuhu3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0115', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:49:40'),
-(139, '130193028', 'SAMSIANTO', NULL, 'antohukl@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(140, '130193029', 'SHANDY ASMARA', NULL, 'asmarashandy@ymail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0005', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(141, '130193030', 'SUDARWANTO', '1', 'sudarwantobapakebilqis@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0139', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:04:31'),
-(142, '130193031', 'SUHERI', NULL, 'suheri89.sh@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0137', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(143, '130193033', 'SYAHRUL HIDAYAT', '1', 'syahrulhidayat92@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0011', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:07:25'),
-(144, '130193034', 'WARDI SAEPUDIN', NULL, 'wardisaepudin007@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(145, '130393035', 'BOBBY FAHMI FARHANUDIN', NULL, 'farhan.bobbyfahmi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(146, '130793036', 'ADNAN SAMSULEH', NULL, 'adnan.holic@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0110', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(147, '130793037', 'AEP SAEPUDIN', NULL, 'aep198509@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0007', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(148, '130793038', 'AJAT JAPAR', '1', 'jattz87lfr@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'undefine', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:43:54'),
-(149, '130793039', 'ALI ROHMAN', NULL, 'alirohman5728@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0137', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(150, '130793040', 'AMRIH PANUNTUN', NULL, 'amrihpanuntun@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0103', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(151, '130793041', 'ANDI KUSUMA', '3', 'kandi5625@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0008', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:50:19'),
-(152, '130793042', 'ANGGA CHRISTIAN YONATHAN', NULL, 'angga.christian08@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0128', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(153, '130793043', 'ASEP ROBAN', NULL, 'roben765@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(154, '130793044', 'DAIKIN PURNA YUDHA', NULL, 'daikinvina21@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0029', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(155, '130793045', 'DARMA ARDHI', '1', 'darmaardhi69@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:39:01'),
-(156, '130793046', 'DIDIK PURWANTO', '1', 'didikpurwantojowo81@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-18', 'JT-0027', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:52:22'),
-(157, '130793047', 'HERI KURNIAWAN', '1', 'kurniawanheri449@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:19:50'),
-(158, '130793048', 'HERIYANA', NULL, 'boyzheriyana@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(159, '130793049', 'IKMAL MAULANA', NULL, 'ikmalmaulana708@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(160, '130793050', 'IRFAN HIMAWAN', NULL, 'himawanirfan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(161, '130793051', 'JOHAN KERTIONO', '1', 'johanbismillah99@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0012', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:05:48'),
-(162, '130793052', 'MOHAMMAD DWI ADHITYA', NULL, 'dwiadityamail@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0125', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(163, '130793053', 'SAMROJI', NULL, 'samroji118@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0015', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(164, '130793055', 'JUJUN SIROJUDIN', NULL, 'jujunsirojudin1502@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0003', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(165, '130793056', 'NOVAN TRIANTO', NULL, 'vanstryan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0009', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(166, '130793058', 'SANNI SUTIADI', '1', 'sannisutiadi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0114', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:03:50'),
-(167, '130900125', 'INSANI GUSTRIANJAR MUHAROM', NULL, 'insanianjar@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(168, '130900126', 'KASTOLANI', NULL, 'kastolanikmi86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0077', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(169, '140192908', 'JEPRI HAERUDIN', NULL, 'haerudin24@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0074', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(170, '140292909', 'TRI AGUSTIARTY WARDHANY', NULL, 'triagustiarty@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(171, '140700131', 'PUTRI PUSPITA SARI', NULL, 'putripuspitasari55@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0043', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(172, '140792910', 'AGUS NUGROHO', '1', 'nugrohofaiz14@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0012', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:09:36'),
-(173, '140792911', 'ARIYANTO', '1', 'ariyanto88974@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0011', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:08:58'),
-(174, '140792913', 'BAHRUDIN', NULL, 'abahudin83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0145', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(175, '140792914', 'BENI SETIYAWAN', '1', 'benn.john.bj@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:39:29'),
-(176, '140792915', 'CECEP SUPRIADI', '1', 'mibnu298@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0029', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:17:59'),
-(177, '140792916', 'IRPAN HIDAYAT PAMIL', NULL, 'irpanhidayatpamil.ip@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0009', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(178, '140792918', 'MOKHAMAD MUSLIH', '1', 'musliehneutron53@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:09:53'),
-(179, '140792919', 'R HAERUL SEJATI', NULL, 'haerulsintauna@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0095', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(180, '140792920', 'TAUFIK FARIDZAL', NULL, 'faridzal83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0039', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(181, '140792921', 'ZAENUDDIN', '1', 'zaenuddintan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:21:45'),
-(182, '141092923', 'FITRIYANI', NULL, 'hi.fitriyani@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0162', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(183, '141092924', 'PANDU WIJAYADI', NULL, 'telurpanda@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0065', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(184, '150191702', 'MOEHAMMAD FADJAR FADHILAH', NULL, 'fadjar.crotcrew@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0032', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(185, '150291703', 'ALI NURDIN', NULL, 'ali.nurdin.hidayat@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0137', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(186, '150291704', 'BAGUS SANTOSO', NULL, 'santosobagus809@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0128', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(187, '150291705', 'HERI HENDRIANA', NULL, 'herry.hendriana@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0124', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(188, '150491706', 'SUMARNA', NULL, 'sumarna926@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0073', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(189, '150600127', 'YOPPY SUKMANDAR', NULL, 'sukmandar.yoppy@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0035', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(190, '150791707', 'ADI AMRAN SUKARYA', '1', 'adiamran88@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:22:55'),
-(191, '150791708', 'BAMBANG RISTYANTO', NULL, 'mbengristyan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0021', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(192, '150791709', 'HAPPY SUGESTIE PRAHARA', '1', 'happysugestie@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-02', 'JT-0046', 'DV_0002', 'CG_0022', 'DP-0008', 'SDP-0022', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-17 19:46:29'),
-(193, '150791710', 'RIRIS PURWANTO', NULL, 'ririspurwanto33@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0021', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(194, '150800189', 'BAHRUDIN DWI NURYANTO', NULL, 'dwinuryantob@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0032', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(195, '160192705', 'AHMAD SAEPUDIN', NULL, 'asaepudin511@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0066', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(196, '160192706', 'YUNIAR TRI PRAKOSO', NULL, 'triprakoso777@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(197, '160200097', 'ALIT PRADANA', NULL, 'alitpradana52@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0041', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(198, '160792707', 'ADI SOPANA', NULL, 'sopanaadi25@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0007', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(199, '170122440', 'FAJAR MAULANA', NULL, 'fajarmaulana638@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0137', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(200, '170122441', 'MUHAMMAD IQBAL FAUZY', NULL, 'iqbalfauzysinkas@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0120', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(201, '170122442', 'SAIFUL BAHRI', NULL, 'sbahriel198@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0137', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(202, '170700031', 'ARIS SUPARLI', '3', 'arissuparli9@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:12:09'),
-(203, '170700032', 'HERU HAERUDIN', '1', 'heruhaerudin11@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:10:32'),
-(204, '170700033', 'PEBI', '1', 'pebipebi52@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:23:46'),
-(205, '171122509', 'MOCHAMAD FADDLY ADI', NULL, 'mochfaddly@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0021', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(206, '180100012', 'RUDI ROSIDIN', NULL, 'rudirosidin1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0059', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(207, '180100013', 'SIDIK TRIPAMBUDI', NULL, 'sidiktrii@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0066', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(208, '180100014', 'DERI INDRIANI', NULL, 'indrianiderry@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0042', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'K210300063', 'REZKI RAMADHAN', '1', 'rramadhan1818@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-08', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, '4gJ3GOQqTuWsDtj.png', NULL, '2022-03-05 09:58:33', '2022-05-18 00:00:35'),
+(2, 'K200900257', 'CHANDRA PRAWIRA', '1', 'chandra@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-09-01', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, 'E72Vo5k8MkUKjCm.png', NULL, '2022-03-11 01:46:24', '2022-05-18 00:01:32'),
+(3, '050700014', 'DIDIK BUDIARTO', '1', 'didik.budiarto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2005-07-01', 'JT-0149', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '051000017', 'I GEDE PUTU EKA PUTRA', '1', 'igedeputu.ekaputra@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2005-10-10', 'JT-0076', NULL, NULL, 'DP-0010', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '060500014', 'YUDHA AGUS TRI BASUKI', '1', 'yud.agus@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-05-01', 'JT-0062', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '060500015', 'APOLONIA LAURENSIA LUNAWATI. N', '1', 'laurensia.lunawati2007@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-05-29', 'JT-0067', NULL, NULL, 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '060700017', 'SRI REJEKI', '1', 'jeckie78@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-07-03', 'JT-0163', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '060800020', 'YUNIARTO', '1', 'yuniartorasian72@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-08-01', 'JT-0068', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, '060800022', 'YAYAN', '1', 'yayan.jan123@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-08-14', 'JT-0109', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, '060900024', 'NURHASAN', '1', 'bungzoe83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-09-04', 'JT-0020', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:37:19'),
+(11, '060900025', 'DENY MUHAMAD MULYADI', '2', 'muhamadmulyadi80@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-09-05', 'JT-0119', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:33:02'),
+(12, '061000028', 'SUHATMAN', '1', 'suhatman7@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-10-02', 'JT-0144', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:12:36'),
+(13, '061100030', 'AFRIAN CHANDRA IDRIS', '1', 'afrian81@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-11-06', 'JT-0066', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:43:37'),
+(14, '061100031', 'DARYONO', '1', 'daryono7706@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-11-06', 'JT-0003', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:48:03'),
+(15, '061100032', 'MUHAMAD EFENDI', '2', 'efendimuhamad7608@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-11-06', 'JT-0018', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:43:34'),
+(16, '061100033', 'USEP JAYADI', '1', 'jayadiusep3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-11-06', 'JT-0025', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '061100034', 'TIWIK SUYANTI', '2', 'tiwik.suyanti@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-11-13', 'JT-0160', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:35:31'),
+(18, '061100035', 'MAMAN SULAEMAN', '1', 'kang.maman24@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-11-22', 'JT-0164', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:13:21'),
+(19, '061200036', 'ADE SAPRUDIN', '1', 'adesfadil123@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-04', 'JT-0015', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:26:27'),
+(20, '061200037', 'ASEP CAHYAN', '1', 'asepcahyan9@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-04', 'JT-0114', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:04:28'),
+(21, '061200038', 'SAMIDI', '1', 'samidiasemo@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-04', 'JT-0020', 'DV_0002', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:29:13'),
+(22, '061200039', 'SUNGATNO', '2', 'sungatnohadi76@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-04', 'JT-0096', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0004', NULL, NULL, NULL, NULL, '2022-05-20 00:53:16'),
+(23, '061200040', 'ZAINI', '1', 'zaeniaja66@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-04', 'JT-0040', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, '061200041', 'MUNADIH', '2', 'munadihmumun@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-06', 'JT-0140', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-22 21:32:45'),
+(25, '061200042', 'NANDANG SUTISNA', '1', 'nsanandangsutisna@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-11', 'JT-0020', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-19 23:38:11'),
+(26, '061200043', 'YUNUS JOHN BILORO', '2', 'yunusjohn50@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-11', 'JT-0024', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:32:28'),
+(27, '061200045', 'KUSNADI RUDI', '1', 'k.rudikri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-12-18', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:29:37'),
+(28, '070100001', 'ADI SETIAHADI', '2', 'this1s4di@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-02', 'JT-0159', 'DV_0002', 'CG_0023', 'DP-0004', 'SDP-0008', 'LV-0004', NULL, NULL, NULL, NULL, '2022-05-22 21:40:35'),
+(29, '070100004', 'AGUS TURANTO', '1', 'aturanto2007@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-02', 'JT-0078', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, '070100007', 'EKO WAHYUDI', '1', 'echowahyudi32@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-02', 'JT-0156', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:08:11'),
+(31, '070100012', 'EDI WIBOWO JOKO PRASETYO', '1', 'ofalputra30@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-03', 'JT-0158', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, '070100013', 'AGUS RIYANTO', '1', 'aroryoto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-08', 'JT-0088', 'DV_0001', 'CG_0010', 'DP-0003', 'SDP-0030', 'LV-0004', NULL, NULL, NULL, NULL, '2022-05-22 05:01:14'),
+(33, '070100015', 'RADEN ABBAS FAUZI', '1', 'fauzibbas@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-15', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:19:17'),
+(34, '070100024', 'YUSUF HAMDANI', '1', 'yusufarfan030284@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-01-22', 'JT-0036', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:08:51'),
+(35, '070200028', 'JAKARIA (SK)', '2', 'skjakaria027@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-02-05', 'JT-0147', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:26:04'),
+(36, '070200029', 'RAHMAT NURHIDAYAT', '1', 'rahmatar315@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-02-05', 'JT-0013', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:39:06'),
+(37, '070200030', 'ARDIAN', '1', 'ardian.kmi.wh@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-02-12', 'JT-0133', 'DV_0001', 'CG_0006', 'DP-0006', 'SDP-0017', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:29:26'),
+(38, '070200031', 'YULIANTO', '2', 'bombersolokrajan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-02-12', 'JT-0138', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:51:47'),
+(39, '070300033', 'ASEP HAEDAR', '1', 'haedar0210@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-03-01', 'JT-0036', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:08:01'),
+(40, '070300036', 'JOJON DARSONO YOGA JAYA', '1', 'jojondarsono11@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-03-20', '', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(41, '070400065', 'MARLENY PATANDUNG', '1', 'mpatandung@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-04-23', 'JT-0122', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(42, '070400068', 'DWI ISDARYANTO', '2', 'dwi2.isdaryanto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-04-25', 'JT-0134', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:40:30'),
+(43, '070500078', 'NAFIS SURACHMAN', '1', 'nafis_lopon@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-05-28', 'JT-0066', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:17:33'),
+(44, '070600083', 'HENDI ISKANDAR', '1', 'hendi.iskandar.umb12@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2007-06-25', 'JT-0090', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, '080900029', 'ADE NANDAR', '1', 'adenandar78@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-09-01', 'JT-0025', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 02:17:26'),
+(46, '080900030', 'BUGI NOVRIYANTO', '1', 'bubugigi17@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-09-01', 'JT-0041', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(47, '080900031', 'DWI KURNIAWAN', '1', 'dwi_kmi@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-09-01', 'JT-0161', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0019', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:26:31'),
+(48, '080900032', 'FEBI DIANA', '2', 'febidiana3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-09-01', 'JT-0042', 'DV_0002', 'CG_0007', 'DP-0003', 'SDP-0031', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:25:15'),
+(49, '080900033', 'LINDA LABORA', '1', 'ndalabora1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-09-01', 'JT-0141', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:05:07'),
+(50, '081000037', 'DIAWAN', '2', 'diawan.only86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-10-01', 'JT-0129', 'DV_0001', 'CG_0025', 'DP-0006', 'SDP-0017', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:33:40'),
+(51, '081000038', 'AGUS FIRMANSYAH', '1', 'agus_k99@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2008-10-06', 'JT-0100', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(52, '090593002', 'HALILY SOFYAN AL HASAN', '2', 'halleymalmsteen@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2009-05-01', 'JT-0111', 'DV_0002', 'CG_0020', 'DP-0002', 'SDP-0004', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:29:05'),
+(53, '100192702', 'AGUNG HARTANTO', '1', 'agunghartanto83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-01-01', 'JT-0155', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0025', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:24:22'),
+(54, '100192704', 'IKA OKTAFIANTI', '2', 'okta.arisandy01@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-01-01', 'JT-0087', 'DV_0001', 'CG_0010', 'DP-0003', 'SDP-0030', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:25:31'),
+(55, '100192705', 'SAEPULLAH', '1', 'saepullahsaepullah8@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-01-01', 'JT-0013', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:44:18'),
+(56, '100200007', 'BURHANUDIN', '1', 'pay.burhan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-02-01', 'JT-0068', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(57, '100300009', 'NAZARUDIN RACHMAN SIDIK', '1', 'fiasco.missing@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-03-01', 'JT-0061', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, '100492706', 'SEPTIAN EKO PRIATNA', '1', 'septian.gates@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-04-01', 'JT-0095', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 00:55:21'),
+(59, '100692707', 'IWAN HERMAWAN', '1', 'iwan.hermawan963@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-06-01', 'JT-0126', 'DV_0001', 'CG_0006', 'DP-0006', 'SDP-0017', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:36:03'),
+(60, '100892708', 'DEDE DODI GINANJAR', '1', 'd2ginanjar@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-08-01', 'JT-0083', 'DV_0002', 'CG_0023', 'DP-0004', 'SDP-0008', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:47:23'),
+(61, '100892709', 'RAHMAT KURNIAWAN', '1', 'zikrikurniawan08@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-08-01', 'JT-0025', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:16:30'),
+(62, '100892710', 'SOLEHUDIN', '1', 'solehudinkmi1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-08-01', 'JT-0025', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(63, '100992711', 'SITI RIZKIANA NURANNISA', '2', 'nurannisarizkiana@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2010-09-01', 'JT-0091', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:20:38'),
+(64, '110191206', 'AGA WALESSA', '2', 'walessaaga@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-01-01', 'JT-0118', 'DV_0002', 'CG_0021', 'DP-0002', 'SDP-0002', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:27:53'),
+(65, '110191207', 'MAULANA ABDUL SALIM', '1', 'muhammadkarim354@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-01-01', 'JT-0008', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:51:13'),
+(66, '110191208', 'UUM UMBARA', '1', 'umbarathea722@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-01-01', 'JT-0009', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:48:01'),
+(67, '110191209', 'YERI KUSNADI', '1', 'yerikusnadi888@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-01-01', 'JT-0079', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:10:14'),
+(68, '110891211', 'ADE HUMAENI', '1', 'leaderpacking40@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-08-01', 'JT-0144', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 03:14:52'),
+(69, '110891212', 'MARKUS', '1', 'markusmuji8179@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-08-01', 'JT-0004', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:06:30'),
+(70, '110900055', 'HERMANSYAH', '1', 'h3rm4n21@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-09-12', 'JT-0053', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(71, '111200086', 'SADHU PUTRI SUSANTI', '2', 'sadhuputri0405@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2011-12-19', 'JT-0044', 'DV_0002', 'CG_0007', 'DP-0003', 'SDP-0031', 'LV-0004', NULL, NULL, NULL, NULL, '2022-05-22 05:04:34'),
+(72, '120192502', 'ADRI FIRMANSYAH', '2', 'adrifirmansyah16@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0148', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:22:05'),
+(73, '120192503', 'ARDISON', '1', 'ardison0984@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0005', 'DV_0001', 'CG_0013', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:49:17'),
+(74, '120192504', 'EKO ARIES SANTOSO', '1', 'arieseko98@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0109', 'DV_0001', 'CG_0017', 'DP-0005', 'undefine', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:11:16'),
+(75, '120192505', 'JAJANG ABDUL ROHMAN', '1', 'zikrakhalida28@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0031', 'DV_0001', 'CG_0012', 'DP-0004', 'undefine', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:30:14'),
+(76, '120192506', 'NURJANAH', '1', 'noerjhen@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0152', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:01:54'),
+(77, '120192507', 'SAEPUDIN', '1', 'saepudina631@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0072', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:36:13'),
+(78, '120192508', 'TARMAN SUTISNA', '1', 'tarman.sutisna84@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0012', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:10:07'),
+(79, '120192509', 'USEP YUSEPA', '1', 'usepyusepa66@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0114', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:14:15'),
+(80, '120192510', 'YAYAT HIDAYAT', '2', 'yayat2836@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-01-01', 'JT-0024', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:32:05'),
+(81, '120200010', 'AGUNG JOKO SUPRIHANTO', '1', 'agung.joko.tin42@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-06', 'JT-0112', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, '120292511', 'AHMAD SAHRONI', '1', 'assahroni78@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0083', 'DV_0002', 'CG_0023', 'DP-0004', 'SDP-0008', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:46:54'),
+(83, '120292512', 'DENY SUPRAPTO', '1', 'dhenysoeprapto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0097', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:32:54'),
+(84, '120292513', 'DIAN SANJAYA', '1', 'diansanjaya1984@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0072', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 02:35:42'),
+(85, '120292514', 'HERMAWAN', '1', 'hermawan2231@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0013', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:43:14'),
+(86, '120292515', 'RUDI SUGIARTO', '2', 'tabotie88@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0052', 'DV_0002', 'CG_0027', 'DP-0002', 'SDP-0003', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:30:13'),
+(87, '120292516', 'YAYAT NURHIDAYAT', '1', 'ynurhidayat321@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0036', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:09:22'),
+(88, '120292517', 'YUANITA JOHAN', '2', 'yuanita.johan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0075', 'DV_0002', 'CG_0008', 'DP-0001', 'SDP-0001', 'LV-0004', NULL, NULL, NULL, NULL, '2022-05-22 05:15:19'),
+(89, '120292518', 'ZAINI ARDHIANSYAH', '1', 'zainiardhiansyah@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-02-01', 'JT-0042', 'DV_0002', 'CG_0007', 'DP-0003', 'SDP-0031', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:08:24'),
+(90, '120500031', 'AKHMAD MAKHALI', '2', 'ommak82@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-05-01', 'JT-0056', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0032', 'LV-0004', NULL, NULL, NULL, NULL, '2022-05-22 05:19:10'),
+(91, '120692519', 'DINA MUSTIKA WENI', '1', 'dina.desu@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-06-01', 'JT-0108', 'DV_0001', 'CG_0010', 'DP-0003', 'SDP-0029', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:31:23'),
+(92, '120692521', 'WEMPI NUR HIDAYAT', '1', 'wempinur@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-06-11', 'JT-0133', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:42:09'),
+(93, '120892522', 'KARYA SETIAWAN', '1', 'karyastiawan07@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-08-01', 'JT-0015', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:28:07'),
+(94, '120892523', 'MUKTI WIBOWO', '1', 'wibowomukti26@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-08-01', 'JT-0121', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(95, '120892524', 'VICKRY JANI HARIYANTO', '1', 'vickryjani@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-08-01', 'JT-0032', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:19:24'),
+(96, '120992525', 'ARDIKA FAUDIN', '1', 'ardika.f.89@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-09-01', 'JT-0080', 'DV_0001', 'CG_0023', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-22 23:11:32'),
+(97, '120992526', 'BAYU SEPTO PRASETYO', '1', 'bayusepto16@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-09-01', 'JT-0137', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:58:17'),
+(98, '121092527', 'BUDI MAULANA NUGRAHA', '1', 'budimaulananugraha@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-10-01', 'JT-0066', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:45:44'),
+(99, '121092528', 'DODI ISKANDAR', '1', 'reisyhafebkiranicuakep@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-10-01', 'JT-0098', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:27:47'),
+(100, '121092529', 'SUSANTO RONNI', '1', 'daffasusanto20@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-10-01', 'JT-0003', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:06:57'),
+(101, '121192530', 'DEDE KUSNANDAR', '1', 'dedekusnandarinsun@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:08:32'),
+(102, '121192531', 'GUMILAR INDRA FEBRIANSYAH', '1', 'gumilarif@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0029', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:51:46'),
+(103, '121192532', 'KARNAEN', '1', 'karnaen1976@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0103', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(104, '121192533', 'MUHAMMAD SHANDI SUMANTRI', '1', 'shand.milano@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:21:00'),
+(105, '121192534', 'ONDI NUGROHO', '1', 'ondix.lau@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0098', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:29:57'),
+(106, '121192535', 'RISNAWATI', '1', 'wrisna97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0115', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:58:03'),
+(107, '121192536', 'RUDI RAHMAN', '1', 'rudirahman0879@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:07:35'),
+(108, '121192537', 'SUGIANTO', '1', 'zhie46@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0114', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(109, '121192538', 'SULISWANTO', '1', 'suliswanto1503@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0103', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:37:32'),
+(110, '121192539', 'YUSUF SYAHRONI', '1', 'yusufsyahroni4787@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0072', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:32:50'),
+(111, '121192540', 'ZENAL MULYANA', '1', 'zenal.kenil83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-01', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:05:22'),
+(112, '121192541', 'RIESTA SHASYA FAUZIAH', '1', 'riestashasya@ymail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2012-11-12', 'JT-0093', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:13:02'),
+(113, '130100005', 'AMBAR KUSUMO NUGROHO', '1', 'aknugroho@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-08', 'JT-0082', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(114, '130193003', 'ADE NANA SUMARNA', '1', 'andealova77@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0005', 'DV_0001', 'CG_0013', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:48:28'),
+(115, '130193004', 'AGUS AKBAR', '1', 'agus.akbar1986@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0131', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:43:47'),
+(116, '130193005', 'AGUS PRASETIYO', '1', 'prast.we@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0145', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:27:33'),
+(117, '130193006', 'APANDI', '1', 'apandialfathar34@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0004', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:51:56'),
+(118, '130193007', 'ASMI LASARI', '1', 'asmilasari23@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0115', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:17:16'),
+(119, '130193008', 'DANI PURWANEGARA', '1', 'danipurwanegara7@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0128', 'DV_0001', 'CG_0025', 'DP-0006', 'SDP-0016', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:34:22'),
+(120, '130193009', 'DEDEN SETIA JAYA SOMANTRI', '1', 'dedensetiajaya09747@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0031', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:31:31'),
+(121, '130193010', 'DEVI SAFITRI SUNDARI', '1', 'devisafitri798@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0115', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:01:07'),
+(122, '130193011', 'DIDI SUPRIADI', '1', 'didi_supriadi@live.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0007', 'DV_0001', 'CG_0013', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:51:40'),
+(123, '130193012', 'DWIKI ARIA DARMAWAN', '1', 'wickyarya17@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0103', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:36:56'),
+(124, '130193013', 'ERFAN KIMA BAHTERA', '1', 'bahteraerfan87@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 02:37:12'),
+(125, '130193014', 'ERIS MOCHAMAD FIRDAUS', '1', 'erisfirdaus@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0097', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:33:14'),
+(126, '130193015', 'FARIZ FAUZI PRATAMA', '1', 'farizfauzipratama@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0095', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 00:56:16'),
+(127, '130193016', 'FEBRIANGGONO DANNY SETIYADI', '1', 'dannyarieanti@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:06:02'),
+(128, '130193017', 'HADI', '1', 'hadi180286@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0125', 'DV_0001', 'CG_0006', 'DP-0006', 'SDP-0017', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 03:36:42'),
+(129, '130193018', 'HERU AHMAD SAPRUDIN', '1', 'ureh.rafael46@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:25:18'),
+(130, '130193019', 'JAKARIA (CK)', '1', 'zakariyahck@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0079', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:11:13'),
+(131, '130193020', 'KANDA', '1', 'kandadoank69@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0124', 'DV_0001', 'CG_0006', 'DP-0006', 'SDP-0017', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:28:15'),
+(132, '130193021', 'KUSNADI', '1', 'koesdoank77@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0131', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:41:33'),
+(133, '130193022', 'MADA', '1', 'madamoza39@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0103', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:38:08'),
+(134, '130193023', 'MUHAMAD SYAIFUL ANWAR', '1', 'evfuel@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0031', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:32:41'),
+(135, '130193024', 'NUR FAJRI', '1', 'nurf99732@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0004', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:07:33'),
+(136, '130193025', 'PRIYANTO', '1', 'priyanto2687@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:38:23'),
+(137, '130193026', 'RIDWAN', '1', 'kiansantang934@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0017', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:29:44'),
+(138, '130193027', 'RUDI SETIAWAN', '1', 'rudisuhu3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0115', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:49:40'),
+(139, '130193028', 'SAMSIANTO', '1', 'antohukl@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:37:50'),
+(140, '130193029', 'SHANDY ASMARA', '1', 'asmarashandy@ymail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0005', 'DV_0001', 'CG_0013', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:49:53'),
+(141, '130193030', 'SUDARWANTO', '1', 'sudarwantobapakebilqis@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0139', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:04:31'),
+(142, '130193031', 'SUHERI', '1', 'suheri89.sh@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0137', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:54:07'),
+(143, '130193033', 'SYAHRUL HIDAYAT', '1', 'syahrulhidayat92@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0011', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:07:25'),
+(144, '130193034', 'WARDI SAEPUDIN', '1', 'wardisaepudin007@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-01-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:26:27'),
+(145, '130393035', 'BOBBY FAHMI FARHANUDIN', '1', 'farhan.bobbyfahmi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-03-01', 'JT-0093', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:16:18'),
+(146, '130793036', 'ADNAN SAMSULEH', '1', 'adnan.holic@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0110', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(147, '130793037', 'AEP SAEPUDIN', '1', 'aep198509@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0007', 'DV_0001', 'CG_0013', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:51:11'),
+(148, '130793038', 'AJAT JAPAR', '1', 'jattz87lfr@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'undefine', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:43:54'),
+(149, '130793039', 'ALI ROHMAN', '1', 'alirohman5728@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0137', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:55:21'),
+(150, '130793040', 'AMRIH PANUNTUN', '1', 'amrihpanuntun@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0103', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(151, '130793041', 'ANDI KUSUMA', '3', 'kandi5625@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0008', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:50:19'),
+(152, '130793042', 'ANGGA CHRISTIAN YONATHAN', '1', 'angga.christian08@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0128', 'DV_0001', 'CG_0025', 'DP-0006', 'SDP-0016', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:35:39'),
+(153, '130793043', 'ASEP ROBAN', '1', 'roben765@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:25:25'),
+(154, '130793044', 'DAIKIN PURNA YUDHA', '1', 'daikinvina21@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0029', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(155, '130793045', 'DARMA ARDHI', '1', 'darmaardhi69@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:39:01'),
+(156, '130793046', 'DIDIK PURWANTO', '1', 'didikpurwantojowo81@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0027', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:52:22'),
+(157, '130793047', 'HERI KURNIAWAN', '1', 'kurniawanheri449@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0103', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:19:50'),
+(158, '130793048', 'HERIYANA', '1', 'boyzheriyana@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0098', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:30:32'),
+(159, '130793049', 'IKMAL MAULANA', '1', 'ikmalmaulana708@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-22 03:28:39'),
+(160, '130793050', 'IRFAN HIMAWAN', '1', 'himawanirfan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0093', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:14:50'),
+(161, '130793051', 'JOHAN KERTIONO', '1', 'johanbismillah99@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0012', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:05:48'),
+(162, '130793052', 'MOHAMMAD DWI ADHITYA', '1', 'dwiadityamail@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0125', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:43:13'),
+(163, '130793053', 'SAMROJI', '1', 'samroji118@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-01', 'JT-0015', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:27:24'),
+(164, '130793055', 'JUJUN SIROJUDIN', '1', 'jujunsirojudin1502@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-16', 'JT-0003', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:05:55'),
+(165, '130793056', 'NOVAN TRIANTO', '2', 'vanstryan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-16', 'JT-0055', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0032', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:29:32'),
+(166, '130793058', 'SANNI SUTIADI', '1', 'sannisutiadi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-07-16', 'JT-0114', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:03:50'),
+(167, '130900125', 'INSANI GUSTRIANJAR MUHAROM', '1', 'insanianjar@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-09-09', 'JT-0157', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:12:55'),
+(168, '130900126', 'KASTOLANI', '2', 'kastolanikmi86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2013-09-09', 'JT-0077', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0013', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:25:44'),
+(169, '140192908', 'JEPRI HAERUDIN', '2', 'haerudin24@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-01-01', 'JT-0074', 'DV_0002', 'CG_0008', 'DP-0001', 'SDP-0001', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:30:29'),
+(170, '140292909', 'TRI AGUSTIARTY WARDHANY', '1', 'triagustiarty@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-02-01', 'JT-0093', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:13:34'),
+(171, '140700131', 'PUTRI PUSPITA SARI', '1', 'putripuspitasari55@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-07', 'JT-0043', 'DV_0001', 'CG_0007', 'DP-0003', 'SDP-0031', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:06:25'),
+(172, '140792910', 'AGUS NUGROHO', '1', 'nugrohofaiz14@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0012', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:09:36'),
+(173, '140792911', 'ARIYANTO', '1', 'ariyanto88974@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0011', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:08:58'),
+(174, '140792913', 'BAHRUDIN', '1', 'abahudin83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0145', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:25:56'),
+(175, '140792914', 'BENI SETIYAWAN', '1', 'benn.john.bj@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:39:29'),
+(176, '140792915', 'CECEP SUPRIADI', '1', 'mibnu298@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0029', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:17:59'),
+(177, '140792916', 'IRPAN HIDAYAT PAMIL', '1', 'irpanhidayatpamil.ip@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0154', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0025', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:26:14'),
+(178, '140792918', 'MOKHAMAD MUSLIH', '1', 'musliehneutron53@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:09:53'),
+(179, '140792919', 'R HAERUL SEJATI', '1', 'haerulsintauna@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0095', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 00:54:52'),
+(180, '140792920', 'TAUFIK FARIDZAL', '1', 'faridzal83@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0039', 'DV_0001', 'CG_0012', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:29:05'),
+(181, '140792921', 'ZAENUDDIN', '1', 'zaenuddintan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-07-01', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:21:45'),
+(182, '141092923', 'FITRIYANI', '1', 'hi.fitriyani@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-10-01', 'JT-0162', 'DV_0002', 'CG_0010', 'DP-0003', 'SDP-0029', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:02:37'),
+(183, '141092924', 'PANDU WIJAYADI', '1', 'telurpanda@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2014-10-01', 'JT-0065', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:17:56'),
+(184, '150191702', 'MOEHAMMAD FADJAR FADHILAH', '1', 'fadjar.crotcrew@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-01-01', 'JT-0032', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:13:57'),
+(185, '150291703', 'ALI NURDIN', '1', 'ali.nurdin.hidayat@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-02-16', 'JT-0137', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:53:22'),
+(186, '150291704', 'BAGUS SANTOSO', '1', 'santosobagus809@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-02-16', 'JT-0128', 'DV_0001', 'CG_0025', 'DP-0006', 'SDP-0016', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:35:00'),
+(187, '150291705', 'HERI HENDRIANA', '1', 'herry.hendriana@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-02-16', 'JT-0124', 'DV_0001', 'CG_0006', 'DP-0006', 'SDP-0014', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:27:32'),
+(188, '150491706', 'SUMARNA', '1', 'sumarna926@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-04-01', 'JT-0073', 'DV_0002', 'CG_0008', 'DP-0001', 'SDP-0001', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-22 05:16:55'),
+(189, '150600127', 'YOPPY SUKMANDAR', '1', 'sukmandar.yoppy@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-06-01', 'JT-0035', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(190, '150791707', 'ADI AMRAN SUKARYA', '1', 'adiamran88@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-07-01', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:22:55'),
+(191, '150791708', 'BAMBANG RISTYANTO', '1', 'mbengristyan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-07-01', 'JT-0021', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:45:35');
 INSERT INTO `users` (`id`, `nik`, `nama_pengguna`, `peran_pengguna`, `email`, `email_verified_at`, `password`, `tgl_masuk`, `id_job_title`, `id_divisi`, `id_cg`, `id_department`, `id_sub_department`, `id_level`, `status`, `gambar`, `remember_token`, `created_at`, `updated_at`) VALUES
-(209, '180100015', 'RIO ANGGARA', '1', 'ri.ironpeg@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0009', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:48:58'),
-(210, '180100016', 'ABDUL MUJIB MUSTOPA', '1', 'abdulmujib4994@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:12:49'),
-(211, '180100017', 'SANIP KOMARUDIN', '1', 'sanip.komarudin@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0011', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:08:02'),
-(212, '180100018', 'EDI SAPUTRA', '1', '94edisaputra@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:39:58'),
-(213, '180100019', 'DANIS SENO PRABOWO', '1', 'danissenoprabowo@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:14:14'),
-(214, '180100020', 'HERMAN RESTU FAUZI', '1', 'herman.ybgi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:24:31'),
-(215, '180100021', 'WULAN NUR FATIMAH', '1', 'nurfatimahwulan1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-09', 'JT-0142', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:03:05'),
-(216, '180100022', 'FATONI', NULL, 'fatoniad4661ep@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0131', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(217, '180300062', 'BAGUS AJIE WICAKSONO', '1', 'baguswicaksono.ajie@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-02', 'JT-0047', 'DV_0002', 'CG_0022', 'DP-0008', 'SDP-0022', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-17 19:44:18'),
-(218, '180500114', 'EUIS DIAN ANGGRAENI', NULL, 'diandie20@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(219, '180500115', 'RIDWAN NUGRAHA', NULL, 'iniridwan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0089', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(220, '180500116', 'MUHAMAD ALFIAN', '1', 'alfianneivi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-08', 'JT-0029', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:18:36'),
-(221, '180600122', 'BERNADHETA RISMISARI HANDAYANI', NULL, 'chalierismisari8870@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0048', NULL, NULL, 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(222, '180700142', 'SANITA', NULL, 'asanita100@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0079', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(223, '180700143', 'AKHMAD YUNUS YULIANTO', NULL, 'yunusrasta.ay@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0131', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(224, '190100054', 'TATA TAOFIK QUROHMAN', NULL, 'tatataofik77@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(225, '190700187', 'MAHMUD FAUJI TANJUNG', NULL, 'mochi191191@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0040', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(226, '200100017', 'TEGUH SEJATI', NULL, 'blinyob@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0009', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(227, '200100031', 'WINDY ADRIANY KACARIBU', NULL, 'windykacaribu23@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0102', NULL, 'CG_0011', 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(228, '200100042', 'MUSTAGHBIRIN', NULL, 'mustaghbirin@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0125', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(229, '200200053', 'MUHAMAD MISBAH', NULL, 'muhamadmisbah96@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(230, '200300076', 'MARIA KURNIATI GEDI RAYA', NULL, 'maria.kurniati04@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0069', NULL, 'CG_0011', 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(231, '200500092', 'IRVAN HASAN', NULL, 'irvanhasan18@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0068', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(232, '200700143', 'TENDI SOBARNANSYAH', NULL, 'sobarnansyah@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0064', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(233, '200700144', 'MUHAMAD RIDWAN', NULL, 'muhamadridwan133@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0130', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(234, '201200194', 'DENLEI DIYOROSSI', NULL, 'diyorossi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0009', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(361, '210100004', 'SETYO DEWI UTARI', NULL, 'setyod@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-04-06', 'JT-0153', NULL, 'CG_0011', 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(362, '210100024', 'SARI DIYAH PALUPY', NULL, 'saridpha@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0016', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(363, '211200171', 'TOSHIHITO  ABE', NULL, 'abe@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0113', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(364, '220100111', 'KUKUH GUMILANG', NULL, 'kukuh_gumilDP-0001@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0033', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(365, '220100112', 'HENDY CAHYA SUWANDI', NULL, 'hendy.cahya18@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(366, 'K180700223', 'NATALIA SUMANTO SIHOMBING', NULL, 'natalie.magdalena@ymail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0071', NULL, 'CG_0011', 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(367, 'K190100004', 'DIANTO', NULL, 'diantoasgar@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(368, 'K190400185', 'BASUKI', NULL, 'masuki843@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(369, 'K190600252', 'AHMAD LUKMAN HATAMI', NULL, 'ahmadlkm24@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(370, 'K190800327', 'MUHAMMAD RIZQY FIRDAUS', NULL, 'm.rizqyfirdaus23@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0050', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(371, 'K190900331', 'RAKHA ADI PUTRA', NULL, 'adiputrarakha@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0086', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(372, 'K191000365', 'SAIDIN IMRON WIJAYA', NULL, 'saidinimronwijaya1213@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0135', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(373, 'K191100391', 'ANJAR SUDRAJAT', NULL, 'anjar.sudrajat378@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(374, 'K191100397', 'BIMA DWI ATMAJA', NULL, 'bimaatmaja699@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(375, 'K200200052', 'DANANG PRASETIYO', NULL, 'danangpras2105@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(376, 'K200300084', 'DANIEL ABRAHAM SINAMBELA', NULL, 'danielabraham0880@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(377, 'K200300085', 'NUR AHMAD BUKHORI AINUL YAQIN AL FAIZ', NULL, 'faizbukhori82@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0127', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(378, 'K200300088', 'ANGGA SAEPUL HAJAN', NULL, 'wawankurnia869@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(379, 'K200300089', 'DEDEN JAELANI', NULL, 'dedenjaelani95@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(380, 'K200400107', 'ILHAM COKRO BASKORO', NULL, 'ilhamcokrobaskoro@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(381, 'K200400108', 'ZAENUDIN', NULL, 'zaenudinzae86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(382, 'K200500146', 'DIKA LESMANA', NULL, 'dikalesmana1402@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0127', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(383, 'K200600145', 'DIAN HADIAN', NULL, 'dhadian08@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(384, 'K200600151', 'NUKMANUL ANWAR', NULL, 'nukman02pai@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(385, 'K200600153', 'TODO ARDO SINAGA', NULL, 'todoardosinaga@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(386, 'K200600174', 'DENI HIMAWAN SUTANTO', NULL, 'dhenny.hiimawan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(387, 'K200600176', 'RINO', NULL, 'rinoreva2@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(388, 'K200700207', 'ADE RAHMAN', NULL, 'aderahman690@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0109', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(389, 'K200700231', 'BUDI UTOYO', NULL, 'budi.utoyo29@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0151', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(390, 'K200800227', 'M. ALDI LA MUCHTAR', NULL, 'utiahafajar21@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0009', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(391, 'K200800232', 'ADIKA TRYPUTRANTO', NULL, 'adikatry74@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(392, 'K200800233', 'DEDE ISKANDAR', NULL, 'iskandardede400@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(393, 'K200800240', 'GUSTINA LASMAYANTI', NULL, 'gustinalasmayanti@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(394, 'K200800241', 'AJI APRIALDI', NULL, 'aji98sarah97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0064', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(395, 'K200900258', 'DIKI MAULANA', NULL, 'dikim2331@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(396, 'K200900259', 'MOHAMAD YUDI PERMANA', NULL, 'mohamadyudipermana97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(397, 'K200900262', 'AHMAD MUDDAI', NULL, 'ahmadmuddai.am@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(398, 'K201000279', 'EKKY MUHAMMAD RIZKULLAH', NULL, 'ekkymuhammad1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(399, 'K201000285', 'DAVIDS', NULL, 'davidssiburian25@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(400, 'K201000286', 'IQBAL SYAHRINDRA MUSTOPA', NULL, 'iqbalsyahrindra00@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(401, 'K201000287', 'DWI KARTIKA', '1', 'dwikartika165@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-05-02', 'JT-0101', 'DV_0002', 'CG_0022', 'DP-0008', 'SDP-0022', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-17 19:47:12'),
-(402, 'K201000295', 'ANGGRI PRIWANDA', NULL, 'crossanggri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(403, 'K201000296', 'AHMAD KHAERUL FIKRI', NULL, 'ahmadkhaerulfikri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(404, 'K201000297', 'DENDI PRIMADI', NULL, 'dendiprimadi94@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(405, 'K201100303', 'AGUS WIDIYANTO', NULL, 'widiyantoagus0@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(406, 'K201100306', 'SARAH SANUBARI', NULL, 'sanubarisarah85@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(407, 'K201100308', 'MASTANI', NULL, 'mastani925@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(408, 'K201100309', 'MUHAMAD AKMAL AZIIZ', NULL, 'm.akmal11a@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(409, 'K201100311', 'ARI DESAR PAMUNGKAS', NULL, 'aridesar1995@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0028', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(410, 'K201200336', 'HERU TRI MARDIAN', NULL, 'heruezt3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0135', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(411, 'K210100001', 'ZAKARIA', NULL, 'zakariabrebes@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0127', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(412, 'K210100003', 'DINA OKTAVIA PUTRI', NULL, 'dinaoktaviaputri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0117', NULL, NULL, 'DP-0002', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(413, 'K210100026', 'GITA SYEMA DEWI', NULL, 'gitasyemad@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(414, 'K210200048', 'SETIA MAULANA', NULL, 'setiamaulana81@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(415, 'K210200049', 'ABI YOGA ASMARA', NULL, 'abiyogaasmara4@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(416, 'K210200050', 'HISAR DESMON SINAGA', NULL, 'hisardesmonsinaga@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(417, 'K210200054', 'AHMAD', NULL, 'ahmaddoang912@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(418, 'K210200062', 'DEDEN RUHDIANTO', NULL, 'dedenruhdianto07@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(419, 'K210300077', 'KHONSA', NULL, 'khonsa.sasa@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0139', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(420, 'K210300079', 'RUSTA RUSDIANTO', NULL, 'rustarusdianto295@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(421, 'K210300080', 'ABDUL KHARIS', NULL, 'abdulkharis994@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(422, 'K210300086', 'ENJAY ZARKASIH', NULL, 'enjayzarkasih100@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(423, 'K210300098', 'LUKMAN NULHAKIM', NULL, 'lukmann275@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(424, 'K210300099', 'SAUD SIHOMBING', NULL, 'joshuasniky24@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(425, 'K210400104', 'ODI NANDANG SOMANTRI', NULL, 'odinandang43@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(426, 'K210400107', 'ALI RAMDANI', NULL, 'aramdani312@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(427, 'K210400108', 'MUHAMAD ADE SUJAI', NULL, 'muhamadadesujai12@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(428, 'K210500153', 'DIKA SUHARTA', NULL, 'dika.suharta@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(429, 'K210500154', 'IMAN SANDI', NULL, 'imansandi97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(430, 'K210500161', 'ANGGI IRWANSYAH', NULL, 'anggiirwansyah86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(431, 'K210600175', 'UBAIDILAH ALI MURTADHO', NULL, 'ubaidilahalimurtadho@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0084', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(432, 'K210600177', 'TAUFIK HIDAYAT TUMARUF', NULL, 'taufikhidayatumaruf92@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(433, 'K210700205', 'DANI ENDAR MULYANA', NULL, 'daniendar12@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(434, 'K210700211', 'MUHAMMAD ALFIN BASYAR', NULL, 'alvinbasyar1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(435, 'K210900224', 'IRFAN SUHEGAR', NULL, 'irfansiregar220518@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', '', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(436, 'K210900227', 'YOSA NIZAR FERNANTA', NULL, 'yosanizar06@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(437, 'K211000233', 'ANDI MUNTAHA', NULL, 'andimuntaha26@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(438, 'K211100249', 'ALI DAVIT', NULL, 'alidavit85@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0049', NULL, NULL, 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(439, 'K211200252', 'NASRULLOH', NULL, 'nasrulloh580@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0099', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(440, 'K220200009', 'DEDE HERIYANTO', NULL, 'deheriyanto01@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(441, 'K220200017', 'MULYANA', NULL, 'akewcsipittea@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(442, 'K220200018', 'HENDI', NULL, 'hendisuhendix@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(443, 'K220200025', 'ROBI SUPRIADI', NULL, 'robisupriadi185@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(444, 'K220200026', 'ASEP JAMALUDIN', NULL, 'asepjamaludin454@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(445, 'K220300040', 'ASEP SETIAWAN', NULL, 'im.asepsetiawan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '0000-00-00', 'JT-0086', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(485, '123', 'Admin', NULL, 'admin@gmail.com', NULL, 'admin', '1970-01-01', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', NULL, 'LV-0009', NULL, NULL, NULL, '2022-04-21 21:16:17', '2022-04-21 21:16:17');
+(192, '150791709', 'HAPPY SUGESTIE PRAHARA', '1', 'happysugestie@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-07-01', 'JT-0046', 'DV_0002', 'CG_0022', 'DP-0008', 'SDP-0022', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-17 19:46:29'),
+(193, '150791710', 'RIRIS PURWANTO', '1', 'ririspurwanto33@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-07-01', 'JT-0021', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:46:06'),
+(194, '150800189', 'BAHRUDIN DWI NURYANTO', '1', 'dwinuryantob@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2015-08-03', 'JT-0032', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:03:18'),
+(195, '160192705', 'AHMAD SAEPUDIN', '1', 'asaepudin511@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2016-01-01', 'JT-0066', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:28:02'),
+(196, '160192706', 'YUNIAR TRI PRAKOSO', '1', 'triprakoso777@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2016-01-01', 'JT-0093', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:15:28'),
+(197, '160200097', 'ALIT PRADANA', '1', 'alitpradana52@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2016-02-22', 'JT-0041', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(198, '160792707', 'ADI SOPANA', '1', 'sopanaadi25@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2016-07-01', 'JT-0007', 'DV_0001', 'CG_0013', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:50:40'),
+(199, '170122440', 'FAJAR MAULANA', '1', 'fajarmaulana638@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-01-01', 'JT-0137', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:56:05'),
+(200, '170122441', 'MUHAMMAD IQBAL FAUZY', '1', 'iqbalfauzysinkas@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-01-01', 'JT-0120', 'DV_0001', 'CG_0005', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 03:27:05'),
+(201, '170122442', 'SAIFUL BAHRI', '1', 'sbahriel198@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-01-01', 'JT-0137', 'DV_0001', 'CG_0024', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:56:47'),
+(202, '170700031', 'ARIS SUPARLI', '3', 'arissuparli9@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-07-01', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:12:09'),
+(203, '170700032', 'HERU HAERUDIN', '1', 'heruhaerudin11@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-07-01', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:10:32'),
+(204, '170700033', 'PEBI', '1', 'pebipebi52@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-07-01', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:23:46'),
+(205, '171122509', 'MOCHAMAD FADDLY ADI', '1', 'mochfaddly@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2017-11-01', 'JT-0021', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-19 23:45:06'),
+(206, '180100012', 'RUDI ROSIDIN', '1', 'rudirosidin1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0059', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:18:19'),
+(207, '180100013', 'SIDIK TRIPAMBUDI', '1', 'sidiktrii@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0066', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:18:46'),
+(208, '180100014', 'DERI INDRIANI', '1', 'indrianiderry@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0042', 'DV_0002', 'CG_0007', 'DP-0003', 'SDP-0031', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:09:03'),
+(209, '180100015', 'RIO ANGGARA', '1', 'ri.ironpeg@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0009', 'DV_0001', 'CG_0003', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-18 01:48:58'),
+(210, '180100016', 'ABDUL MUJIB MUSTOPA', '1', 'abdulmujib4994@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0105', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:12:49'),
+(211, '180100017', 'SANIP KOMARUDIN', '1', 'sanip.komarudin@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0011', 'DV_0001', 'CG_0002', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:08:02'),
+(212, '180100018', 'EDI SAPUTRA', '1', '94edisaputra@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0105', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:39:58'),
+(213, '180100019', 'DANIS SENO PRABOWO', '1', 'danissenoprabowo@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0103', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:14:14'),
+(214, '180100020', 'HERMAN RESTU FAUZI', '1', 'herman.ybgi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0105', 'DV_0001', 'CG_0014', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 03:24:31'),
+(215, '180100021', 'WULAN NUR FATIMAH', '1', 'nurfatimahwulan1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0142', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:03:05'),
+(216, '180100022', 'FATONI', '1', 'fatoniad4661ep@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-01-01', 'JT-0131', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:44:53'),
+(217, '180300062', 'BAGUS AJIE WICAKSONO', '2', 'baguswicaksono.ajie@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-03-14', 'JT-0047', 'DV_0002', 'CG_0022', 'DP-0008', 'SDP-0022', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:26:22'),
+(218, '180500114', 'EUIS DIAN ANGGRAENI', '1', 'diandie20@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-05-01', 'JT-0093', 'DV_0001', 'CG_0016', 'DP-0007', 'SDP-0019', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:14:18'),
+(219, '180500115', 'RIDWAN NUGRAHA', '1', 'iniridwan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-05-01', 'JT-0089', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 01:27:04'),
+(220, '180500116', 'MUHAMAD ALFIAN', '1', 'alfianneivi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-05-01', 'JT-0029', 'DV_0001', 'CG_0026', 'DP-0004', 'SDP-0010', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-18 02:18:36'),
+(221, '180600122', 'BERNADHETA RISMISARI HANDAYANI', '1', 'chalierismisari8870@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-06-04', 'JT-0048', NULL, NULL, 'DP-0008', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(222, '180700142', 'SANITA', '1', 'asanita100@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-07-01', 'JT-0079', 'DV_0001', 'CG_0001', 'DP-0004', 'SDP-0009', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-20 00:09:44'),
+(223, '180700143', 'AKHMAD YUNUS YULIANTO', '1', 'yunusrasta.ay@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-07-01', 'JT-0131', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:50:08'),
+(224, '190100054', 'TATA TAOFIK QUROHMAN', '1', 'tatataofik77@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-01-01', 'JT-0098', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:31:47'),
+(225, '190700187', 'MAHMUD FAUJI TANJUNG', '2', 'mochi191191@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-08-19', 'JT-0040', 'DV_0001', 'CG_0015', 'DP-0004', 'SDP-0010', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:31:30'),
+(226, '200100017', 'TEGUH SEJATI', '1', 'blinyob@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-01-02', 'JT-0055', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0032', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:23:29'),
+(227, '200100031', 'WINDY ADRIANY KACARIBU', '3', 'windykacaribu23@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-01-20', 'JT-0102', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0005', NULL, 'JeoX1pP9wIP0B3n.png', NULL, NULL, '2022-05-22 06:52:17'),
+(228, '200100042', 'MUSTAGHBIRIN', '1', 'mustaghbirin@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-01-01', 'JT-0125', 'DV_0001', 'CG_0006', 'DP-0006', 'SDP-0017', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 04:30:00'),
+(229, '200200053', 'MUHAMAD MISBAH', '1', 'muhamadmisbah96@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-02-01', 'JT-0098', 'DV_0001', 'CG_0004', 'DP-0007', 'SDP-0020', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 01:32:23'),
+(230, '200300076', 'MARIA KURNIATI GEDI RAYA', '3', 'maria.kurniati04@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-03-26', 'JT-0069', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0021', 'LV-0005', NULL, 'rrjbs4zgdxJgVFZ.png', NULL, NULL, '2022-05-22 19:56:45'),
+(231, '200500092', 'IRVAN HASAN', '1', 'irvanhasan18@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-05-15', 'JT-0068', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(232, '200700143', 'TENDI SOBARNANSYAH', '1', 'sobarnansyah@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-10-15', 'JT-0064', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:19:56'),
+(233, '200700144', 'MUHAMAD RIDWAN', '1', 'muhamadridwan133@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-11-15', 'JT-0130', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:49:28'),
+(234, '201200194', 'DENLEI DIYOROSSI', '1', 'diyorossi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-12-29', 'JT-0055', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0032', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:21:53'),
+(361, '210100004', 'SETYO DEWI UTARI', '3', 'setyod@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-01', 'JT-0153', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0004', NULL, '0AC1PXZek3D8gnI.png', NULL, NULL, '2022-05-22 06:53:14'),
+(362, '210100024', 'SARI DIYAH PALUPY', '1', 'saridpha@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-15', 'JT-0016', 'DV_0002', 'CG_0020', 'DP-0002', 'SDP-0003', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:44:10'),
+(363, '211200171', 'TOSHIHITO  ABE', '1', 'abe@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-01-05', 'JT-0113', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(364, '220100111', 'KUKUH GUMILANG', '1', 'kukuh_gumilDP-0001@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-01-01', 'JT-0033', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(365, '220100112', 'HENDY CAHYA SUWANDI', '1', 'hendy.cahya18@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-01-01', 'JT-0098', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(366, 'K180700223', 'NATALIA SUMANTO SIHOMBING', '3', 'natalie.magdalena@ymail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2018-07-01', 'JT-0071', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0021', 'LV-0009', NULL, 'siScbYnpkcyDT68.png', NULL, NULL, '2022-05-22 19:59:51'),
+(367, 'K190100004', 'DIANTO', '1', 'diantoasgar@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-01-07', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(368, 'K190400185', 'BASUKI', '1', 'masuki843@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-04-22', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(369, 'K190600252', 'AHMAD LUKMAN HATAMI', '1', 'ahmadlkm24@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-06-17', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(370, 'K190800327', 'MUHAMMAD RIZQY FIRDAUS', '1', 'm.rizqyfirdaus23@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-08-26', 'JT-0050', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(371, 'K190900331', 'RAKHA ADI PUTRA', '1', 'adiputrarakha@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-09-09', 'JT-0086', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(372, 'K191000365', 'SAIDIN IMRON WIJAYA', '1', 'saidinimronwijaya1213@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-10-14', 'JT-0135', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(373, 'K191100391', 'ANJAR SUDRAJAT', '1', 'anjar.sudrajat378@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-11-04', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(374, 'K191100397', 'BIMA DWI ATMAJA', '1', 'bimaatmaja699@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-11-18', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(375, 'K200200052', 'DANANG PRASETIYO', '1', 'danangpras2105@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-02-10', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(376, 'K200300084', 'DANIEL ABRAHAM SINAMBELA', '1', 'danielabraham0880@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-03-16', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(377, 'K200300085', 'NUR AHMAD BUKHORI AINUL YAQIN AL FAIZ', '1', 'faizbukhori82@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-03-16', 'JT-0127', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(378, 'K200300088', 'ANGGA SAEPUL HAJAN', '1', 'wawankurnia869@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-03-16', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(379, 'K200300089', 'DEDEN JAELANI', '1', 'dedenjaelani95@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-03-16', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(380, 'K200400107', 'ILHAM COKRO BASKORO', '1', 'ilhamcokrobaskoro@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-04-14', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(381, 'K200400108', 'ZAENUDIN', '1', 'zaenudinzae86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-04-14', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(382, 'K200500146', 'DIKA LESMANA', '1', 'dikalesmana1402@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-05-18', 'JT-0127', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(383, 'K200600145', 'DIAN HADIAN', '1', 'dhadian08@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-06-02', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(384, 'K200600151', 'NUKMANUL ANWAR', '1', 'nukman02pai@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-06-02', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(385, 'K200600153', 'TODO ARDO SINAGA', '1', 'todoardosinaga@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-06-02', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(386, 'K200600174', 'DENI HIMAWAN SUTANTO', '1', 'dhenny.hiimawan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-06-15', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(387, 'K200600176', 'RINO', '1', 'rinoreva2@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-06-12', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(388, 'K200700207', 'ADE RAHMAN', '1', 'aderahman690@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-07-10', 'JT-0109', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(389, 'K200700231', 'BUDI UTOYO', '1', 'budi.utoyo29@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-07-30', 'JT-0151', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(390, 'K200800227', 'M. ALDI LA MUCHTAR', '1', 'utiahafajar21@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-08-03', 'JT-0009', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(391, 'K200800232', 'ADIKA TRYPUTRANTO', '1', 'adikatry74@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-08-18', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(392, 'K200800233', 'DEDE ISKANDAR', '1', 'iskandardede400@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-08-18', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(393, 'K200800240', 'GUSTINA LASMAYANTI', '1', 'gustinalasmayanti@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-08-18', '', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(394, 'K200800241', 'AJI APRIALDI', '1', 'aji98sarah97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-08-18', 'JT-0064', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(395, 'K200900258', 'DIKI MAULANA', '1', 'dikim2331@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-09-10', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(396, 'K200900259', 'MOHAMAD YUDI PERMANA', '1', 'mohamadyudipermana97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-09-14', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(397, 'K200900262', 'AHMAD MUDDAI', '1', 'ahmadmuddai.am@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-09-15', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(398, 'K201000279', 'EKKY MUHAMMAD RIZKULLAH', '1', 'ekkymuhammad1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-09', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(399, 'K201000285', 'DAVIDS', '1', 'davidssiburian25@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-16', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(400, 'K201000286', 'IQBAL SYAHRINDRA MUSTOPA', '1', 'iqbalsyahrindra00@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-16', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(401, 'K201000287', 'DWI KARTIKA', '1', 'dwikartika165@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-15', 'JT-0101', 'DV_0002', 'CG_0022', 'DP-0008', 'SDP-0022', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-17 19:47:12'),
+(402, 'K201000295', 'ANGGRI PRIWANDA', '1', 'crossanggri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-26', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(403, 'K201000296', 'AHMAD KHAERUL FIKRI', '1', 'ahmadkhaerulfikri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-26', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(404, 'K201000297', 'DENDI PRIMADI', '1', 'dendiprimadi94@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-10-26', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(405, 'K201100303', 'AGUS WIDIYANTO', '1', 'widiyantoagus0@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-11-16', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(406, 'K201100306', 'SARAH SANUBARI', '1', 'sanubarisarah85@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-11-09', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(407, 'K201100308', 'MASTANI', '1', 'mastani925@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-11-16', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(408, 'K201100309', 'MUHAMAD AKMAL AZIIZ', '1', 'm.akmal11a@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-11-16', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(409, 'K201100311', 'ARI DESAR PAMUNGKAS', '1', 'aridesar1995@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-11-23', 'JT-0028', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(410, 'K201200336', 'HERU TRI MARDIAN', '1', 'heruezt3@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-12-16', 'JT-0135', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(411, 'K210100001', 'ZAKARIA', '1', 'zakariabrebes@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-11', 'JT-0127', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(412, 'K210100003', 'DINA OKTAVIA PUTRI', '1', 'dinaoktaviaputri@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-11', 'JT-0117', 'DV_0002', 'CG_0021', 'DP-0002', 'SDP-0002', 'LV-0009', NULL, NULL, NULL, NULL, '2022-05-22 21:45:34'),
+(413, 'K210100026', 'GITA SYEMA DEWI', '1', 'gitasyemad@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-25', 'JT-0093', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(414, 'K210200048', 'SETIA MAULANA', '1', 'setiamaulana81@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-02-16', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(415, 'K210200049', 'ABI YOGA ASMARA', '1', 'abiyogaasmara4@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-02-16', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(416, 'K210200050', 'HISAR DESMON SINAGA', '1', 'hisardesmonsinaga@yahoo.co.id', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-02-16', 'JT-0019', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(417, 'K210200054', 'AHMAD', '1', 'ahmaddoang912@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-02-22', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(418, 'K210200062', 'DEDEN RUHDIANTO', '1', 'dedenruhdianto07@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-02-22', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(419, 'K210300077', 'KHONSA', '1', 'khonsa.sasa@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-10', 'JT-0139', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(420, 'K210300079', 'RUSTA RUSDIANTO', '1', 'rustarusdianto295@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-10', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(421, 'K210300080', 'ABDUL KHARIS', '1', 'abdulkharis994@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-10', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(422, 'K210300086', 'ENJAY ZARKASIH', '1', 'enjayzarkasih100@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-23', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(423, 'K210300098', 'LUKMAN NULHAKIM', '1', 'lukmann275@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-24', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(424, 'K210300099', 'SAUD SIHOMBING', '1', 'joshuasniky24@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-24', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(425, 'K210400104', 'ODI NANDANG SOMANTRI', '1', 'odinandang43@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-04-05', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(426, 'K210400107', 'ALI RAMDANI', '1', 'aramdani312@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-04-05', 'JT-0030', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(427, 'K210400108', 'MUHAMAD ADE SUJAI', '1', 'muhamadadesujai12@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-04-07', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(428, 'K210500153', 'DIKA SUHARTA', '1', 'dika.suharta@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-05-18', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(429, 'K210500154', 'IMAN SANDI', '1', 'imansandi97@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-05-18', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(430, 'K210500161', 'ANGGI IRWANSYAH', '1', 'anggiirwansyah86@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-05-19', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(431, 'K210600175', 'UBAIDILAH ALI MURTADHO', '1', 'ubaidilahalimurtadho@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-06-07', 'JT-0084', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(432, 'K210600177', 'TAUFIK HIDAYAT TUMARUF', '1', 'taufikhidayatumaruf92@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-06-11', 'JT-0136', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(433, 'K210700205', 'DANI ENDAR MULYANA', '1', 'daniendar12@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-07-08', 'JT-0132', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(434, 'K210700211', 'MUHAMMAD ALFIN BASYAR', '1', 'alvinbasyar1@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-07-19', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(435, 'K210900224', 'IRFAN SUHEGAR', '1', 'irfansiregar220518@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-09-01', '', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(436, 'K210900227', 'YOSA NIZAR FERNANTA', '1', 'yosanizar06@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-09-13', 'JT-0006', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(437, 'K211000233', 'ANDI MUNTAHA', '1', 'andimuntaha26@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-10-13', 'JT-0123', NULL, NULL, 'DP-0006', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(439, 'K211200252', 'NASRULLOH', '1', 'nasrulloh580@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-12-01', 'JT-0099', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(440, 'K220200009', 'DEDE HERIYANTO', '1', 'deheriyanto01@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-02-03', 'JT-0094', NULL, NULL, 'DP-0007', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(441, 'K220200017', 'MULYANA', '1', 'akewcsipittea@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-02-07', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(442, 'K220200018', 'HENDI', '1', 'hendisuhendix@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-02-07', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(443, 'K220200025', 'ROBI SUPRIADI', '1', 'robisupriadi185@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-02-24', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(444, 'K220200026', 'ASEP JAMALUDIN', '1', 'asepjamaludin454@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-02-24', 'JT-0104', NULL, NULL, 'DP-0004', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(445, 'K220300040', 'ASEP SETIAWAN', '1', 'im.asepsetiawan@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-03-07', 'JT-0086', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1036,11 +1125,14 @@ CREATE TABLE `white_tag` (
 --
 
 INSERT INTO `white_tag` (`id_white_tag`, `id_directory`, `id_user`, `start`, `actual`) VALUES
+('0SYEC1653278362', 218, 2, 0, 1),
 ('7eeXy1649145212', 134, 1, 0, 1),
 ('asePq1650418519', 204, 361, 1, 4),
 ('II1oM1650338788', 198, 2, 2, 3),
 ('p2co41649145212', 152, 1, 0, 1),
-('SWrxk1649384942', 200, 1, 0, 5);
+('SHkcx1653358498', 229, 1, 0, 1),
+('SWrxk1649384942', 200, 1, 0, 5),
+('vG4dv1653278340', 217, 1, 3, 5);
 
 --
 -- Indexes for dumped tables
@@ -1058,6 +1150,13 @@ ALTER TABLE `cg`
 --
 ALTER TABLE `competencies_directory`
   ADD PRIMARY KEY (`id_directory`);
+
+--
+-- Indexes for table `competencie_groups`
+--
+ALTER TABLE `competencie_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `competencie_groups_id_skill_category_foreign` (`id_skill_category`);
 
 --
 -- Indexes for table `curriculum`
@@ -1167,19 +1266,25 @@ ALTER TABLE `white_tag`
 -- AUTO_INCREMENT for table `competencies_directory`
 --
 ALTER TABLE `competencies_directory`
-  MODIFY `id_directory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
+  MODIFY `id_directory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
+
+--
+-- AUTO_INCREMENT for table `competencie_groups`
+--
+ALTER TABLE `competencie_groups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `curriculum`
 --
 ALTER TABLE `curriculum`
-  MODIFY `id_curriculum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_curriculum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `curriculum_to_job`
 --
 ALTER TABLE `curriculum_to_job`
-  MODIFY `id_ctb` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_ctb` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1191,19 +1296,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `job_title_users`
 --
 ALTER TABLE `job_title_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `rekap_mapping`
@@ -1228,6 +1333,16 @@ ALTER TABLE `taging_reason`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=490;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `competencie_groups`
+--
+ALTER TABLE `competencie_groups`
+  ADD CONSTRAINT `competencie_groups_id_skill_category_foreign` FOREIGN KEY (`id_skill_category`) REFERENCES `skill_category` (`id_skill_category`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

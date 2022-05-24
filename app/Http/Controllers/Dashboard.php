@@ -17,6 +17,10 @@ class Dashboard extends Controller
         ->select(array(DB::raw('COUNT(id_cg) as cg')))
         ->get();
 
+        $total_cg_name = DB::table('cg')
+        ->select(array(DB::raw('COUNT(nama_cg) as cg')))
+        ->get();
+
         $jml_cg = DB::table('users')
         ->leftJoin('cg as cg', 'users.id_cg', '=', 'cg.id_cg')
         // ->select(array('id_cg', DB::raw('COUNT(id_cg) as cg')))
@@ -51,6 +55,7 @@ class Dashboard extends Controller
             'members',
             'jml_cg',
             'total_cg',
+            'total_cg_name',
         ));
     }
 
