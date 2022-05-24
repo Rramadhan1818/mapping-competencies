@@ -4,6 +4,10 @@
 
 @section('content')
 <style>
+    .myk-btn img{width: 50%; margin-top: 15px; margin-left: 15px;}
+    .myk-wa-icon{
+        margin: 0 auto;
+    }
     .image_area {
         position: relative;
         margin: auto
@@ -13,6 +17,7 @@
         display: block;
         max-width: 100%;
     }
+    
     .preview {
         overflow: hidden;
         width: 250px; 

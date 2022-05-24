@@ -78,10 +78,10 @@
                 <p class="card-title">White Tag</p>
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item active">
-                        <a class="nav-link active" data-toggle="tab" href="#pills-home" type="button">Data Karyawan</a>
+                        <a class="nav-link active btn-primary" data-toggle="tab" href="#pills-home" type="button">White Tag CG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#pills-profile" type="button">White Tag All</a>
+                        <a class="nav-link btn-primary" data-toggle="tab" href="#pills-profile" type="button">White Tag All</a>
                     </li>
                 </ul>
                 <div class="row">

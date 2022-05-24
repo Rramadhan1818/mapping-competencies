@@ -181,16 +181,16 @@ h4 {
     <div class="modal fade" id="modal-detail-user" tabindex="-1" role="dialog" aria-labelledby="modal-detail-user" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header" style="padding: 15px">
             <h4 class="modal-title" id="myModalLabel17">Detail Karyawan</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" id="bodyDetail" style="padding: 20px 26px"></div>
-          <div class="modal-footer">
+          {{-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
@@ -413,10 +413,10 @@ if ($("#south-america-chart").length) {
             text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Jumlah Circle Group</p></div>');
             text.push('<p class="mb-0">{{ $total_cg_name[0]->cg }}</p>');
             text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Online sales</p></div>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Jumlah Curriculumn</p></div>');
             text.push('<p class="mb-0">630983</p>');
             text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Returns</p></div>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Jumlah Mencapai Target</p></div>');
             text.push('<p class="mb-0">290831</p>');
             text.push('</div>');
           text.push('</div>');

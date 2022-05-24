@@ -11,10 +11,10 @@
                 <p class="card-title">Tagging List</p>
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item active">
-                        <a class="nav-link active" data-toggle="tab" href="#pills-home" type="button">Tagging All</a>
+                        <a class="nav-link active btn-primary" data-toggle="tab" href="#pills-home" type="button">Tagging All</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#pills-profile" type="button">Tagging CG</a>
+                        <a class="nav-link btn-primary" data-toggle="tab" href="#pills-profile" type="button">Tagging CG</a>
                     </li>
                 </ul>
                 <div class="row">

@@ -5,10 +5,14 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-md-12">
-            <nav class="nav bg-light">
-                <a class="nav-link text-light btnDc btn btn-sm btn-secondary mr-2" href="{{ route('ceme') }}">Grouping</a>
-                <a class="nav-link text-light btnDc btn btn-sm btn-info" href="{{ route('ceme.all') }}">All </a>
-            </nav>
+                <ul class="nav nav-pills mb-3">
+                    <li class="nav-item active">
+                        <a class="nav-link active btnDc btn-primary"  href="{{ route('ceme') }}" type="button">CEME CG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btnDc btn-primary"  href="{{ route('ceme.all') }}" type="button">CEME All </a>
+                    </li>
+                </ul>
         </div>
     </div>
     <div class="row">
