@@ -39,7 +39,7 @@
                                             <th>Level</th>
                                             <th>Competency Group</th>
                                             <th>Competency Description</th>
-                                            <th>Job Title</th>
+                                            <th style="min-width: 250px">Job Title</th>
                                             <th width="15%">Action</th>
                                         </tr>
                                     </thead>
@@ -53,7 +53,16 @@
                                                 <td>{{ $data->level }}</td>
                                                 <td>{{ $data->training_module_group }}</td>
                                                 <td>{{ $data->training_module_desc }}</td>
-                                                <td>{!! $data->job_title !!}</td>
+                                                <td>
+                                                    @php
+                                                        $jobs = explode(",",$data->job_title);
+                                                    @endphp
+                                                    <ul>
+                                                        @foreach ($jobs as $job)
+                                                            <li>{{$job}}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
                                                 <td>
                                                     <button data-id="{{ $data->id_curriculum }}" onclick="editdata(this)"
                                                         class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 Edit-button"
