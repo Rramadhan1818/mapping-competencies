@@ -43,7 +43,8 @@ class WhiteTag extends Controller
     public function whiteTagAll(Request $request)
     {
         $select = [
-            "nama_pengguna","no_training_module","skill_category","training_module","level","training_module_group","start","actual","target"
+            "nama_pengguna","no_training_module","skill_category","training_module","level","training_module_group","start","actual","target",
+            DB::raw("(IF(actual < target,'Tidak Mencapai Target','Finish' )) as tagingStatus")
         ];
         $data = WhiteTagModel::select($select)
                 ->join("users","users.id","white_tag.id_user")
@@ -126,9 +127,33 @@ class WhiteTag extends Controller
             }
             return $icon;
         })
+        ->addColumn('tagingStatus', function ($row) {
+                if (isset($row->tagingStatus)) {
+                    if ($row->tagingStatus == 'Finish') {
+                        $label = '<span class="badge badge-success">' . $row->tagingStatus . '</span>';
+                        return $label;
+                    } else {
+                        $label = '<span class="badge badge-secondary text-white">' . $row->tagingStatus . '</span>';
+                        return $label;
+                    }
+
+                    // switch ($row->tagingStatus) {
+                    //     case "Finished":
+                    //         $label = '<span class="badge badge-success">"' . $row->tagingStatus . '"</span>';
+                    //         return $label;
+                    //         break;
+                    //     case "Follow Up":
+                    //         $label = '<span class="badge badge-secondary">"' . $row->tagingStatus . '"</span>';
+                    //         return $label;
+                    //         break;
+                    //     default:
+                    //         return '';
+                    // }
+                }
+            })
             
         ->addIndexColumn()
-        ->rawColumns(['start','actual','target'])
+        ->rawColumns(['start','actual','target','tagingStatus'])
         ->make(true);
     }
 
@@ -165,7 +190,11 @@ class WhiteTag extends Controller
             "curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start",
             "white_tag.actual as actual","competencies_directory.target as target",
             DB::raw("(SELECT COUNT(*) FROM taging_reason as tr where tr.id_white_tag = white_tag.id_white_tag) as cntTagingReason"),
-            DB::raw("(IF((white_tag.actual - competencies_directory.target) < 0,'Tidak Mencapai Target','Finish' )) as tagingStatus")
+            // DB::raw("(IF(((white_tag.actual - competencies_directory.target) < 0),'Tidak Mencapai Target','Finish' )) as tagingStatus")
+            DB::raw("(CASE WHEN (white_tag.actual - competencies_directory.target) < 0 THEN 'Tidak Mencapai Target'
+                            WHEN (white_tag.actual IS NULL) THEN 'Belum diatur'
+                            WHEN white_tag.actual >= competencies_directory.target THEN 'Finish' 
+                            END) as tagingStatus")
         ];
         $comps = CompetenciesDirectoryModel::select($select)
                                             ->join("curriculum",function ($join) use ($user,$between){
@@ -228,7 +257,11 @@ class WhiteTag extends Controller
         $skillId = [1,2];
         $select = [
             "curriculum.no_training_module as no_training","curriculum.training_module as training_module","curriculum.training_module_group as training_module_group","curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start","white_tag.actual as actual","competencies_directory.target as target",
-            DB::raw("(IF((white_tag.actual - competencies_directory.target) < 0,'Tidak Mencapai Target','Finish' )) as tagingStatus")
+            // DB::raw("(IF((white_tag.actual - competencies_directory.target) < 0,'Tidak Mencapai Target','Finish' )) as tagingStatus")
+            DB::raw("(CASE WHEN (white_tag.actual - competencies_directory.target) < 0 THEN 'Tidak Mencapai Target'
+                            WHEN (white_tag.actual IS NULL) THEN 'Belum diatur'
+                            WHEN white_tag.actual >= competencies_directory.target THEN 'Finish' 
+                            END) as tagingStatus")
         ];
         $data = CompetenciesDirectoryModel::select($select)
                                             ->join("curriculum",function ($join) use ($user,$skillId){

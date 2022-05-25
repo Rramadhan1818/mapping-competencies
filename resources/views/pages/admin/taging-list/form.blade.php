@@ -13,7 +13,7 @@
   </div>
   <div class="col-md-3 mb-3">
       <label for="period">Periode</label>
-      <input type="month" class="form-control form-control-sm" name="period" placeholder="Masukan Periode" id="period" value="{{$taging->period ?? ''}}" required>
+      <input type="text" class="form-control form-control-sm" name="period" placeholder="Masukan Periode" id="period" value="{{$taging->period ?? ''}}" required readonly style="background-color: unset">
       <div class="invalid-feedback" id="feed-back-period"></div>
     </div>
     <div class="col-md-3 mb-3">
@@ -153,7 +153,7 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(function() {
         $("#year").datepicker({
             language: "en",
             dateFormat: "yyyy",
@@ -169,8 +169,15 @@
             minView: "months",
             changeYear:false,
             toggleSelected: false,
-            position:'bottom left'
+            position:'bottom left',
+            showOn: "button",
+            buttonImage: "images/calendar.gif",
+            buttonImageOnly: true
         });
+    })
+
+
+    $(document).ready(function () {
 
         $('.start-time,.finish-time').change(function (el) {
             const start = $('.start-time')[0].value;

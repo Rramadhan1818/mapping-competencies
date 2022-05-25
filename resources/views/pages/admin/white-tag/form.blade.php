@@ -9,13 +9,6 @@
     <td>{{$comp->level}}</td>
     <td>{{$comp->training_module_group}}</td>
     <td>
-        @if ($comp->tagingStatus == 'Finish')
-            <span class="badge badge-success">{{$comp->tagingStatus}}</span>
-        @else
-            <span class="badge badge-secondary text-white">{{$comp->tagingStatus}}</span>
-        @endif
-    </td>
-    <td>
         @if($comp->cntTagingReason > 0)
         <input type="text" class="form-control" value="{{$comp->start}}" disabled>
         @else
@@ -46,6 +39,13 @@
         </td>
         <td>
             <input class ="form-control" type="text" value="{{$comp->target}}" disabled>
+        </td>
+        <td>
+            @if ($comp->tagingStatus == 'Finish')
+                <span class="badge badge-success">{{$comp->tagingStatus}}</span>
+            @else
+                <span class="badge badge-secondary text-white">{{$comp->tagingStatus}}</span>
+            @endif
         </td>
     </tr>
 @empty

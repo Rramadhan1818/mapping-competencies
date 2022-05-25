@@ -122,6 +122,7 @@
                                             <th>Start</th>
                                             <th>Actual</th>
                                             <th>Target</th>
+                                            <th class="text-center">Status</th>
                                         </tr> 
                                     </thead>
                                     <tbody></tbody>
@@ -158,8 +159,8 @@
                                     <th rowspan="2">Competency</th>
                                     <th rowspan="2">Level</th>
                                     <th rowspan="2">Competency Group</th>
-                                    <th rowspan="2">Status</th>
                                     <th colspan="3" class="text-center">Action</th>
+                                    <th class="text-center" rowspan="2">Status</th>
                                 </tr> 
                                 <tr>
                                     <th class="text-center" style="width:90px">Start</th>
@@ -200,10 +201,10 @@
                                 <th>Competency</th>
                                 <th>Level</th>
                                 <th>Competency Group</th>
-                                <th>Status</th>
                                 <th class="text-center">Start</th>
                                 <th class="text-center">Actual</th>
                                 <th class="text-center">Target</th>
+                                <th class="text-center">Status</th>
                             </tr> 
                         </thead>
                         <tbody id="formMapComp"></tbody>
@@ -349,17 +350,17 @@
                   data: 'training_module_group'
               },
               {
-                  data: 'tagingStatus'
-              },
-              {
-                  data: 'start'
-              },
-              {
-                  data: 'actual'
-              },
-              {
-                  data: 'target'
-              }
+                data: 'start'
+                },
+                {
+                    data: 'actual'
+                },
+                {
+                    data: 'target'
+                },
+                {
+                    data: 'tagingStatus'
+                },
           ]
       });
 
@@ -465,6 +466,9 @@
               },
               {
                   data:'target'
+              },
+              {
+                  data:'tagingStatus'
               }
           ],
       })
