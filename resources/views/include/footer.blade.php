@@ -1,3 +1,11 @@
+@push('style')
+    <style>
+        .bs-tooltip-auto[x-placement^=right] .arrow::before,
+        .bs-tooltip-right .arrow::before {
+            border-right-color: #f00; /* Red */
+        }
+    </style>
+@endpush
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
         <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022. Premium <a href="https://www.soultechonoly88.blogspot.com/" target="_blank">Human Capital</a> PT Kalbe Morinaga Indonesia. All rights reserved.</span>
@@ -17,5 +25,9 @@
 <script>
 $(document).ready(function(){
     $(".myk-wa").WAFloatBox();
+
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 });
 </script>

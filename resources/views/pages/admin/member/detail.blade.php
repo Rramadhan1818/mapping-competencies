@@ -71,116 +71,114 @@
         }
           $total
       @endphp
-  <div class="container">
-    <div class="row gutters">
-    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 pl-0">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="account-settings">
-            <div class="user-profile">
-              <div class="user-avatar">
-                @php
-                $url = "../storage/app/public/".$user->gambar;
-                if (((isset($user->gambar) && $user->gambar != "")) && file_exists($url)) {
-                    $url = "data:image/jpeg;base64,".base64_encode(file_get_contents($url));
-                }else{
-                    $url = asset('assets/images/faces/face0.png');
-                }
-            @endphp
-            <img src="{{$url}}" style="height: 180px;width:180px;" class="rounded-circle img-thumbnail m-auto" />
-                {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin"> --}}
+      <div class="container">
+        <div class="row gutters">
+        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 pl-0">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="account-settings">
+                <div class="user-profile">
+                  <div class="user-avatar">
+                    @php
+                    $url = "../storage/app/public/".$user->gambar;
+                    if (((isset($user->gambar) && $user->gambar != "")) && file_exists($url)) {
+                        $url = "data:image/jpeg;base64,".base64_encode(file_get_contents($url));
+                    }else{
+                        $url = asset('assets/images/faces/face0.png');
+                    }
+                @endphp
+                <img src="{{$url}}" style="height: 180px;width:180px;" class="rounded-circle img-thumbnail m-auto" />
+                    {{-- <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin"> --}}
+                  </div>
+                  <h5 class="user-name">{{$user->nama_pengguna}}</h5>
+                  <h6 class="user-email">{{ $user->nama_cg }}</h6>
+                </div>
               </div>
-              <h5 class="user-name">{{$user->nama_pengguna}}</h5>
-              <h6 class="user-email">{{ $user->nama_cg }}</h6>
+              <div class="text-primary mb-3">
+                <h5 class="text-center">Curriculum Finish</h5>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <canvas id="curriculum-finish"></canvas>
+                  <div id="curriculum-finish-legend"></div>
+                </div>
+              </div>
             </div>
-            <h5 class="user-name">{{$user->nama_pengguna}}</h5>
-            <h6 class="user-email">{{ $user->nama_cg }}</h6>
-          </div>
-          <div class="text-primary mb-3">
-            <h5 class="text-center">Curriculum Finish</h5>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <canvas id="curriculum-finish"></canvas>
-              <div id="curriculum-finish-legend"></div>
             </div>
           </div>
-        </div>
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Data Personal</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="nik">NIK</label>
+                      <input type="text" class="form-control" id="nik" placeholder="nik" value="{{$user->nik}}" disabled>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="role">Peran Pengguna</label>
+                      <input type="text" class="form-control" id="role" placeholder="peran pengguna" value="{{$user->role}}" disabled>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="tgl_masuk">Tanggal Masuk</label>
+                      <input type="text" class="form-control" id="tgl_masuk" placeholder="Enter tgl_masuk number" value="{{ $user->tgl_masuk }}" disabled>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" placeholder="email" value="{{ $user->email }}" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mt-3 mb-2 text-primary">Detail Personal</h6>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="jabatan">Job Title</label>
+                      <input type="name" class="form-control" id="jabatan" placeholder="Enter jabatan" value="{{$user->nama_job_title}}" disabled>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="Level">Level</label>
+                      <input type="name" class="form-control" id="Level" placeholder="Enter Level" value="{{$user->nama_level}}" disabled>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="Department">Department</label>
+                      <input type="text" class="form-control" id="Department" placeholder="Enter Department" value="{{$user->nama_department}}" disabled>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="sd">Sub Department</label>
+                      <input type="text" class="form-control" id="sd" placeholder="sd Code" value="{{$user->nama_subdepartment}}" disabled>
+                    </div>
+                  </div>
+                </div>
+                <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
-      <div class="card h-100">
-        <div class="card-body">
-          <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <h6 class="mb-2 text-primary">Data Personal</h6>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="nik">NIK</label>
-                <input type="text" class="form-control" id="nik" placeholder="nik" value="{{$user->nik}}" disabled>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="role">Peran Pengguna</label>
-                <input type="text" class="form-control" id="role" placeholder="peran pengguna" value="{{$user->role}}" disabled>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="tgl_masuk">Tanggal Masuk</label>
-                <input type="text" class="form-control" id="tgl_masuk" placeholder="Enter tgl_masuk number" value="{{ $user->tgl_masuk }}" disabled>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="email" value="{{ $user->email }}" disabled>
-              </div>
-            </div>
-          </div>
-          <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <h6 class="mt-3 mb-2 text-primary">Detail Personal</h6>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="jabatan">Job Title</label>
-                <input type="name" class="form-control" id="jabatan" placeholder="Enter jabatan" value="{{$user->nama_job_title}}" disabled>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="Level">Level</label>
-                <input type="name" class="form-control" id="Level" placeholder="Enter Level" value="{{$user->nama_level}}" disabled>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="Department">Department</label>
-                <input type="text" class="form-control" id="Department" placeholder="Enter Department" value="{{$user->nama_department}}" disabled>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="sd">Sub Department</label>
-                <input type="text" class="form-control" id="sd" placeholder="sd Code" value="{{$user->nama_subdepartment}}" disabled>
-              </div>
-            </div>
-          </div>
-          <div class="row gutters">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="text-right">
-                <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
     </div>
     </div>
 

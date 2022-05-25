@@ -4,7 +4,7 @@ jQuery.fn.extend({
     WAFloatBox: function () {
         var a = $(this)
         a.prepend(`
-        <a href="#" class="myk-btn">
+        <a href="#" class="myk-btn" data-toggle="tooltip" data-placement="right" title="Hubungi kami jika butuh bantuan">
         <img src="assets/images/wa-icon.png" class="myk-wa-icon">
         </a>
 
@@ -47,4 +47,6 @@ jQuery.fn.extend({
 
     }
 });
+
+
 
