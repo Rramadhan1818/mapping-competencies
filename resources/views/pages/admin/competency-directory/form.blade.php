@@ -18,14 +18,22 @@
     </div>
     @else
         <div class="form-group ml-0 mb-1">
-          <label class="col-sm-5">Competency</label>
+          <label for="id_curriculum" class="col-sm-5">Competency</label>
           <div class="col-sm-12">
-            <select name="id_curriculum" onchange="changeTraining(this)" class="form-control form-control-sm" id="" required>
+            <select id="id_curriculum" onchange="changeTraining(this)" class="selectpicker form-control form-control-sm"
+                name="id_curriculum" data-live-search="true" data-hide-disabled="true"
+                data-actions-box="true">
+                @foreach($competencies as $competency)
+                  <option value="{{$competency->id_curriculum}}">{{$competency->training_module}} ({{$competency->no_training_module}})</option>
+                @endforeach
+            </select>
+
+            {{-- <select name="id_curriculum" onchange="changeTraining(this)" class="form-control form-control-sm" id="" required>
               <option value="">Pilih Competency</option>
               @foreach($competencies as $competency)
                 <option value="{{$competency->id_curriculum}}">{{$competency->training_module}} ({{$competency->no_training_module}})</option>
               @endforeach
-            </select>
+            </select> --}}
           </div>
       </div>
     @endif
@@ -108,7 +116,9 @@ $(document).ready(function(){
 $('#show-image').on("click", function(){
   $('#myView').toggle('slow');
   });
+  $("#id_curriculum").selectpicker('refresh');
 });
+
 
   function changeTraining(el) {
     var val = $(el).val();

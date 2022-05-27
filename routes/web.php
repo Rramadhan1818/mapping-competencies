@@ -79,6 +79,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/form','WhiteTag@formWhiteTag')->name("formWhiteTag");
         Route::post('/action','WhiteTag@actionWhiteTag')->name("actionWhiteTag");
         Route::get('/detail', 'WhiteTag@detailWhiteTag')->name('detailWhiteTag');
+
+        Route::get('/chart-skill-category','WhiteTag@chartSkillCategory')->name("chartSkillCategory");
+        Route::get('/chart-comp-grour','WhiteTag@chartCompGroup')->name("chartCompGroup");
     });
 
     //CEME

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\CompetencieGroup;
 use App\User;
 use App\WhiteTagModel;
 use App\Exports\WhiteTagExport;
 use App\CompetenciesDirectoryModel;
+use App\SkillCategoryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -167,7 +169,118 @@ class WhiteTag extends Controller
 
     public function index(Request $request)
     {
-        return view('pages.admin.white-tag.index');
+        $colors = ["#fcba03","#03fc0f","#03fcf8","#0373fc","#1403fc","#9403fc","#fc03eb","#fc0335","#fc6703"];
+        $chartData = [
+            "label" => [],
+            "data" => [],
+            "identity" => [],
+            "backgroundColour" => []
+        ];
+        $skill_categories = SkillCategoryModel::select("skill_category.id_skill_category","skill_category",DB::raw("COUNT(wt.id_white_tag) as total"))
+                                ->leftJoin("curriculum",function ($join){
+                                    $join->on("curriculum.id_skill_category","skill_category.id_skill_category")
+                                         ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
+                                         ->join("white_tag as wt",function ($j){
+                                             $j->on("wt.id_directory","cd.id_directory")
+                                               ->where("wt.actual",">=","cd.target");
+                                         });
+                                })
+                                ->groupBy("curriculum.id_skill_category")
+                                ->get()
+                                ->toArray();
+        foreach($skill_categories as $key => $sc){
+            $chartData["label"][$key] = $sc["skill_category"];
+            $chartData["data"][$key] = $sc["total"];
+            $chartData["identity"][$key] = $sc["id_skill_category"];
+            $chartData["backgroundColour"][$key] = $colors[rand(0,8)];
+        }
+        $where = "competencie_groups.id_skill_category = 2";
+        $compGroup = CompetencieGroup::select("name",DB::raw("COUNT(wt.id_white_tag) as total"))
+                                    ->leftJoin("curriculum",function ($join){
+                                        $join->on("curriculum.training_module_group","competencie_groups.id")
+                                             ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
+                                             ->join("white_tag as wt",function ($j){
+                                                 $j->on("wt.id_directory","cd.id_directory")
+                                                   ->where("wt.actual",">=","cd.target");
+                                             });
+                                            })
+                                    ->groupBy("competencie_groups.name");
+                                    if($where != ""){
+                                        $compGroup->whereRaw($where);
+                                    }
+                                    $compGroup = $compGroup->get();
+        return view('pages.admin.white-tag.index',compact("chartData"));
+    }
+
+    public function randomColor()
+    {
+        $r = str_pad( dechex( mt_rand( 0, 255 ) ), 1, '0', STR_PAD_LEFT);
+        $g = str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+        $b = str_pad( dechex( mt_rand( 0, 255 ) ), 3, '0', STR_PAD_LEFT);
+        
+        return "rgb(".$r.",".$g.",".$b.")";
+    }
+
+    public function chartSkillCategory()
+    {
+        $colors = ["#fcba03","#03fc0f","#03fcf8","#0373fc","#1403fc","#9403fc","#fc03eb","#fc0335","#fc6703"];
+        $chartData = [
+            "label" => [],
+            "data" => [],
+            "identity" => [],
+            "backgroundColour" => []
+        ];
+        $skill_categories = SkillCategoryModel::select("skill_category.id_skill_category","skill_category",DB::raw("COUNT(wt.id_white_tag) as total"))
+                                ->leftJoin("curriculum",function ($join){
+                                    $join->on("curriculum.id_skill_category","skill_category.id_skill_category")
+                                         ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
+                                         ->join("white_tag as wt",function ($j){
+                                             $j->on("wt.id_directory","cd.id_directory")
+                                               ->where("wt.actual",">=","cd.target");
+                                         });
+                                })
+                                ->groupBy("curriculum.id_skill_category")
+                                ->get()
+                                ->toArray();
+        foreach($skill_categories as $key => $sc){
+            $chartData["label"][$key] = $sc["skill_category"];
+            $chartData["data"][$key] = $sc["total"];
+            $chartData["identity"][$key] = $sc["id_skill_category"];
+            $chartData["backgroundColour"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        }
+        return response()->json(['data'=>$chartData,'code' => 200, 'message' => 'Post successfully'], 200);
+    }
+
+    public function chartCompGroup(Request $request)
+    {
+        $colors = ["#fcba03","#03fc0f","#03fcf8","#0373fc","#1403fc","#9403fc","#fc03eb","#fc0335","#fc6703"];
+        $sc = SkillCategoryModel::where("id_skill_category",$request->id)->first();
+        $chartData = [
+            "title" => $sc->skill_category,
+            "label" => [],
+            "data" => [],
+            "identity" => [],
+            "backgroundColor" => []
+        ];
+        $where = "competencie_groups.id_skill_category = '".$request->id."'";
+        $compGroups = CompetencieGroup::select("name",DB::raw("COUNT(wt.id_white_tag) as total"))
+                                    ->leftJoin("curriculum",function ($join){
+                                        $join->on("curriculum.training_module_group","competencie_groups.id")
+                                             ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
+                                             ->join("white_tag as wt",function ($j){
+                                                 $j->on("wt.id_directory","cd.id_directory")
+                                                   ->where("wt.actual",">=","cd.target");
+                                             });
+                                            })
+                                    ->groupBy("competencie_groups.name")
+                                    ->whereRaw($where)
+                                    ->get();
+        foreach($compGroups as $key => $cg){
+            $chartData["label"][$key] = $cg["name"];
+            $chartData["data"][$key] = $cg["total"];
+            $chartData["backgroundColor"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        }
+        return response()->json(['data'=>$chartData,'code' => 200, 'message' => 'Post successfully'], 200);
     }
 
     public function formWhiteTag(Request $request)
@@ -222,6 +335,7 @@ class WhiteTag extends Controller
         ]);
         DB::beginTransaction();
         try{
+            $data = $this->validate_input_v2($request);
             $skillId = [1,2];
             WhiteTagModel::whereRaw("id_user = '".$request->user_id."' AND (select count(*) from taging_reason where taging_reason.id_white_tag = white_tag.id_white_tag) <= 0 ")
                         ->join("competencies_directory",function ($join) use ($skillId){
@@ -230,16 +344,15 @@ class WhiteTag extends Controller
                                 ->whereIn('curriculum.id_skill_category',$skillId);
                         })
                         ->delete();
-                        
-            if(isset($request->data)){
+            if(isset($data["data"]) && count($data["data"]) > 0){
                 $insert = [];
-                for($i=0; $i < count($request->data); $i++){
+                for($i=0; $i < count($data["data"]); $i++){
                     $insert[$i] = [
-                        "id_white_tag"=>$this->random_string(5,5,false).time(),
-                        "id_directory" => $request->data[$i]["id"],
-                        "id_user" => $request->user_id,
-                        "start" => $request->data[$i]["start"],
-                        "actual" => $request->data[$i]["actual"]
+                        "id_white_tag"=> $this->random_string(5,5,false).time(),
+                        "id_directory" => $data["data"][$i]["id"],
+                        "id_user" => $data["user_id"],
+                        "start" => $data["data"][$i]["start"],
+                        "actual" => $data["data"][$i]["actual"]
                     ];
                 }
                 WhiteTagModel::insert($insert);

@@ -28,40 +28,21 @@
 @endpush
 @section('content')
 <div class="row">
-    <div class="col-md-7 grid-margin stretch-card mb-0">
-    <div id="accordion" class="accordion">
-        <div class="card">
-            <div class="card-header card-title collapsed" data-toggle="collapse" href="#collapseOne">
-            Key Point 
-        </div>
-        <div id="collapseOne" class="card-body collapse" data-parent="#accordion" aria-expanded="true">
-            <ul class="nav nav-pills mb-3">
-                <li class="nav-item active">
-                    <a class="nav-link active" data-toggle="tab" href="#functional" type="button">Functional</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#general" type="button">General</a>
-                </li>
-            </ul>
-            
-                <div class="tab-pane container fade in active show" id="functional">
-                    <img src="{{ asset('assets/images/functional.png') }}" alt="Functional" class="mt-2 p-3" style="width:100%;display: block;margin-left: auto;margin-right: auto; ">
-                </div>
-                <div class="tab-pane container fade" id="general">
-                    <img src="{{ asset('assets/images/general.png') }}" alt="General" class="mt-2 p-3" style="width:100%;display: block;margin-left: auto;margin-right: auto; ">
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-5 grid-margin stretch-card mb-0 pl-0">
+    <div class="col-12 grid-margin stretch-card mb-0">
         <div id="accordion-gen" class="accordion">
         <div class="card">
             <div class="card-header card-title collapsed" data-toggle="collapse" href="#graphgen">
                 Graphic White Tag General
                 </div>
                 <div id="graphgen" class="card-body collapse" data-parent="#accordion-gen" aria-expanded="true">
-                    <canvas id="barChart" class="mb-2"></canvas>
+                    <div class="row col-12">
+                        <div id="elementSkillCategory" class="col-md-12">
+                            <canvas id="pieChart" class="mb-2"></canvas>
+                        </div>
+                        <div id="elementCompGroup" class="col-md-6" style="display: none">
+                            <canvas id="pieCompGroup" class="mb-2 "></canvas>
+                        </div>
+                    </div>
                 </div>
 
           {{-- <div class="card-body">
@@ -251,13 +232,15 @@
         });
     })
 
-      whiteTagAllDataTable();
-      initDatatable();
-      $('[data-toggle="tooltip"]').tooltip({
-          animation: true,
-          placement: "top",
-          trigger: "hover focus"
-      });
+    chartSkillCategory();
+
+    whiteTagAllDataTable();
+    initDatatable();
+    $('[data-toggle="tooltip"]').tooltip({
+        animation: true,
+        placement: "top",
+        trigger: "hover focus"
+    });
 
     $("#submitWhiteTag").click(function (e) {
         e.preventDefault()
@@ -474,63 +457,126 @@
       })
   }
 
-  $(function() {
-    'use strict';
+
+  function chartSkillCategory(){
+    $.ajax({
+        url:'{{route("chartSkillCategory")}}',
+        cache:false,
+        success: function(res) {
+            generateChartSkillCategory(res.data)
+        },
+        error: function(req, sts, err) {
+            
+        }
+    })
+  }
+
+  function generateChartSkillCategory(data){
+    var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
     var data = {
-        labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
-        datasets: [{
-        label: '# of Votes',
-        data: [10, 19, 3, 5, 2, 3],
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1,
-        fill: false
-        }]
-    };
+        labels : data.label,
+        datasets : [
+            {
+                label: data.label,
+                data: data.data,
+                identity : data.identity,
+                backgroundColor: data.backgroundColour,
+                borderWidth: 1
+            }
+        ]
+    }
 
-      var options = {
-          scales: {
-          yAxes: [{
-              ticks: {
-              beginAtZero: true
-              }
-          }]
-          },
-          legend: {
-          display: false
-          },
-          elements: {
-          point: {
-              radius: 0
-          }
-          }
+    var option = {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Chart Skill Category',
+            align: 'center',
+            position : 'top',
+            fullSize : true
+        },
+        legend: {
+        position: 'right',
+        labels: {
+            boxWidth: 20,
+            boxHeight : 20,
+            pointStyle : 'circle' 
+        }
+      },
+        onClick:function(e){
+            var activePoints = pieChart.getElementsAtEvent(e);
+            if(activePoints.length > 0){
+                var selectedIndex = activePoints[0]._index;
+                chartCompGroup(this.data.datasets[0].identity[selectedIndex])
+            }else{
+                return;
+            }
+        }
+    }
 
-      };
-      
-      if ($("#barChart").length) {
-          var barChartCanvas = $("#barChart").get(0).getContext("2d");
-          // This will get the first returned node in the jQuery collection.
-          var barChart = new Chart(barChartCanvas, {
-          type: 'bar',
-          data: data,
-          options: options
-          });
+    var pieChart = new Chart(pieChartCanvas, {
+        type: 'pie',
+        data: data,
+        options: option
+    });
+  }
+
+  var pieCompGroupCanvas = $("#pieCompGroup").get(0).getContext("2d");
+  var data = {
+      labels : [],
+      datasets : [
+          {
+              label: [],
+              data: [],
+              backgroundColor: [],
+              borderWidth: 1
+          }
+      ]
+  }
+  
+  var option = {
+      responsive: true,
+      legend: {
+        position: 'right',
+        labels: {
+            boxWidth: 20,
+            boxHeight : 20,
+            pointStyle : 'circle' 
+        }
+      },
+      title: {
+        display: true,
+        text: '',
+        align: 'center',
+        position : 'top',
+        fullSize : true
       }
-  })
+  }
+
+  var compGroupChart = new Chart(pieCompGroupCanvas, {
+      type: 'pie',
+      data: data,
+      options: option
+  });
+  function chartCompGroup(id){
+    $("#elementCompGroup").show();
+    $("#elementSkillCategory").attr("class","col-md-6");
+    $.ajax({
+        url:'{{route("chartCompGroup")}}?id='+id,
+        cache:false,
+        success: function(res) {
+            compGroupChart.options.title.text = res.data.title
+            compGroupChart.data.labels = res.data.label
+            compGroupChart.data.datasets[0].label = res.data.label
+            compGroupChart.data.datasets[0].data = res.data.data
+            compGroupChart.data.datasets[0].backgroundColor = res.data.backgroundColor
+            compGroupChart.update()
+        },
+        error: function(req, sts, err) {
+            
+        }
+    })
+  }
 
 </script>
 @endpush
