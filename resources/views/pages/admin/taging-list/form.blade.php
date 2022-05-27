@@ -137,7 +137,7 @@
                 $max = 5;
             @endphp
             @while ($min <= $max)
-                <option {{($taging->result_score ?? 0 == $min) ? 'selected' : ''}} value="{{$min}}">{{$min}}</option>
+                <option {{(($taging->result_score ?? 0) == $min) ? 'selected' : ''}} value="{{$min}}">{{$min}}</option>
                 @php
                     $min++;
                 @endphp

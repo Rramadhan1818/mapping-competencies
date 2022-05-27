@@ -180,7 +180,7 @@ class MemberCG extends Controller
                     ->leftJoin("cg","cg.id_cg","users.id_cg")
                     ->where("id",$request->id)
                     ->first();
-        $counting = WhiteTagModel::select(DB::raw("COUNT(level) as cnt"),"level")
+        $counting = WhiteTagModel::select(DB::raw("COUNT(*) as cnt"),"level")
                                  ->join("users",function ($join) use ($request){
                                      $join->on("users.id","white_tag.id_user")
                                         ->where([

@@ -32,6 +32,28 @@ class CompetenciesDirectory extends Controller
                         ->make(true);
     }
 
+    public function dataTableGrouping(Request $request)
+    {
+        $jobTitles = CompetenciesDirectoryModel::select("id_curriculum","id_directory","nama_job_title",
+        DB::raw("CONCAT('{\"list\":[',GROUP_CONCAT(CONCAT('{','\"between\":\"',between_year,'\",','\"target\":\"',target,'\"','}') ORDER BY between_year ASC SEPARATOR ','),']}') as list"))
+                                            ->join("job_title as jt","jt.id_job_title","competencies_directory.id_job_title")
+                                            ->groupBy("competencies_directory.id_job_title","competencies_directory.id_curriculum")
+                                            ->get();
+                                            dd($jobTitles);
+        $select = [
+            "no_training_module","training_module"
+        ];
+        $directories = CompetenciesDirectoryModel::select($select)
+                                                ->join("curriculum as cr",function ($join) use ($request){
+                                                    $join->on("cr.id_curriculum","competencies_directory.id_curriculum")
+                                                        ->groupBy("competencies_directory.id_curriculum","competencies_directory.id_curriculum");
+                                                })
+                                                ->groupBy("competencies_directory.id_curriculum")
+                                                ->get();
+
+                                // dd($directories);
+    }
+
     public function index()
     {
         return view('pages.admin.competency-directory.index');
