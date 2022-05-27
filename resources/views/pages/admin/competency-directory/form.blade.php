@@ -23,7 +23,7 @@
             <select name="id_curriculum" onchange="changeTraining(this)" class="form-control form-control-sm" id="" required>
               <option value="">Pilih Competency</option>
               @foreach($competencies as $competency)
-                <option value="{{$competency->id_curriculum}}">{{$competency->training_module}} ({{$competency->no_training_module}})</option>
+                <option value="{{$competency->id_curriculum}}">({{$competency->no_training_module}}) - {{$competency->training_module}} </option>
               @endforeach
             </select>
           </div>
