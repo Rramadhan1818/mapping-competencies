@@ -212,10 +212,10 @@
             var id = $(el).attr("data-id");
             if(id == ''){
                 var url = "{!!route('formCompetency')!!}?type=add";
-                $("#modal-tambahLabel").html("Tambah Kompetensi Direktori");
+                $("#modal-tambahLabel").html("Add Competencies Dictionary");
             }else{
                 var url = "{!!route('formCompetency')!!}?type=edit&id="+id;
-                $("#modal-tambahLabel").html("Edit Kompetensi Direktori");
+                $("#modal-tambahLabel").html("Update Competencies Dictionary");
             }
             $.ajax({
                 url:url,

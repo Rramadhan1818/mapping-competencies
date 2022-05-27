@@ -7,7 +7,10 @@
         .swal2-popup {
             font-size: 2rem;
         }
-
+        body {
+        overflow-y:hidden;
+        }
+        body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom { 	margin: 0; }
     </style>
 @endpush
 @section('content')
