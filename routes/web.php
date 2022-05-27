@@ -169,4 +169,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/get-skill','CompetencieGroupController@getBySkillCategory')->name('competencie-groups.getBySkillCategory');
     });
 
+    // targets
+    Route::prefix("target")->group(function () {
+        Route::get('/', 'TargetController@index')->name('target.index');
+        Route::post('/create', 'TargetController@store')->name('target.store');
+        Route::post('/delete','TargetController@destroy')->name('target.destroy');
+    });
 });

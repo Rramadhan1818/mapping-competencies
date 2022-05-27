@@ -7,10 +7,10 @@
         <div class="col-md-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item active">
-                        <a class="nav-link active btnDc btn-primary"  href="{{ route('ceme') }}" type="button">CEME CG</a>
+                        <a class="nav-link @if(request('q') !== 'all') btn-primary @else btn-secondary @endif btnDc btn-primary"  href="{{ route('ceme') }}" type="button">CEME CG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btnDc btn-primary"  href="{{ route('ceme.all') }}" type="button">CEME All </a>
+                        <a class="nav-link btnDc  @if(request('q') === 'all') btn-primary @else btn-secondary @endif"  href="{{ route('ceme.all') }}" type="button">CEME All </a>
                     </li>
                 </ul>
         </div>
