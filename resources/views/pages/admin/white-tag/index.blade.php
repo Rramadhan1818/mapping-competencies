@@ -33,8 +33,15 @@
         <div class="card">
             <div class="card-header card-title collapsed" data-toggle="collapse" href="#graphgen">
                 Graphic White Tag General
-                </div>
+            </div>
                 <div id="graphgen" class="card-body collapse" data-parent="#accordion-gen" aria-expanded="true">
+                    <div class="row col-12">
+                        <div class="relative">
+                            <select name="" id="selectCG" class="float-right form-control">
+                                <option value="all">Semua</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="row col-12">
                         <div id="elementSkillCategory" class="col-md-12">
                             <canvas id="pieChart" class="mb-2"></canvas>
@@ -222,6 +229,7 @@
     $(".nav-pills a").click(function(){
         $(this).tab('show');
     });
+
     $('.nav-pills a').on('show.bs.tab', function(){
         $('.tab-pane').each(function(i,obj){
             if(!$(this).hasClass("active")){
@@ -231,11 +239,10 @@
             }
         });
     })
-
     chartSkillCategory();
-
     whiteTagAllDataTable();
     initDatatable();
+    getCg();
     $('[data-toggle="tooltip"]').tooltip({
         animation: true,
         placement: "top",
@@ -276,8 +283,14 @@
         })
     })
 
-  });
+    $("#selectCG").change(function(){
+        chartSkillCategory($(this).val());
+        chartCompGroup(idSkillCategory)
+    })
 
+});
+
+    var idSkillCategory = null
 
   function getMapComp(id) {
       const url = "{!! route('formWhiteTag') !!}?id="+id+"&type=general";
@@ -348,7 +361,6 @@
       });
 
   }
-
 
 
   function initDatatable() {
@@ -457,36 +469,21 @@
       })
   }
 
-
-  function chartSkillCategory(){
-    $.ajax({
-        url:'{{route("chartSkillCategory")}}',
-        cache:false,
-        success: function(res) {
-            generateChartSkillCategory(res.data)
-        },
-        error: function(req, sts, err) {
-            
-        }
-    })
-  }
-
-  function generateChartSkillCategory(data){
     var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-    var data = {
-        labels : data.label,
+    var dataCharSkill = {
+        labels : [],
         datasets : [
             {
-                label: data.label,
-                data: data.data,
-                identity : data.identity,
-                backgroundColor: data.backgroundColour,
+                label: [],
+                data: [],
+                identity : [],
+                backgroundColor: [],
                 borderWidth: 1
             }
         ]
     }
 
-    var option = {
+    var optionChartSkill = {
         responsive: true,
         title: {
             display: true,
@@ -504,21 +501,46 @@
         }
       },
         onClick:function(e){
-            var activePoints = pieChart.getElementsAtEvent(e);
+            var activePoints = pieChartSkill.getElementsAtEvent(e);
             if(activePoints.length > 0){
+                $("#elementCompGroup").show();
+                $("#elementSkillCategory").attr("class","col-md-6");
                 var selectedIndex = activePoints[0]._index;
                 chartCompGroup(this.data.datasets[0].identity[selectedIndex])
+                idSkillCategory = this.data.datasets[0].identity[selectedIndex]
             }else{
                 return;
             }
         }
     }
 
-    var pieChart = new Chart(pieChartCanvas, {
+    var pieChartSkill = new Chart(pieChartCanvas, {
         type: 'pie',
-        data: data,
-        options: option
+        data: dataCharSkill,
+        options: optionChartSkill
     });
+
+  function chartSkillCategory(cg){
+    if(cg){
+        var url = "{{route('chartSkillCategory')}}?cg="+cg
+    }else{
+        var url = "{{route('chartSkillCategory')}}?cg=all"
+    }
+    $.ajax({
+        url:url,
+        cache:false,
+        success: function(res) {
+            pieChartSkill.data.labels = res.data.label
+            pieChartSkill.data.datasets[0].label = res.data.label
+            pieChartSkill.data.datasets[0].data = res.data.data
+            pieChartSkill.data.datasets[0].identity = res.data.identity
+            pieChartSkill.data.datasets[0].backgroundColor = res.data.backgroundColour
+            pieChartSkill.update()
+        },
+        error: function(req, sts, err) {
+            
+        }
+    })
   }
 
   var pieCompGroupCanvas = $("#pieCompGroup").get(0).getContext("2d");
@@ -559,10 +581,9 @@
       options: option
   });
   function chartCompGroup(id){
-    $("#elementCompGroup").show();
-    $("#elementSkillCategory").attr("class","col-md-6");
+    url = '{{route("chartCompGroup")}}?id='+id+"&cg="+$("#selectCG").val()
     $.ajax({
-        url:'{{route("chartCompGroup")}}?id='+id,
+        url:url,
         cache:false,
         success: function(res) {
             compGroupChart.options.title.text = res.data.title
@@ -577,6 +598,26 @@
         }
     })
   }
+
+  function getCg() {
+            $.ajax({
+                type: "GET",
+                url: "{{ route('get.cg') }}",
+                success: function(res) {
+                    var option = "";
+                    for (let i = 0; i < res.data.length; i++) {
+                        option += '<option value="' + res.data[i].id_cg + '">' + res.data[i].nama_cg + '</option>';
+                    }
+                    $('#selectCG').html();
+                    $('#selectCG').append(option);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    console.log(xhr);
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            })
+        }
 
 </script>
 @endpush

@@ -221,9 +221,8 @@ class WhiteTag extends Controller
         return "rgb(".$r.",".$g.",".$b.")";
     }
 
-    public function chartSkillCategory()
+    public function chartSkillCategory(Request $request)
     {
-        $colors = ["#fcba03","#03fc0f","#03fcf8","#0373fc","#1403fc","#9403fc","#fc03eb","#fc0335","#fc6703"];
         $chartData = [
             "label" => [],
             "data" => [],
@@ -231,17 +230,22 @@ class WhiteTag extends Controller
             "backgroundColour" => []
         ];
         $skill_categories = SkillCategoryModel::select("skill_category.id_skill_category","skill_category",DB::raw("COUNT(wt.id_white_tag) as total"))
-                                ->leftJoin("curriculum",function ($join){
+                                ->leftJoin("curriculum",function ($join) use ($request){
                                     $join->on("curriculum.id_skill_category","skill_category.id_skill_category")
                                          ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
-                                         ->join("white_tag as wt",function ($j){
+                                         ->leftjoin("white_tag as wt",function ($j) use ($request){
                                              $j->on("wt.id_directory","cd.id_directory")
-                                               ->where("wt.actual",">=","cd.target");
+                                                ->where("wt.actual",">=","cd.target")
+                                                ->join("users",function ($u) use ($request){
+                                                    $u->on("users.id","wt.id_user");
+                                                    if($request->cg != 'all'){
+                                                        $u->where("users.id_cg","=",$request->cg);
+                                                    }
+                                                });
                                          });
                                 })
                                 ->groupBy("curriculum.id_skill_category")
-                                ->get()
-                                ->toArray();
+                                ->get();
         foreach($skill_categories as $key => $sc){
             $chartData["label"][$key] = $sc["skill_category"];
             $chartData["data"][$key] = $sc["total"];
@@ -264,12 +268,18 @@ class WhiteTag extends Controller
         ];
         $where = "competencie_groups.id_skill_category = '".$request->id."'";
         $compGroups = CompetencieGroup::select("name",DB::raw("COUNT(wt.id_white_tag) as total"))
-                                    ->leftJoin("curriculum",function ($join){
+                                    ->leftJoin("curriculum",function ($join) use ($request){
                                         $join->on("curriculum.training_module_group","competencie_groups.id")
                                              ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
-                                             ->join("white_tag as wt",function ($j){
+                                             ->leftJoin("white_tag as wt",function ($j) use ($request){
                                                  $j->on("wt.id_directory","cd.id_directory")
-                                                   ->where("wt.actual",">=","cd.target");
+                                                   ->where("wt.actual",">=","cd.target")
+                                                   ->join("users",function ($u) use ($request){
+                                                    $u->on("users.id","wt.id_user");
+                                                    if($request->cg != 'all'){
+                                                        $u->where("users.id_cg","=",$request->cg);
+                                                    }
+                                                });
                                              });
                                             })
                                     ->groupBy("competencie_groups.name")
