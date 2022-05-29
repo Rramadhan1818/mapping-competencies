@@ -31,10 +31,10 @@
     <div class="col-12 grid-margin stretch-card mb-0">
         <div id="accordion-gen" class="accordion">
         <div class="card">
-            <div class="card-header card-title collapsed" data-toggle="collapse" href="#graphgen">
+            <div class="card-header card-title" data-toggle="collapse" href="#graphgen">
                 Graphic White Tag General
             </div>
-                <div id="graphgen" class="card-body collapse" data-parent="#accordion-gen" aria-expanded="true">
+                <div id="graphgen" class="card-body collapse show" data-parent="#accordion-gen" aria-expanded="true">
                     <div class="row col-12">
                         <div class="relative">
                             <select name="" id="selectCG" class="float-right form-control">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="row col-12">
-                        <div id="elementSkillCategory" class="col-md-12">
+                        <div id="elementSkillCategory" class="col-md-6">
                             <canvas id="pieChart" class="mb-2"></canvas>
                         </div>
                         <div id="elementCompGroup" class="col-md-6" style="display: none">

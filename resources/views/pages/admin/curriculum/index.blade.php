@@ -103,43 +103,53 @@
                 <form action="" id="formCreate" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="form-group col-md">
-                            <label for="skillCategory">Skill Category</label>
-                            <select id="id_skill_category" class="form-control form-control-sm" name="id_skill_category">
-                                <option value="">Pilih Skill Category</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="skillCategory">Skill Category</label>
+                                    <select id="id_skill_category" class="form-control form-control-sm" name="id_skill_category">
+                                        <option value="">Pilih Skill Category</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="training_module_group">Competency Group</label>
+                                    <select id="training_module_group" class="form-control form-control-sm"
+                                        name="training_module_group">
+                                        <option value="">Pilih Competencie Group</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group col-md">
-                            <label for="training_module">Competency</label>
-                            <input type="text" class="form-control" id="training_module" name="training_module"
-                                placeholder="Masukan Competency Name">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="noModule">Level</label>
-                            <select class="form-control form-control-sm" id="level" name="level">
-                                <option value="">Pilih Level</option>
-                                <option value="B">B (Basic)</option>
-                                <option value="I">I (Intermediate)</option>
-                                <option value="A">A (Advance)</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="training_module_group">Competency Group</label>
-                            <select id="training_module_group" class="form-control form-control-sm"
-                                name="training_module_group">
-                                <option value="">Pilih Competencie Group</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="noModule">Competency Desc</label>
-                            <textarea class="form-control" id="training_module_desc" name="training_module_desc" rows="3"></textarea>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="noModule">Job Title CG</label>
-                            <select id="id_job_title" class="selectpicker form-control form-control-sm"
-                                name="id_job_title[]" data-live-search="true" data-hide-disabled="true" multiple
-                                data-actions-box="true">
-                            </select>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="training_module">Competency</label>
+                                    <input type="text" class="form-control" id="training_module" name="training_module"
+                                        placeholder="Masukan Competency Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="noModule">Level</label>
+                                    <select class="form-control form-control-sm" id="level" name="level">
+                                        <option value="">Pilih Level</option>
+                                        <option value="B">B (Basic)</option>
+                                        <option value="I">I (Intermediate)</option>
+                                        <option value="A">A (Advance)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noModule">Competency Desc</label>
+                                    <textarea class="form-control" id="training_module_desc" name="training_module_desc" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noModule">Job Title CG</label>
+                                    <select id="id_job_title" class="selectpicker form-control form-control-sm"
+                                        name="id_job_title[]" data-live-search="true" data-hide-disabled="true" multiple
+                                        data-actions-box="true">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -227,7 +227,7 @@ class WhiteTag extends Controller
             "label" => [],
             "data" => [],
             "identity" => [],
-            "backgroundColour" => []
+            "backgroundColour" => ['#9AD0F5', '#FFB1C1']
         ];
         $skill_categories = SkillCategoryModel::select("skill_category.id_skill_category","skill_category",DB::raw("COUNT(wt.id_white_tag) as total"))
                                 ->leftJoin("curriculum",function ($join) use ($request){
@@ -250,21 +250,21 @@ class WhiteTag extends Controller
             $chartData["label"][$key] = $sc["skill_category"];
             $chartData["data"][$key] = $sc["total"];
             $chartData["identity"][$key] = $sc["id_skill_category"];
-            $chartData["backgroundColour"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+            // $chartData["backgroundColour"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
         }
         return response()->json(['data'=>$chartData,'code' => 200, 'message' => 'Post successfully'], 200);
     }
 
     public function chartCompGroup(Request $request)
     {
-        $colors = ["#fcba03","#03fc0f","#03fcf8","#0373fc","#1403fc","#9403fc","#fc03eb","#fc0335","#fc6703"];
+        $colors = ["#FFD8E1", "#D7ECFB", "#FFF3D6", "#D3F5F5", "#E6D9FF", "#FFE9D3"];
         $sc = SkillCategoryModel::where("id_skill_category",$request->id)->first();
         $chartData = [
             "title" => $sc->skill_category,
             "label" => [],
             "data" => [],
             "identity" => [],
-            "backgroundColor" => []
+            "backgroundColor" => ["#FFF3D6", "#D3F5F5", "#E6D9FF", "#FFE9D3", "#FFD8E1", "#D7ECFB"]
         ];
         $where = "competencie_groups.id_skill_category = '".$request->id."'";
         $compGroups = CompetencieGroup::select("name",DB::raw("COUNT(wt.id_white_tag) as total"))
@@ -288,7 +288,7 @@ class WhiteTag extends Controller
         foreach($compGroups as $key => $cg){
             $chartData["label"][$key] = $cg["name"];
             $chartData["data"][$key] = $cg["total"];
-            $chartData["backgroundColor"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+            // $chartData["backgroundColor"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
         }
         return response()->json(['data'=>$chartData,'code' => 200, 'message' => 'Post successfully'], 200);
     }
