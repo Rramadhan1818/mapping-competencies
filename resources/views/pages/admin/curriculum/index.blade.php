@@ -54,7 +54,7 @@
                                                 <td>{{ $data->skill_category }}</td>
                                                 <td>{{ $data->training_module }}</td>
                                                 <td>{{ $data->level }}</td>
-                                                <td>{{ $data->training_module_group }}</td>
+                                                <td>{{ $data->compGroupName }}</td>
                                                 <td>{{ $data->training_module_desc }}</td>
                                                 <td>
                                                     @php

@@ -45,13 +45,14 @@ class WhiteTag extends Controller
     public function whiteTagAll(Request $request)
     {
         $select = [
-            "nama_pengguna","no_training_module","skill_category","training_module","level","training_module_group","start","actual","target",
+            "nama_pengguna","no_training_module","skill_category","training_module","level","training_module_group","start","actual","target","compGroup.name as compGroupName",
             DB::raw("(IF(actual < target,'Tidak Mencapai Target','Finish' )) as tagingStatus")
         ];
         $data = WhiteTagModel::select($select)
                 ->join("users","users.id","white_tag.id_user")
                 ->join("competencies_directory AS cd","cd.id_directory","white_tag.id_directory")
                 ->join("curriculum AS crclm","crclm.id_curriculum","cd.id_curriculum")
+                ->join("competencie_groups as compGroup","compGroup.id","crclm.training_module_group")
                 ->join("skill_category AS sc","sc.id_skill_category","crclm.id_skill_category")
                 ->where("white_tag.actual",">=","cd.target")
                 ->get();

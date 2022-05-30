@@ -14,12 +14,13 @@ class CompetenciesDirectory extends Controller
     public function jsonDataTable(Request $request)
     {
         $select = [
-            "id_directory", "cr.id_curriculum", "cr.no_training_module as no_training_module", "cr.level as level", "sc.skill_category as skill_category", "cr.training_module as training_module"
+            "id_directory", "cr.id_curriculum", "cr.no_training_module as no_training_module", "cr.level as level", "sc.skill_category as skill_category", "cr.training_module as training_module","compGroup.name as compGroupName"
         ];
         $data = CompetenciesDirectoryModel::select($select)
                                             ->join("curriculum as cr",function ($join){
                                                 $join->on("cr.id_curriculum","competencies_directory.id_curriculum");
                                             })
+                                            ->join("competencie_groups as compGroup","compGroup.id","cr.training_module_group")
                                             ->join("skill_category as sc","sc.id_skill_category","cr.id_skill_category")
         ->groupBy("cr.id_curriculum")->get();
         return DataTables::of($data)
