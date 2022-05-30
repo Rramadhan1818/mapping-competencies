@@ -319,13 +319,14 @@ class WhiteTag extends Controller
             DB::raw("(CASE WHEN (white_tag.actual - competencies_directory.target) < 0 THEN 'Tidak Mencapai Target'
                             WHEN (white_tag.actual IS NULL) THEN 'Belum diatur'
                             WHEN white_tag.actual >= competencies_directory.target THEN 'Finish' 
-                            END) as tagingStatus")
+                            END) as tagingStatus"),"compGroup.name as compGroupName"
         ];
         $comps = CompetenciesDirectoryModel::select($select)
                                             ->join("curriculum",function ($join) use ($user,$between){
                                                 $join->on("curriculum.id_curriculum","competencies_directory.id_curriculum")
                                                     ->whereRaw("competencies_directory.id_job_title = '".$user->id_job_title."' AND competencies_directory.between_year = '".$between."'");
                                             })
+                                            ->join("competencie_groups as compGroup","compGroup.id","curriculum.training_module_group")
                                             ->join("skill_category","skill_category.id_skill_category","curriculum.id_skill_category")
                                             ->leftJoin("white_tag",function ($join) use ($user){
                                                 $join->on("white_tag.id_directory","competencies_directory.id_directory")
