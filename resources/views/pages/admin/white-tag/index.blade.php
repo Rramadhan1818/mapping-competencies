@@ -32,16 +32,19 @@
         <div id="accordion-gen" class="accordion">
         <div class="card">
             <div class="card-header card-title" data-toggle="collapse" href="#graphgen">
-                Graphic White Tag General
+            White Tag
             </div>
                 <div id="graphgen" class="card-body collapse show" data-parent="#accordion-gen" aria-expanded="true">
-                    <div class="row col-12">
-                        <div class="relative">
-                            <select name="" id="selectCG" class="float-right form-control">
-                                <option value="all">Semua</option>
-                            </select>
+                        <div class="row mb-0">
+                            <label class="col-sm-2 col-form-label pr-0">Circle Group</label>
+                            <div class="col-sm-4 pl-0 m-auto">
+                                <select name="" id="selectCG" class="float-right form-control form-control-sm">
+                                    <option value="all">Semua</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                            </div>
                         </div>
-                    </div>
                     <div class="row col-12">
                         <div id="elementSkillCategory" class="col-md-6">
                             <canvas id="pieChart" class="mb-2"></canvas>
@@ -63,7 +66,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-title">White Tag</p>
+                {{-- <p class="card-title">White Tag</p> --}}
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item active">
                         <a class="nav-link active btn-primary" data-toggle="tab" href="#pills-home" type="button">White Tag CG</a>
