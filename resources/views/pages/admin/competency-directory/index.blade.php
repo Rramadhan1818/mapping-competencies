@@ -64,9 +64,9 @@
                                     <tr>
                                         <th>No Competency#</th>
                                         <th>Competency</th>
-                                        <th>Competency Group</th>
                                         <th>Skill Category</th>
                                         <th>Level</th>
+                                        <th>Competency Group</th>
                                         <th class="text-center">Action</th>
                                     </tr> 
                                 </thead>
@@ -268,13 +268,13 @@
                         data: 'training_module'
                     },
                     {
-                        data : 'compGroupName'
-                    },
-                    {
                         data: 'skill_category'
                     },
                     {
                         data: 'level'
+                    },
+                    {
+                        data : 'compGroupName'
                     },
                     {
                         data: 'action'
