@@ -16,11 +16,89 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">CEME</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>Competent Employee</h4>
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                        <div class="col-6">
+                            <h5>Multiskill Employee</h4>
+                            <canvas id="pieChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-5 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Graphic CEME</h4>
-                    <canvas id="pieChart"></canvas>
+                    <h4 class="card-title">Competent Employee</h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="display expandable-table table table-sm table-striped table-hover"
+                                    id="table-ce" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th style="width:10%">Name</th>
+                                            <th>B </th>
+                                            <th>I </th>
+                                            <th>A </th>
+                                            <th>Avr</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2">Target</th>
+                                            <th>100% </th>
+                                            <th>85% </th>
+                                            <th>75% </th>
+                                            <th>81.37%</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>WINDY A..</td>
+                                            <td>100%</td>
+                                            <td>87.45%</td>
+                                            <td>68.76%</td>
+                                            <td><span class="badge badge-warning">85.40%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>MARIA K..</td>
+                                            <td>100%</td>
+                                            <td>82.30%</td>
+                                            <td>67.76%</td>
+                                            <td><span class="badge badge-warning">83.35%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>REZKI R..</td>
+                                            <td>100%</td>
+                                            <td>34.00%</td>
+                                            <td>58.00%</td>
+                                            <td>64.0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>CHANDRA P..</td>
+                                            <td>100%</td>
+                                            <td>34.30%</td>
+                                            <td>56.00%</td>
+                                            <td>63.33%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,7 +106,7 @@
         <div class="col-md-7 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title">CEME</p>
+                    <p class="card-title">Multiskill Employee</p>
                     <div class="row">
                         {{-- <div class="col-md mb-2">
                         <a class="btn btn-success float-right" href="javascript:void(0)" id="createNewItem" data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus"></i> Tambah CEME</a>
@@ -45,7 +123,7 @@
                                             <th>Name</th>
                                             <th>Job Title</th>
                                             <th>Department</th>
-                                            <th>Level</th>
+                                            {{-- <th>Level</th> --}}
                                             <th>CG Name</th>
                                             <th>Action</th>
                                         </tr>
@@ -235,9 +313,9 @@
                     {
                         data: 'nama_department'
                     },
-                    {
-                        data: 'nama_divisi'
-                    },
+                    // {
+                    //     data: 'nama_divisi'
+                    // },
                     {
                         data: 'nama_cg'
                     },
@@ -711,5 +789,86 @@
                 ],
             })
         })
+
+        var meData = {
+                datasets: [{
+                data: [50, 30],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                }],
+
+                labels: [
+                'Windy Adriani Kacaribu',
+                'Maria Kurniati Gedi Raya',
+                ]
+            };
+
+            var doughnutPieData = {
+                datasets: [{
+                data: [85.50, 83.35],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                }],
+
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: [
+                'Windy Adriani Kacaribu',
+                'Maria Kurniati Gedi Raya',
+
+                ]
+            };
+            var doughnutPieOptions = {
+                responsive: true,
+                animation: {
+                animateScale: true,
+                animateRotate: true
+                }
+            };
+
+        if ($("#pieChart").length) {
+            var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+            var pieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: doughnutPieData,
+            options: doughnutPieOptions
+            });
+        }
+
+        if ($("#pieChart2").length) {
+            var pieChartCanvas = $("#pieChart2").get(0).getContext("2d");
+            var pieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: meData,
+            options: doughnutPieOptions
+            });
+        }
     </script>
 @endpush
