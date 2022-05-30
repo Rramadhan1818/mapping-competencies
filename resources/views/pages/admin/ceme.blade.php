@@ -48,9 +48,9 @@
                                         <tr>
                                             <th>No.</th>
                                             <th style="width:10%">Name</th>
-                                            <th>B </th>
-                                            <th>I </th>
-                                            <th>A </th>
+                                            <th style="text-align:center">B </th>
+                                            <th style="text-align:center">I </th>
+                                            <th style="text-align:center">A </th>
                                             <th>Avr</th>
                                         </tr>
                                         <tr>
@@ -74,8 +74,8 @@
                                             <td>2</td>
                                             <td>MARIA K..</td>
                                             <td>100%</td>
-                                            <td>82.30%</td>
-                                            <td>67.76%</td>
+                                            <td>78.30%</td>
+                                            <td>68.40%</td>
                                             <td><span class="badge badge-warning">83.35%</span></td>
                                         </tr>
                                         <tr>
@@ -792,7 +792,7 @@
 
         var meData = {
                 datasets: [{
-                data: [50, 30],
+                data: [3, 3],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',
@@ -819,7 +819,7 @@
 
             var doughnutPieData = {
                 datasets: [{
-                data: [85.50, 83.35],
+                data: [85.50, 82.23],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.5)',
                     'rgba(54, 162, 235, 0.5)',

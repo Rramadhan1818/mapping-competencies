@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('Member') }}">
                         <i class="icon-head menu-icon"></i>
-                        <span class="menu-title">Data Karyawan</span>
+                        <span class="menu-title">Employee Data</span>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -60,7 +60,7 @@ h4 {
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <h3 class="font-weight-bold">Welcome {{ Auth::user()->nama_pengguna }} 😁</h3>
-          <h6 class="font-weight-normal mb-0">Selamat datang di Mapping Competencies aplication, kamu adalah
+          <h6 class="font-weight-normal mb-0">Hy you are in mapping competencies aplication, login as
           <span class="text-primary">
             @php
                 if(Auth::user()->peran_pengguna == 1){
@@ -93,6 +93,13 @@ h4 {
   </div>
   <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
+    {{-- <div class="col-md-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body" style="max-height: 250px">
+          <h5>Competent Employee</h5>
+          <canvas id="barChart" class="p-3 mb-0" style="max-width: 450px; margin-left:50px"></canvas>
+        </div>
+      </div> --}}
       <div class="card tale-bg">
         <div class="card-people mt-auto" style="padding-top: 0px !important">
           <img src="{{ asset('assets/images/dashboard/people.png')}}" alt="people">
@@ -124,7 +131,7 @@ h4 {
         <div class="col-md-6 mb-4 stretch-card transparent">
           <div class="card card-dark-blue">
             <div class="card-body">
-              <p class="mb-4">Jumlah Anggota</p>
+              <p class="mb-4">Member Count</p>
               <p class="fs-30 mb-2">{{ $jumlah[0]->cg }}</p>
               {{-- <p>22.00% (30 days)</p> --}}
             </div>
@@ -135,7 +142,7 @@ h4 {
         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
           <div class="card card-light-blue">
             <div class="card-body">
-              <p class="mb-4">Dapartment</p>
+              <p class="mb-4">Department</p>
               <p class="fs-30 mb-2">{{  $data['nama_department'] }}</p>
               {{-- <p>2.00% (30 days)</p> --}}
             </div>
@@ -182,7 +189,7 @@ h4 {
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header" style="padding: 15px">
-            <h4 class="modal-title" id="myModalLabel17">Detail Karyawan</h4>
+            <h4 class="modal-title" id="myModalLabel17">Detail Employee</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -205,10 +212,10 @@ h4 {
                 <div class="row">
                   <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
                     <div class="ml-xl-4 mt-3">
-                    <p class="card-title">Jumlah Member Circle Group</p>
+                    <p class="card-title">Member Count Circle Group</p>
                       <h1 class="text-primary">{{ $total_cg[0]->cg }}</h1>
                       <h3 class="font-weight-500 mb-xl-4 text-primary">Member</h3>
-                      <p class="mb-2 mb-xl-0">Total ini menghitung jumlah karyawan yang sudah bergabung kedalam Circle Group pada aplikasi Nikita.</p>
+                      <p class="mb-2 mb-xl-0">This total counts the number of employees who have joined the Circle Group on the Nikita application.</p>
                     </div>
                     </div>
                   <div class="col-md-12 col-xl-9">
@@ -410,14 +417,14 @@ if ($("#south-america-chart").length) {
         legendCallback: function(chart) { 
           var text = [];
           text.push('<div class="report-chart">');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Jumlah Circle Group</p></div>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Total Circle Group</p></div>');
             text.push('<p class="mb-0">{{ $total_cg_name[0]->cg }}</p>');
             text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Jumlah Curriculumn</p></div>');
-            text.push('<p class="mb-0">630983</p>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Total Curriculumn</p></div>');
+            text.push('<p class="mb-0">231</p>');
             text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Jumlah Mencapai Target</p></div>');
-            text.push('<p class="mb-0">290831</p>');
+            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Total Competencies achieved</p></div>');
+            text.push('<p class="mb-0">420</p>');
             text.push('</div>');
           text.push('</div>');
           return text.join("");
@@ -463,6 +470,60 @@ if ($("#south-america-chart").length) {
           $("#bodyDetail").html(html);
       }
     })
+  }
+
+  var data = {
+    labels: ["Windy A", "Maria K", "Rezki R", "Chandra P", "Natha"],
+    datasets: [{
+      label: '# Jumlah Competencies',
+      data: [800, 700, 630, 600, 530],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1,
+      fill: false
+    }]
+  };
+  var options = {
+    scales: {
+      yAxes: [{
+        ticks: {
+          data : ["100%", "81.37%", "70%", "50%", "30%"],
+          beginAtZero: true
+        }
+      }]
+    },
+    legend: {
+      display: false
+    },
+    elements: {
+      point: {
+        radius: 0
+      }
+    }
+
+  };
+  if ($("#barChart").length) {
+    var barChartCanvas = $("#barChart").get(0).getContext("2d");
+    // This will get the first returned node in the jQuery collection.
+    var barChart = new Chart(barChartCanvas, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
   }
 </script>
 @endpush

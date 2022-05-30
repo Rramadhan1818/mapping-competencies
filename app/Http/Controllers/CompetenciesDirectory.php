@@ -64,7 +64,7 @@ class CompetenciesDirectory extends Controller
     {
         $type = $request->type;
         $select = [
-            "id_curriculum","training_module","no_training_module"
+            "id_curriculum", "training_module", "no_training_module", "training_module_group"
         ];
         $competencies = CurriculumModel::select($select)->whereRaw("id_curriculum NOT IN (select cd.id_curriculum from competencies_directory as cd group by cd.id_curriculum)")->get();
         if($request->type == 'add'){

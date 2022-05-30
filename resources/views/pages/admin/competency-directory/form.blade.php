@@ -24,10 +24,9 @@
                 name="id_curriculum" data-live-search="true" data-hide-disabled="true"
                 data-actions-box="true">
                 @foreach($competencies as $competency)
-                  <option value="{{$competency->id_curriculum}}">{{$competency->training_module}} ({{$competency->no_training_module}})</option>
+                  <option class="select-cr" value="{{$competency->id_curriculum}}" id="{{ $competency->training_module_group }}">{{$competency->training_module}} ({{$competency->no_training_module}})</option>
                 @endforeach
             </select>
-
             {{-- <select name="id_curriculum" onchange="changeTraining(this)" class="form-control form-control-sm" id="" required>
               <option value="">Pilih Competency</option>
               @foreach($competencies as $competency)
@@ -39,10 +38,7 @@
     @endif
   </div>
   <div class="col-md-8">
-      <a id="show-image" class="btn btn-sm btn-primary">General Key Information</a>
-      <a id="show-func" class="btn btn-sm btn-primary">Functional Key Information</a>
       <div id="myView">
-        <img src="{{ asset('assets/images/general.png') }}" alt="General" class="img-accordion mt-2">
       </div>
   </div>
 </div>
@@ -103,7 +99,7 @@
               </tr>
             @empty
               <tr id="rowDefault">
-                <td colspan="8" class="text-center">Silakan Tambahkan Job Title</td>
+                <td colspan="8" class="text-center">Please Insert Job Title</td>
               </tr>
             @endforelse
           </tbody>
@@ -113,11 +109,17 @@
 <script>
 
 $(document).ready(function(){
-$('#show-image').on("click", function(){
-  $('#myView').toggle('slow');
-  });
   $("#id_curriculum").selectpicker('refresh');
-});
+    $('select').on('change', function() {
+      idd = $("option:selected").attr("id") ;
+        if(idd == 5){
+          $("#myView").html('<img src="{{ asset("assets/images/general.png") }}" id="img-key" class="img-accordion" style="max-height:400px;margin-left:100px">');
+        }else{
+          $("#myView").html('<img src="{{ asset("assets/images/functional.png") }}" id="img-key" class="img-accordion" style="max-height:400px; margin-left:100px">');
+
+        }
+    });
+  });
 
 
   function changeTraining(el) {
