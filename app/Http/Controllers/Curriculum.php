@@ -16,7 +16,8 @@ class Curriculum extends Controller
     {
         $jobtitle = DB::raw("(SELECT GROUP_CONCAT(nama_job_title) FROM curriculum_to_job AS ctb JOIN job_title AS jt ON jt.id_job_title = ctb.id_job_title WHERE ctb.id_curriculum = curriculum.id_curriculum GROUP BY ctb.id_curriculum ) AS job_title");
         $data = CurriculumModel::leftJoin('skill_category as sc', 'curriculum.id_skill_category', '=', 'sc.id_skill_category')
-        ->get(['curriculum.*', 'sc.skill_category', $jobtitle]);
+        ->join("competencie_groups as compGroup","compGroup.id","curriculum.training_module_group")
+        ->get(['curriculum.*', 'sc.skill_category','compGroup.name as compGroupName', $jobtitle]);
         // dd($data);
         return view('pages.admin.curriculum.index', compact('data'));
     }

@@ -105,6 +105,7 @@
                                             <th>No Competency</th>
                                             <th>Skill Category</th>
                                             <th>Competency</th>
+                                            <th>Competency Group</th>
                                             <th>Level</th>
                                             <th>Competency Group</th>
                                             <th>Start</th>
@@ -446,6 +447,9 @@
               },
               {
                   data: 'training_module'
+              },
+              {
+                data: 'compGroupName'
               },
               {
                   data: 'level'
