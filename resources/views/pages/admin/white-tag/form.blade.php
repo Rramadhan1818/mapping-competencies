@@ -7,7 +7,7 @@
     <td>{{$comp->skill_category}}</td>
     <td>{{$comp->training_module}}</td>
     <td>{{$comp->level}}</td>
-    <td>{{$comp->training_module_group}}</td>
+    <td>{{$comp->compGroupName}}</td>
     <td>
         @if($comp->cntTagingReason > 0)
         <input type="text" class="form-control" value="{{$comp->start}}" disabled>
