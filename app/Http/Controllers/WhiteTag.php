@@ -251,6 +251,7 @@ class WhiteTag extends Controller
             $chartData["label"][$key] = $sc["skill_category"];
             $chartData["data"][$key] = $sc["total"];
             $chartData["identity"][$key] = $sc["id_skill_category"];
+            $chartData["backgroundColour"][$key]; 
             // $chartData["backgroundColour"][$key] = '#'.substr(str_shuffle('ABCDEF0123456789'), 0, 6);
         }
         return response()->json(['data'=>$chartData,'code' => 200, 'message' => 'Post successfully'], 200);
