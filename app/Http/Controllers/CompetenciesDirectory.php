@@ -22,7 +22,8 @@ class CompetenciesDirectory extends Controller
                                             })
                                             ->join("competencie_groups as compGroup","compGroup.id","cr.training_module_group")
                                             ->join("skill_category as sc","sc.id_skill_category","cr.id_skill_category")
-        ->groupBy("cr.id_curriculum")->get();
+                                            ->groupBy("competencies_directory.id_curriculum")
+                                            ->get();
         return DataTables::of($data)
                         ->addColumn('action', function ($row) {
                             $btn = '<div class="d-flex-wrap text-center m-auto"><button data-toggle="modal" data-target="#modal-tambah" data-id="'.$row->id_curriculum.'" onclick="formCompetencyDirectory(this)" class="btn btn-inverse-success float btn-icon edit-directory mr-1"><i class="icon-file menu-icon"></i></button>
