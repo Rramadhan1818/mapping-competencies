@@ -259,7 +259,15 @@
                 processing: true,
                 searching: true,
                 scrollX: true,
-                displayLength: 4,
+                displayLength: 10,
+                lengthMenu: [10, 15, 20,100],
+                language: {
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                },
                 columns: [
                     {
                         data: 'no_training_module',
