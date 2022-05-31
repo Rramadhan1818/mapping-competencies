@@ -142,7 +142,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="table-responsive">
-                        <table class=" display expandable-table table-striped table-hover" id="table-cg" style="width:100%">
+                        <table class=" display expandable-table table-striped table-hover" id="tableEdit" style="width:100%">
                             <thead>
                                 <tr>
                                     <th rowspan="2" class="text-center">No</th>
@@ -243,6 +243,8 @@
             }
         });
     })
+
+    $("#tableEdit").DataTable();
     chartSkillCategory();
     whiteTagAllDataTable();
     initDatatable();
