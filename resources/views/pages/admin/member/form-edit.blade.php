@@ -74,7 +74,7 @@
             <div class="invalid-feedback" id="feed-back-nik-edit"></div>
         </div>
         <div class="col-md-6 mb-3">
-            <label>Peran Pengguna</label>
+            <label>Role</label>
             <select class="form-control form-control-sm" id="peran-pengguna-edit" name="peran_pengguna">
                 <option value="3" {{($user->peran_pengguna == '3') ? 'selected' : ''}} >Admin</option>
                 <option value="2" {{($user->peran_pengguna == '2') ? 'selected' : ''}} >CG Leader</option>
@@ -83,7 +83,7 @@
             <div class="invalid-feedback" id="feed-back-peran-pengguna-edit"></div>
         </div>
         <div class="col-md-6 mb-3">
-            <label>Tanggal Masuk</label>
+            <label>Join Date</label>
             <input type="date" id="entry-edit" name="tgl_masuk" class="form-control form-control-sm" value="{{$user->tgl_masuk}}">
             <div class="invalid-feedback" id="feed-back-entry-edit"></div>
         </div>
@@ -91,7 +91,7 @@
 </div>
 <div class="form-row">
     <div class="col-md-6 mb-3">
-        <label>Nama Karyawan</label>
+        <label>Employee Name</label>
         <input type="text" id="nama-pengguna-edit" class="form-control form-control-sm" name="nama_pengguna" placeholder="Nama Karyawan" value="{{$user->nama_pengguna}}">
         <div class="invalid-feedback" id="feed-back-nama-pengguna-edit"></div>
     </div>
@@ -105,7 +105,7 @@
     <div class="col-md-4 mb-3">
         <label>Divisi</label>
         <select id="divisi-edit" class="form-control form-control-sm" name="divisi">
-            <option value="">Pilih Divisi</option>
+            <option value=""> Divisi</option>
             @foreach ($divisi as $item)
                 <option {{($user->id_divisi == $item->id_divisi) ? 'selected' : ''}} value="{{$item->id_divisi}}">{{$item->nama_divisi}}</option>
             @endforeach
@@ -113,9 +113,9 @@
         <div class="invalid-feedback" id="feed-back-divisi-edit"></div>
     </div>
     <div class="col-md-4 mb-3">
-        <label>Jabatan</label>
+        <label>Job Title</label>
         <select id="jabatan-edit" class="form-control form-control-sm" name="job_title">
-            <option value="">Pilih Jabatan</option>
+            <option value="">Job Title</option>
             @foreach ($jabatans as $item)
                 <option {{($user->id_job_title == $item->id_job_title) ? 'selected' : ''}} value="{{$item->id_job_title}}">{{$item->nama_job_title}}</option>
             @endforeach
@@ -125,7 +125,7 @@
     <div class="col-md-4 mb-3">
         <label>Level</label>
         <select id="level-edit" class="form-control form-control-sm" name="level">
-            <option value="">Pilih Level</option>
+            <option value="">Level</option>
             @foreach ($levels as $item)
                 <option value="{{$item->id_level}}" {{($user->id_level == $item->id_level) ? 'selected' : ''}}>{{$item->nama_level}}</option>
             @endforeach
@@ -137,7 +137,7 @@
     <div class="col-md-4 mb-3">
         <label>Department</label>
         <select id="department-edit" class="form-control form-control-sm" name="department">
-            <option value="">Pilih Department</option>
+            <option value="">Department</option>
             @foreach ($departments as $item)
                 <option value="{{$item->id_department}}" {{($user->id_department == $item->id_department) ? 'selected' : ''}} >{{$item->nama_department}}</option>
             @endforeach

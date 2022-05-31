@@ -39,7 +39,7 @@
                             <label class="col-sm-2 col-form-label pr-0">Circle Group</label>
                             <div class="col-sm-4 pl-0 m-auto">
                                 <select name="" id="selectCG" class="float-right form-control form-control-sm">
-                                    <option value="all">Semua</option>
+                                    <option value="all">-- Filter By Cirle Group --</option>
                                 </select>
                             </div>
                             <div class="col-6">

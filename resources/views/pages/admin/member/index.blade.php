@@ -63,10 +63,10 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <p class="card-title">Member CG</p>
+                <p class="card-title">Employee Data</p>
                 <div class="row">
                     <div class="col-md mb-2">
-                        <a class="btn btn-success float-right" href="javascript:void(0)" id="createNewItem" data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus"></i> Tambah Anggota</a>
+                        <a class="btn btn-success float-right" href="javascript:void(0)" id="createNewItem" data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus"></i> Add User</a>
                     </div>
                 </div>
                 <div class="row">
@@ -77,12 +77,12 @@
                                     <tr>
                                         <th>No#</th>
                                         <th>NIK</th>
-                                        <th>Nama Karyawan</th>
-                                        <th>Tgl Masuk
+                                        <th>Employee Name</th>
+                                        <th>Join Date
                                             {{-- <small>(Berdasarkan job level terakhir)</small> --}}
                                         </th>
                                         <th>Department</th>
-                                        <th>Jabatan</th>
+                                        <th>Jon Title</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -102,7 +102,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
           <div class="modal-header p-3">
-              <h5 class="modal-title" id="modal-tambahLabel">Tambah Data Karyawan</h5>
+              <h5 class="modal-title" id="modal-tambahLabel">Add New User</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

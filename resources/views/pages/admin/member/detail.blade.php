@@ -120,13 +120,13 @@
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
-                      <label for="role">Peran Pengguna</label>
+                      <label for="role">Role</label>
                       <input type="text" class="form-control" id="role" placeholder="peran pengguna" value="{{$user->role}}" disabled>
                     </div>
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
-                      <label for="tgl_masuk">Tanggal Masuk</label>
+                      <label for="tgl_masuk">Join Date</label>
                       <input type="text" class="form-control" id="tgl_masuk" placeholder="Enter tgl_masuk number" value="{{ $user->tgl_masuk }}" disabled>
                     </div>
                   </div>
@@ -166,13 +166,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="row gutters">
+                {{-- <div class="row gutters">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="text-right">
                       <button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
                     </div>
                   </div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>

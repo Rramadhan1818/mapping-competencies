@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md mb-2">
                             <a class="btn btn-success float-right" href="javascript:void(0)" id="createNewItem"
-                                data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus"></i> Tambah
+                                data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus"></i> Add
                                 Curriculum</a>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header p-3">
-                    <h5 class="modal-title" id="modal-tambahLabel">Tambah Data Curriculum</h5>
+                    <h5 class="modal-title" id="modal-tambahLabel">Add New Curriculum</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
