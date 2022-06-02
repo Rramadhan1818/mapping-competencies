@@ -14,6 +14,14 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @include('include.style')
   @stack('style')
+  <style>
+    /* .img-cover {
+      background-image: url("assets/images/logo-mini.png");
+      background-repeat: no-repeat; 
+      background-position: 98% -5.8%; 
+      background-size: 300px 240px;
+    } */
+  </style>
 </head>
 
 <body>
@@ -26,7 +34,7 @@
 
       <!-- BEGIN: Content-->
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper img-cover">
           @yield('content')
         </div>
       </div>

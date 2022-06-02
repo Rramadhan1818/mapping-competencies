@@ -151,7 +151,7 @@ h4 {
         <div class="col-md-6 stretch-card transparent">
           <div class="card card-light-danger">
             <div class="card-body">
-              <p class="mb-4">Migrate</p>
+              <p class="mb-4">Roration</p>
               <p class="fs-30 mb-2">0</p>
               {{-- <p>0.22% (30 days)</p> --}}
             </div>
