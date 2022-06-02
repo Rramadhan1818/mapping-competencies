@@ -82,7 +82,7 @@
                                             {{-- <small>(Berdasarkan job level terakhir)</small> --}}
                                         </th>
                                         <th>Department</th>
-                                        <th>Jon Title</th>
+                                        <th>Job Title</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -135,16 +135,16 @@
                                 <div class="invalid-feedback" id="feed-back-password"></div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Peran Pengguna</label>
+                                <label>Role</label>
                                 <select class="form-control form-control-sm" name="peran_pengguna" id="peran_pengguna">
-                                    <option value="3">Admin</option>
+                                    <option value="1">Admin</option>
                                     <option value="2">CG Leader</option>
-                                    <option value="1">Pengguna</option>
+                                    <option value="3">Pengguna</option>
                                 </select>
                                 <div class="invalid-feedback" id="feed-back-peran-pengguna"></div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Tanggal Masuk</label>
+                                <label>Join Date</label>
                                 <input type="date" id="entry" name="tgl_masuk" class="form-control form-control-sm">
                                 <div class="invalid-feedback" id="feed-back-entry"></div>
                             </div>
@@ -152,7 +152,7 @@
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label>Nama Karyawan</label>
+                            <label>Employee Name</label>
                             <input type="text" id="nama-pengguna" class="form-control form-control-sm" name="nama_pengguna" placeholder="Nama Karyawan">
                             <div class="invalid-feedback" id="feed-back-nama-pengguna"></div>
                         </div>
@@ -171,7 +171,7 @@
                             <div class="invalid-feedback" id="feed-back-divisi"></div>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label>Jabatan</label>
+                            <label>Job Title</label>
                             <select id="jabatan" class="form-control form-control-sm" name="job_title">
                                 <option value="">Pilih Jabatan</option>
                             </select>
@@ -296,7 +296,7 @@
     <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel17">Detail Karyawan</h4>
+                    <h4 class="modal-title" id="myModalLabel17">Detail Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
