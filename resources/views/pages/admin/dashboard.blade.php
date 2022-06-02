@@ -51,6 +51,18 @@ h4 {
     line-height: 22px;
     font-size: 18px;
 }
+.our-cg{
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 22px;
+  right: 150px;
+  left: 150px;
+  font-family: 'Bahnschrift', 'Nunito';
+  font-size: 29px;
+  font-weight: 600;
+  color: #373435;
+}
   </style>
 @endpush
 @section('content')
@@ -92,7 +104,7 @@ h4 {
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
+    <div class="col-md-6 grid-margin stretch-card" style="margin-bottom: 2rem !important;">
     {{-- <div class="col-md-6 grid-margin stretch-card">
       <div class="card">
         <div class="card-body" style="max-height: 250px">
@@ -101,23 +113,26 @@ h4 {
         </div>
       </div> --}}
       <div class="card tale-bg">
-        <div class="card-people mt-auto" style="padding-top: 0px !important">
-          <img src="{{ asset('assets/images/dashboard/people.png')}}" alt="people">
+        <div class="card-people mt-auto" style="padding-top: 0px !important;">
+          <img src="{{ asset('assets/images/dashboard/employee.png')}}" alt="people" style="height:264px; padding: 55px 45px 0px 45px">
+          <h4 class=" our-cg">We're {{ $data['nama_cg'] }} !</h4>
           <div class="weather-info">
             <div class="d-flex">
-              <div>
-                <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
-              </div>
               <div class="ml-2">
+              </div>
+              {{-- <div>
+                <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+              </div> --}}
+              {{-- <div class="ml-2">
                 <h4 class="location font-weight-normal">Purwakarta</h4>
                 <h6 class="font-weight-normal">Indonesia</h6>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 grid-margin transparent">
+    <div class="col-md-6 grid-margin transparent" style="margin-bottom: 2rem !important;">
       <div class="row">
         <div class="col-md-6 mb-4 stretch-card transparent">
           <div class="card card-tale">
