@@ -21,7 +21,7 @@
 <!-- Custom js for this page Dashboard -->
 <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 {{-- <script src="{{ asset('assets/js/Chart.roundedBarCharts.js') }}"></script> --}}
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('assets/sweetalert2/sweetalert2.js')}}"></script>
 
 {{-- Selectize --}}
 <script src="{{ asset ('assets/select/js/bootstrap-select.js')}}"></script>

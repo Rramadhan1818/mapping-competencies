@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2022 at 03:30 AM
+-- Generation Time: Jun 03, 2022 at 03:15 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -218,7 +218,55 @@ INSERT INTO `competencies_directory` (`id_directory`, `id_curriculum`, `id_job_t
 (380, 197, 'JT-0069', '2', 3),
 (381, 197, 'JT-0069', '3', 4),
 (382, 197, 'JT-0069', '4', 5),
-(383, 197, 'JT-0069', '5', 5);
+(383, 197, 'JT-0069', '5', 5),
+(384, 198, 'JT-0069', '0', 1),
+(385, 198, 'JT-0069', '1', 2),
+(386, 198, 'JT-0069', '2', 3),
+(387, 198, 'JT-0069', '3', 3),
+(388, 198, 'JT-0069', '4', 4),
+(389, 198, 'JT-0069', '5', 5),
+(390, 198, 'JT-0102', '0', 1),
+(391, 198, 'JT-0102', '1', 2),
+(392, 198, 'JT-0102', '2', 3),
+(393, 198, 'JT-0102', '3', 3),
+(394, 198, 'JT-0102', '4', 4),
+(395, 198, 'JT-0102', '5', 5),
+(396, 199, 'JT-0049', '0', 1),
+(397, 199, 'JT-0049', '1', 2),
+(398, 199, 'JT-0049', '2', 3),
+(399, 199, 'JT-0049', '3', 4),
+(400, 199, 'JT-0049', '4', 5),
+(401, 199, 'JT-0049', '5', 5),
+(402, 199, 'JT-0069', '0', 2),
+(403, 199, 'JT-0069', '1', 2),
+(404, 199, 'JT-0069', '2', 3),
+(405, 199, 'JT-0069', '3', 4),
+(406, 199, 'JT-0069', '4', 5),
+(407, 199, 'JT-0069', '5', 5),
+(408, 199, 'JT-0102', '0', 2),
+(409, 199, 'JT-0102', '1', 2),
+(410, 199, 'JT-0102', '2', 3),
+(411, 199, 'JT-0102', '3', 4),
+(412, 199, 'JT-0102', '4', 5),
+(413, 199, 'JT-0102', '5', 5),
+(414, 199, 'JT-0153', '0', 1),
+(415, 199, 'JT-0153', '1', 3),
+(416, 199, 'JT-0153', '2', 4),
+(417, 199, 'JT-0153', '3', 5),
+(418, 199, 'JT-0153', '4', 5),
+(419, 199, 'JT-0153', '5', 5),
+(420, 200, 'JT-0102', '0', 1),
+(421, 200, 'JT-0102', '1', 2),
+(422, 200, 'JT-0102', '2', 3),
+(423, 200, 'JT-0102', '3', 3),
+(424, 200, 'JT-0102', '4', 4),
+(425, 200, 'JT-0102', '5', 5),
+(426, 200, 'JT-0069', '0', 1),
+(427, 200, 'JT-0069', '1', 2),
+(428, 200, 'JT-0069', '2', 3),
+(429, 200, 'JT-0069', '3', 3),
+(430, 200, 'JT-0069', '4', 4),
+(431, 200, 'JT-0069', '5', 5);
 
 -- --------------------------------------------------------
 
@@ -416,7 +464,9 @@ INSERT INTO `curriculum` (`id_curriculum`, `no_training_module`, `id_skill_categ
 (194, '144/KMI/FUNC', 1, 'BPJS Ketenagakerjaan ', 'B', '', '8', 'Mengenai cara pelaporan kecelakaan kerja serta dokumen-dokumen yang dibutuhkan', '', '2022-05-29 14:03:51', '2022-05-29 14:03:51'),
 (195, '011/KMI/FUNC', 1, 'Prosedur pengajuan training', 'B', '', '8', 'Berisi penjelasan mengenai Prosedur pengajuan training', '', '2022-05-31 01:23:03', '2022-05-31 01:23:03'),
 (196, '057/KMI/GEN', 2, 'CUSTOMER ORIENTATION', 'B', '', '5', 'Menempatkan prioritas tinggi pada perspektif pelanggan internal atau eksternal saat mengambil keputusan maupun mengambil tindakan; menerapkan praktik layanan yang memenuhi kebutuhan pelanggan dan organisasi.', '', '2022-05-31 01:21:31', '2022-05-31 01:21:31'),
-(198, '015/KMI/GEN', 2, 'CONTINUOUS LEARNING AND IMPROVEMENT', 'B', '', '5', 'Secara aktif menggunakan pengetahuan dan keterampilan yang baru diperoleh; memulai tindakan untuk memperbaiki kondisi dan proses yang ada; mengidentifikasi peluang perbaikan, menghasilkan ide, dan menerapkan solusi.', '', '2022-05-31 01:29:48', '2022-05-31 01:29:48');
+(198, '015/KMI/GEN', 2, 'CONTINUOUS LEARNING AND IMPROVEMENT', 'B', '', '5', 'Secara aktif menggunakan pengetahuan dan keterampilan yang baru diperoleh; memulai tindakan untuk memperbaiki kondisi dan proses yang ada; mengidentifikasi peluang perbaikan, menghasilkan ide, dan menerapkan solusi.', '', '2022-05-31 01:29:48', '2022-05-31 01:29:48'),
+(199, '016/KMI/GEN', 2, 'TPM Basic', 'B', '', '6', 'Metode untuk meningkatkan produktivitas di area kerja dengan cara membuat proses tersebut lebih reliable dan lebih efisien energi', '', '2022-05-31 01:43:40', '2022-05-31 01:43:40'),
+(200, '017/KMI/GEN', 2, 'TPM PM', 'I', '', '6', 'Jadwal tugas pemeliharaan berdasarkan tingkat kegagalan yang diprediksi dan / atau diukur.', '', '2022-05-31 02:17:43', '2022-05-31 02:17:43');
 
 -- --------------------------------------------------------
 
@@ -632,7 +682,16 @@ INSERT INTO `curriculum_to_job` (`id_ctb`, `id_curriculum`, `id_job_title`) VALU
 (232, 197, 'JT-0069'),
 (233, 197, 'JT-0102'),
 (234, 198, 'JT-0069'),
-(235, 198, 'JT-0102');
+(235, 198, 'JT-0102'),
+(236, 199, 'JT-0049'),
+(237, 199, 'JT-0069'),
+(238, 199, 'JT-0071'),
+(239, 199, 'JT-0102'),
+(240, 199, 'JT-0153'),
+(241, 200, 'JT-0049'),
+(242, 200, 'JT-0069'),
+(243, 200, 'JT-0102'),
+(244, 200, 'JT-0153');
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1109,8 @@ CREATE TABLE `role` (
 
 INSERT INTO `role` (`id_role`, `role`) VALUES
 ('1', 'Admin'),
-('2', 'CG Leader');
+('2', 'CG Leader'),
+('3', 'Pengguna');
 
 -- --------------------------------------------------------
 
@@ -1212,7 +1272,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nik`, `nama_pengguna`, `peran_pengguna`, `email`, `email_verified_at`, `password`, `tgl_masuk`, `id_job_title`, `id_divisi`, `id_cg`, `id_department`, `id_sub_department`, `id_level`, `status`, `gambar`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'K210300063', 'REZKI RAMADHAN', '1', 'rramadhan1818@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-03-08', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, 'yMDxdbaygCYVXzM.png', NULL, '2022-03-05 09:58:33', '2022-05-29 21:01:08'),
-(2, 'K200900257', 'CHANDRA PRAWIRA', '1', 'chandra@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-09-01', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, 'E72Vo5k8MkUKjCm.png', NULL, '2022-03-11 01:46:24', '2022-05-18 00:01:32'),
+(2, 'K200900257', 'CHANDRA PRAWIRA', '1', 'chandra@gmail.com', '2022-03-01 09:58:33', '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-09-01', 'JT-0049', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0009', 1, 'E72Vo5k8MkUKjCm.png', NULL, '2022-03-11 01:46:24', '2022-06-01 18:53:54'),
 (3, '050700014', 'DIDIK BUDIARTO', '1', 'didik.budiarto@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2005-07-01', 'JT-0149', NULL, NULL, 'DP-0003', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, '051000017', 'I GEDE PUTU EKA PUTRA', '1', 'igedeputu.ekaputra@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2005-10-10', 'JT-0076', NULL, NULL, 'DP-0010', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (5, '060500014', 'YUDHA AGUS TRI BASUKI', '1', 'yud.agus@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2006-05-01', 'JT-0062', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1446,7 +1506,7 @@ INSERT INTO `users` (`id`, `nik`, `nama_pengguna`, `peran_pengguna`, `email`, `e
 (232, '200700143', 'TENDI SOBARNANSYAH', '1', 'sobarnansyah@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-10-15', 'JT-0064', 'DV_0001', 'CG_0017', 'DP-0005', 'SDP-0011', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-20 02:19:56'),
 (233, '200700144', 'MUHAMAD RIDWAN', '1', 'muhamadridwan133@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2019-11-15', 'JT-0130', 'DV_0001', 'CG_0018', 'DP-0006', 'SDP-0015', 'LV-0010', NULL, NULL, NULL, NULL, '2022-05-22 04:49:28'),
 (234, '201200194', 'DENLEI DIYOROSSI', '1', 'diyorossi@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-12-29', 'JT-0055', 'DV_0002', 'CG_0019', 'DP-0009', 'SDP-0032', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 05:21:53'),
-(361, '210100004', 'SETYO DEWI UTARI', '3', 'setyod@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-01', 'JT-0153', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0004', NULL, '0AC1PXZek3D8gnI.png', NULL, NULL, '2022-05-22 06:53:14'),
+(361, '210100004', 'SETYO DEWI UTARI', '2', 'setyod@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-01', 'JT-0153', 'DV_0002', 'CG_0011', 'DP-0008', 'SDP-0023', 'LV-0004', NULL, '0AC1PXZek3D8gnI.png', NULL, NULL, '2022-06-01 18:49:13'),
 (362, '210100024', 'SARI DIYAH PALUPY', '1', 'saridpha@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2021-01-15', 'JT-0016', 'DV_0002', 'CG_0020', 'DP-0002', 'SDP-0003', 'LV-0005', NULL, NULL, NULL, NULL, '2022-05-22 21:44:10'),
 (363, '211200171', 'TOSHIHITO  ABE', '1', 'abe@gmail.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2020-01-05', 'JT-0113', NULL, NULL, 'DP-0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (364, '220100111', 'KUKUH GUMILANG', '1', 'kukuh_gumilDP-0001@yahoo.com', NULL, '$2a$10$kQdT1DPvsC6WLFqc7gLOd.VNmc1bKPkhoL0.f97x13qzaaw3R8/VC', '2022-01-01', 'JT-0033', NULL, NULL, 'DP-0005', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1552,37 +1612,44 @@ CREATE TABLE `white_tag` (
 INSERT INTO `white_tag` (`id_white_tag`, `id_directory`, `id_user`, `start`, `actual`) VALUES
 ('0SYEC1653278362', 218, 2, 0, 1),
 ('1IAH81653951932', 338, 2, 1, 3),
-('4xizc1653960266', 260, 230, 1, 3),
+('2fwyz1653961584', 356, 230, 2, 4),
+('2jV3l1653961584', 260, 230, 1, 3),
 ('6ANsm1653451601', 253, 1, 1, 4),
+('71nFb1653963523', 368, 227, 1, 3),
 ('7eeXy1649145212', 134, 1, 0, 1),
+('Apik61653961553', 337, 1, 1, 4),
 ('asePq1650418519', 204, 361, 1, 4),
+('bOaAZ1653961533', 325, 361, 2, 4),
 ('CQLn11653623020', 266, 227, 0, 3),
-('eBRMH1653960266', 356, 230, 2, 4),
+('dNlBX1653961533', 349, 361, 2, 3),
 ('EffT91653951932', 284, 2, 1, 3),
+('esDzM1653963523', 296, 227, 4, 4),
+('G19xV1653961533', 415, 361, 2, 3),
+('GCCjS1653961553', 307, 1, 1, 3),
+('huRdS1653961533', 301, 361, 3, 4),
 ('II1oM1650338788', 198, 2, 2, 3),
-('ioXJ41653960266', 362, 230, 3, 4),
-('jLPOQ1653951896', 349, 361, 2, 3),
+('k06UO1653963523', 320, 227, 2, 4),
+('K7ZBD1653961584', 386, 230, 2, 4),
 ('lA6JP1653951932', 308, 2, 1, 3),
-('LP6dY1653960249', 368, 227, 1, 3),
-('lqCRg1653951896', 325, 361, 2, 4),
-('MMrR81653951941', 331, 1, 1, 3),
-('myMtx1653960266', 272, 230, 1, 4),
-('NiOGk1653960249', 278, 227, 2, 4),
-('OmAPG1653960249', 320, 227, 2, 4),
+('LegQz1653961553', 397, 1, 2, 2),
+('mo8B61653961553', 283, 1, 2, 3),
+('NGzoF1653961584', 404, 230, 2, 4),
+('Nkip51653961584', 314, 230, 2, 4),
 ('p2co41649145212', 152, 1, 0, 1),
-('PfTY31653960266', 290, 230, 2, 4),
-('QN8ul1653951896', 301, 361, 3, 4),
+('PjwL21653963523', 422, 227, 1, 3),
+('R5fuv1653961584', 272, 230, 1, 4),
 ('SHkcx1653358498', 229, 1, 0, 1),
 ('SWrxk1649384942', 200, 1, 0, 5),
-('tG3KN1653960249', 296, 227, 4, 4),
+('u2lnE1653961584', 290, 230, 2, 4),
 ('vG4dv1653278340', 217, 1, 3, 5),
-('VQgSH1653951941', 283, 1, 2, 3),
-('w8T6W1653960249', 344, 227, 2, 3),
+('vuXTa1653963523', 410, 227, 2, 3),
+('W23B81653963523', 278, 227, 2, 4),
+('waF7h1653963523', 344, 227, 2, 3),
+('Wh6jb1653963523', 392, 227, 2, 4),
 ('wld2O1653951932', 332, 2, 2, 4),
-('wuylj1653951941', 307, 1, 1, 3),
+('Y2Ygk1653961553', 331, 1, 1, 3),
 ('yb6bI1653951932', 254, 2, 0, 3),
-('zGXy31653951941', 337, 1, 1, 4),
-('zZgiz1653960266', 314, 230, 2, 4);
+('Zj4bu1653961584', 362, 230, 3, 4);
 
 --
 -- Indexes for dumped tables
@@ -1722,7 +1789,7 @@ ALTER TABLE `white_tag`
 -- AUTO_INCREMENT for table `competencies_directory`
 --
 ALTER TABLE `competencies_directory`
-  MODIFY `id_directory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=384;
+  MODIFY `id_directory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=432;
 
 --
 -- AUTO_INCREMENT for table `competencie_groups`
@@ -1734,13 +1801,13 @@ ALTER TABLE `competencie_groups`
 -- AUTO_INCREMENT for table `curriculum`
 --
 ALTER TABLE `curriculum`
-  MODIFY `id_curriculum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id_curriculum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT for table `curriculum_to_job`
 --
 ALTER TABLE `curriculum_to_job`
-  MODIFY `id_ctb` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=236;
+  MODIFY `id_ctb` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
