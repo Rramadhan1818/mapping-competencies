@@ -26,6 +26,7 @@ class MemberCG extends Controller
     {
         $data = User::leftJoin('department as dp', 'users.id_department', '=', 'dp.id_department')
             ->leftJoin('job_title as jt', 'users.id_job_title', '=', 'jt.id_job_title')
+            ->leftJoin('cg as cg', 'users.id_cg', '=', 'cg.id_cg')
             ->get(['users.*', 'dp.nama_department', 'jt.nama_job_title']);
         return Datatables::of($data)
             ->addIndexColumn()

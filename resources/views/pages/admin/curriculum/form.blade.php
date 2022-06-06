@@ -101,7 +101,7 @@
                     $('#training_module_group2').empty();
                     var option = "";
                     for (let i = 0; i < response.length; i++) {
-                        option += '<option value="' + response[i].name + '">' +
+                        option += '<option value="' + response[i].id + '">' +
                             response[i].name + '</option>';
                     }
                     $('#training_module_group2').html();

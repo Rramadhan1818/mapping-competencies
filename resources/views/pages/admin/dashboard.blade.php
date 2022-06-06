@@ -114,7 +114,7 @@ h4 {
       </div> --}}
       <div class="card tale-bg">
         <div class="card-people mt-auto" style="padding-top: 0px !important;">
-          <img src="{{ asset('assets/images/dashboard/employee.png')}}" alt="people" style="height:264px; padding: 55px 45px 0px 45px">
+          <img src="{{ asset('assets/images/dashboard/employee.png')}}" alt="people" style="height:264px; padding: 52px 30px 0px 30px">
           <h4 class=" our-cg">We're {{ $data['nama_cg'] }} !</h4>
           <div class="weather-info">
             <div class="d-flex">
@@ -186,7 +186,7 @@ h4 {
               $url = asset('assets/images/faces/face0.png');
           }
         @endphp
-        <div class="text-center card-box mr-3">
+        <div class="text-center card-box">
           <div class="member-card" style="width: 150px">
             <div class="thumb-lg member-thumb mx-auto"><img src="{{$url}}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
               <div class="float-none" style="height: 140px">

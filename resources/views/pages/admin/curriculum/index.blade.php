@@ -393,7 +393,7 @@
                         $('#training_module_group').empty();
                         var option = "";
                         for (let i = 0; i < response.length; i++) {
-                            option += '<option value="' + response[i].name + '">' +
+                            option += '<option value="' + response[i].id + '">' +
                                 response[i].name + '</option>';
                         }
                         $('#training_module_group').html();
