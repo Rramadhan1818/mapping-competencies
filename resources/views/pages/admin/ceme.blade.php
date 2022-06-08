@@ -62,38 +62,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                        @foreach ($wt as $item)
+                                        @php
+                                            $avg = round((($item->score($item->id,'B')[0]['cnt'] + $item->score($item->id,'I')[0]['cnt'] + $item->score($item->id,'A')[0]['cnt']) / 3),2);
+                                        @endphp
                                         <tr>
-                                            <td>1</td>
-                                            <td>WINDY A..</td>
-                                            <td>100%</td>
-                                            <td>87.45%</td>
-                                            <td>68.76%</td>
-                                            <td><span class="badge badge-warning">85.40%</span></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->nama_pengguna }}.</td>
+                                            <td>{{ $item->score($item->id,'B')[0]['cnt'] }}%</td>
+                                            <td>{{ $item->score($item->id,'I')[0]['cnt'] }}%</td>
+                                            <td>{{ $item->score($item->id,'A')[0]['cnt'] }}%</td>
+                                            <td>
+                                                @if ($avg > 81.37)
+                                                <span class="badge badge-warning">{{ $avg }}%</span>
+                                                @else
+                                                {{ $avg }}%
+                                                @endif
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>MARIA K..</td>
-                                            <td>100%</td>
-                                            <td>78.30%</td>
-                                            <td>68.40%</td>
-                                            <td><span class="badge badge-warning">83.35%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>REZKI R..</td>
-                                            <td>100%</td>
-                                            <td>34.00%</td>
-                                            <td>58.00%</td>
-                                            <td>64.0%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>CHANDRA P..</td>
-                                            <td>100%</td>
-                                            <td>34.30%</td>
-                                            <td>56.00%</td>
-                                            <td>63.33%</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

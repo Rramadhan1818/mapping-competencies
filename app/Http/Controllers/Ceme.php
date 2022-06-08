@@ -5,18 +5,59 @@ namespace App\Http\Controllers;
 use App\CemeModel;
 use App\JobTitleUsers;
 use App\User;
+use App\WhiteTagModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class Ceme extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $q= request('q');
+        $select = [
+            "nama_pengguna","nik","email","gambar",DB::raw("DATE_FORMAT(tgl_masuk,'%d-%m-%y') AS tgl_masuk"),"jt.nama_job_title","divisi.nama_divisi","dprtm.nama_department","s_dprtm.nama_subdepartment","level.nama_level","nama_cg","role"
+        ];
+        // $user = User::select($select)
+        //             ->leftJoin("role","role.id_role","peran_pengguna")
+        //             ->leftJoin("divisi","divisi.id_divisi","users.id_divisi")
+        //             ->leftJoin("job_title as jt","jt.id_job_title","users.id_job_title")
+        //             ->leftJoin("level","level.id_level","users.id_level")
+        //             ->leftJoin("department as dprtm","dprtm.id_department","users.id_department")
+        //             ->leftJoin("sub_department as s_dprtm","s_dprtm.id_subdepartment","users.id_sub_department")
+        //             ->leftJoin("cg","cg.id_cg","users.id_cg")
+        //             ->first();
+
+        $wt = WhiteTagModel::select('users.*')
+        ->join("users",function ($join) use ($request){
+            $join->on("users.id","white_tag.id_user")
+               ->where([
+                   ["white_tag.actual",">=","cd.target"]
+               ]);
+        })
+        ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
+        ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
+        ->groupBy('id_user')->get();
+        $counting = WhiteTagModel::select(DB::raw("COUNT(*) as cnt"),"level")
+                                 ->join("users",function ($join) use ($request){
+                                     $join->on("users.id","white_tag.id_user")
+                                        ->where([
+                                            ["white_tag.actual",">=","cd.target"]
+                                        ]);
+                                 })
+                                 ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
+                                 ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
+                                 ->groupBy("level")
+                                 ->get();
+
+        // $wt = WhiteTagModel::select('*',DB::raw("COUNT(*) as cnt"))->groupBy('user_id');
+        // dd($wt);
+
         return view('pages.admin.ceme',[
-            'q' => $q
+            'q' => $q,
+            'wt' => $wt
         ]);
     }
 
