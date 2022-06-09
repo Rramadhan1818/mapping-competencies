@@ -244,7 +244,6 @@
         });
     })
 
-    $("#tableEdit").DataTable();
     chartSkillCategory();
     whiteTagAllDataTable();
     initDatatable();
@@ -305,6 +304,9 @@
           cache:false,
           success: function(html) {
               $("#formMapComp").html(html);
+              $("#tableEdit").DataTable({
+                searching: true
+              });
           },
           error: function(req, sts, err) {
               console.log(err);
