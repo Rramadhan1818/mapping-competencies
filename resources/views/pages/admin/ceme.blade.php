@@ -64,20 +64,21 @@
                                     <tbody>
 
                                         @foreach ($wt as $item)
-                                        @php
-                                            $avg = round((($item->score($item->id,'B')[0]['cnt'] + $item->score($item->id,'I')[0]['cnt'] + $item->score($item->id,'A')[0]['cnt']) / 3),2);
-                                        @endphp
+
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->nama_pengguna }}.</td>
-                                            <td>{{ $item->score($item->id,'B')[0]['cnt'] }}%</td>
-                                            <td>{{ $item->score($item->id,'I')[0]['cnt'] }}%</td>
-                                            <td>{{ $item->score($item->id,'A')[0]['cnt'] }}%</td>
+                                            <td>{{ round($item->score($item->id,'B'),2) }}%</td>
+                                            <td>{{ round($item->score($item->id,'I'),2) }}%</td>
+                                            <td>{{ round($item->score($item->id,'A'),2) }}%</td>
                                             <td>
-                                                @if ($avg > 81.37)
-                                                <span class="badge badge-warning">{{ $avg }}%</span>
+                                                @php
+                                                    $avg = round($item->totalScore($item->id),2);
+                                                @endphp
+                                                @if ($avg >= 81.37)
+                                                    <span class="badge badge-warning">{{ $avg }}%</span>
                                                 @else
-                                                {{ $avg }}%
+                                                    {{ $avg }}%
                                                 @endif
                                             </td>
                                         </tr>
