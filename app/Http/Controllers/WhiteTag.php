@@ -54,7 +54,8 @@ class WhiteTag extends Controller
                 ->join("curriculum AS crclm","crclm.id_curriculum","cd.id_curriculum")
                 ->join("competencie_groups as compGroup","compGroup.id","crclm.training_module_group")
                 ->join("skill_category AS sc","sc.id_skill_category","crclm.id_skill_category")
-                ->where("white_tag.actual",">=","cd.target")
+                ->whereRaw("white_tag.actual >= cd.target AND white_tag.actual > 0 AND white_tag.start >= 0")
+                // ->where("white_tag.actual",">=","cd.target")
                 ->get();
         return Datatables::of($data)
         ->addIndexColumn()
@@ -236,7 +237,7 @@ class WhiteTag extends Controller
                                          ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
                                          ->leftjoin("white_tag as wt",function ($j) use ($request){
                                              $j->on("wt.id_directory","cd.id_directory")
-                                                ->where("wt.actual",">=","cd.target")
+                                                ->whereRaw("wt.actual >= cd.target AND wt.actual > 0 AND wt.start >= 0")
                                                 ->join("users",function ($u) use ($request){
                                                     $u->on("users.id","wt.id_user");
                                                     if($request->cg != 'all'){
@@ -275,7 +276,7 @@ class WhiteTag extends Controller
                                              ->join("competencies_directory as cd","cd.id_curriculum","curriculum.id_curriculum")
                                              ->leftJoin("white_tag as wt",function ($j) use ($request){
                                                  $j->on("wt.id_directory","cd.id_directory")
-                                                   ->where("wt.actual",">=","cd.target")
+                                                   ->whereRaw("wt.actual >= cd.target AND wt.actual > 0 AND wt.start >= 0")
                                                    ->join("users",function ($u) use ($request){
                                                     $u->on("users.id","wt.id_user");
                                                     if($request->cg != 'all'){
