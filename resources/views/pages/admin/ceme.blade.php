@@ -64,7 +64,6 @@
                                     <tbody>
 
                                         @foreach ($wt as $item)
-
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->nama_pengguna }}.</td>
@@ -684,6 +683,7 @@
             // xhtml += '</tr>';
             $('.trJob').text('');
             // $('.trJob').append(xhtml);
+            location.reload();
         })
 
         $('#modalEditJobTitle').on('hidden.bs.modal', function() {
@@ -779,60 +779,85 @@
             })
         })
 
+
+        // chart
+        let multiSkill;
+        let pieLabel;
+        let pieTotalScore;
+        let ceme = '{{ request('q') }}';
+        $.ajax({
+            url:'{{ route('ceme.chartCeme') }}',
+            type:'POST',
+            dataType:'JSON',
+            data:{
+                ceme
+            },
+            async:false,
+            success: function(response)
+            {
+                pieLabel = response.label;
+                pieTotalScore = response.totalScore;
+            }
+        })
+        $.ajax({
+            url:'{{ route('ceme.chartMe') }}',
+            type:'POST',
+            dataType:'JSON',
+            data:{
+                ceme
+            },
+            async:false,
+            success: function(response)
+            {
+                multiSkill = response;
+            }
+        })
+
+        var nameMultiSkill = [];
+        var totalMultiSkill = [];
+        var bgMultiSkill = [];
+        var bMultiSkill = [];
+        var bgCeme = [];
+        var bCeme = [];
+
+        function acakBg(opacity)
+        {
+            var rx = Math.floor(Math.random() * 256);
+            var ry = Math.floor(Math.random() * 256);
+            var rz = Math.floor(Math.random() * 256);
+            return bgColor = "rgba(" + rx + "," + ry + "," + rz + ","+opacity+")";
+        }
+
+        multiSkill.forEach(multi => {
+            nameMultiSkill.push(multi.nama_pengguna);
+            totalMultiSkill.push(multi.totalSkill);
+            bgMultiSkill.push(acakBg(0.5));
+            bMultiSkill.push(acakBg(0.7));
+        });
+
+        pieLabel.forEach(multi => {
+            bgCeme.push(acakBg(0.5));
+            bCeme.push(acakBg(0.7));
+        });
         var meData = {
                 datasets: [{
-                data: [3, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 159, 64, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                data: totalMultiSkill,
+                backgroundColor: bgMultiSkill,
+                borderColor: bMultiSkill,
                 }],
 
-                labels: [
-                'Windy Adriani Kacaribu',
-                'Maria Kurniati Gedi Raya',
-                ]
+                labels: nameMultiSkill
             };
 
             var doughnutPieData = {
                 datasets: [{
-                data: [85.50, 82.23],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(153, 102, 255, 0.5)',
-                    'rgba(255, 159, 64, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                data: pieTotalScore,
+                backgroundColor: bgCeme,
+                borderColor: bCeme,
                 }],
 
                 // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: [
-                'Windy Adriani Kacaribu',
-                'Maria Kurniati Gedi Raya',
-
-                ]
+                labels: pieLabel
             };
             var doughnutPieOptions = {
                 responsive: true,

@@ -17,20 +17,115 @@ class Ceme extends Controller
     public function index(Request $request)
     {
         $q= request('q');
-        $wt = WhiteTagModel::select('users.*')
-        ->join("users",function ($join) use ($request){
-            $join->on("users.id","white_tag.id_user")
-               ->where([
-                   ["white_tag.actual",">=","cd.target"]
-               ]);
-        })
-        ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
-        ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
-        ->groupBy('id_user')->get();
+        if($q === 'all')
+        {
+            $wt = WhiteTagModel::select('users.*')
+                ->join("users",function ($join) use ($request){
+                    $join->on("users.id","white_tag.id_user")
+                    ->where([
+                        ["white_tag.actual",">=","cd.target"]
+                    ]);
+                })
+                ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
+                ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
+                ->groupBy('id_user')->get();
+        }else{
+            $wt = WhiteTagModel::select('users.*')
+                ->join("users",function ($join) use ($request){
+                    $join->on("users.id","white_tag.id_user")
+                    ->where([
+                        ["white_tag.actual",">=","cd.target"]
+                    ]);
+                })
+                ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
+                ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
+                ->where('id_cg',auth()->user()->id_cg)
+                ->groupBy('id_user')->get();
+        }
+        $pie = [
+            'label' => [],
+            'totalScore' => []
+        ];
+        foreach($wt as $data)
+        {
+            array_push($pie['label'],$data->nama_pengguna);
+            array_push($pie['totalScore'],round($data->totalScore($data->id),2));
+        };
         return view('pages.admin.ceme',[
             'q' => $q,
-            'wt' => $wt
+            'wt' => $wt,
+            'pie' => $pie
         ]);
+    }
+
+    public function chartCeme(Request $request)
+    {
+        $ceme = request('q');
+        $pie = [
+            'label' => [],
+            'totalScore' => []
+        ];
+        $cgAuth = Auth::user()->id_cg;
+        if($ceme === 'all')
+        {
+            $wt = WhiteTagModel::select('users.*')
+                ->join("users",function ($join) use ($request){
+                    $join->on("users.id","white_tag.id_user")
+                    ->where([
+                        ["white_tag.actual",">=","cd.target"]
+                    ]);
+                })
+                ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
+                ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
+                ->groupBy('id_user')->get();
+        }else{
+            $wt = WhiteTagModel::select('users.*')
+                ->join("users",function ($join) use ($request){
+                    $join->on("users.id","white_tag.id_user")
+                    ->where([
+                        ["white_tag.actual",">=","cd.target"]
+                    ]);
+                })
+                ->join('cg', function ($join) use ($cgAuth) {
+                    $join->on('users.id_cg', 'cg.id_cg')
+                    ->where('users.id_cg', $cgAuth);
+                })
+                ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
+                ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
+                ->groupBy('id_user')->get();
+        }
+        foreach($wt as $data)
+        {
+            array_push($pie['label'],$data->nama_pengguna);
+            array_push($pie['totalScore'],round($data->totalScore($data->id),2));
+        };
+
+        return response()->json($pie);
+    }
+
+    public function chartMe()
+    {
+        $ceme = request('ceme');
+
+        if($ceme === 'all')
+        {
+            $users = DB::table('users')->where('is_competent',1)
+            ->leftJoin('job_title_users','job_title_users.user_id','users.id')
+            ->groupBy('job_title_users.user_id')
+            ->select('users.nama_pengguna',DB::raw('count(job_title_users.user_id) as totalSkill'))
+            ->groupBy(DB::Raw('IFNULL( job_title_users.user_id , 0 )'))
+            ->get();
+
+        }else{
+            $users = DB::table('users')->where('is_competent',1)
+            ->leftJoin('job_title_users','job_title_users.user_id','users.id')
+            ->groupBy('job_title_users.user_id')
+            ->select('users.nama_pengguna',DB::raw('count(job_title_users.user_id) as totalSkill'))
+            ->groupBy(DB::Raw('IFNULL( job_title_users.user_id , 0 )'))
+            ->where('id_cg',auth()->user()->id_cg)
+            ->get();
+        }
+        return response()->json($users);
     }
 
     public function cgJson(Request $request)

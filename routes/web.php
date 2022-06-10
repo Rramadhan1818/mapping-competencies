@@ -93,6 +93,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('ceme/add-job-title','Ceme@addJobTitle')->name('ceme.addJobTitle');
     Route::post('ceme/get-job-title','Ceme@getJobTitle')->name('ceme.getJobTitle');
     Route::post('ceme/delete-job-title','Ceme@deleteJobTitle')->name('ceme.deleteJobTitle');
+    Route::post('ceme/chartCeme','Ceme@chartCeme')->name('ceme.chartCeme');
+    Route::post('ceme/chartMe','Ceme@chartMe')->name('ceme.chartMe');
 
 
     Route::prefix("grade")->group(function () {
