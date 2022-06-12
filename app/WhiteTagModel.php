@@ -66,18 +66,18 @@ class WhiteTagModel extends Model
             array_push($data,$item);
         }
         $data2 = array_sum($data)/3;
-        if($data2 >= 81.37)
-        {
-            // set is competent = 1
-            $user = User::find($id_user);
-            $user->is_competent = 1;
-            $user->save();
-        }else{
-            // set is competent = 0
-            $user = User::find($id_user);
-            $user->is_competent = 0;
-            $user->save();
-        }
+        // if($data2 >= 81.37)
+        // {
+        //     // set is competent = 1
+        //     $user = User::find($id_user);
+        //     $user->is_competent = 1;
+        //     $user->save();
+        // }else{
+        //     // set is competent = 0
+        //     $user = User::find($id_user);
+        //     $user->is_competent = 0;
+        //     $user->save();
+        // }
         return $data2;
     }
 

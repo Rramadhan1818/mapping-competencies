@@ -226,6 +226,66 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modalDetail" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <img src="{{ asset('assets/images/faces/face0.png') }}" alt="" class="img-fluid rounded-circle" style="max-height: 200px;max-width:200px">
+                                    <h3 class="mt-3 msName"></h3>
+                                    <h5 class="mt-1 msCg"></h5>
+                                    <ul class="list-unstyled text-left mt-3">
+                                        <li class="list-item d-flex justify-content-between">
+                                            <span class="font-weight-bold">Divisi</span>
+                                            <span class="msDivisi"></span>
+                                        </li>
+                                        <li class="list-item d-flex justify-content-between">
+                                            <span class="font-weight-bold">Job Title</span>
+                                            <span class="msJobTitle"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h5 class="mb-3">Multi Skiill Employee</h5>
+                                <table class="display dtable expandable-table table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">No.</th>
+                                            <th>Job Title</th>
+                                            <th>Level</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="trMs">
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @push('style')
     {{-- <link rel="stylesheet" href="{{ asset('assets/select2/css/select2.min.css') }}"> --}}
@@ -397,6 +457,63 @@
             }, 'show');
         })
 
+
+        $('body').on('click','.btnDetail',function(){
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var cg = $(this).data('cg');
+            var divisi = $(this).data('divisi');
+            var jobtitle = $(this).data('jobtitle');
+            var department = $(this).data('department');
+
+            $('.msName').text(name);
+            $('.msCg').text(cg);
+            $('.msDivisi').text(divisi);
+            $('.msJobTitle').text(jobtitle);
+            $('.msDepartment').text(department);
+
+            // get dat job title
+            $.ajax({
+                url: '{{ route('ceme.getJobTitle') }}',
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                dataType: 'JSON',
+                success: function(response) {
+                    var i = 1;
+                    $('.trMs').empty();
+                    response.data.forEach(data => {
+                        switch (data.value) {
+                            case 1:
+                                var levelValue = 'On The Job Trainning (OJT)';
+                                break;
+                            case 2:
+                                var levelValue = 'Temporary Back Up';
+                                break;
+                            case 3:
+                                var levelValue = 'Full Back Up';
+                                break;
+                            case 4:
+                                var levelValue = 'Main Job';
+                                break;
+                            default:
+                                var levelValue = 'Tidak Ada';
+                        }
+                        var xhtml = '';
+                        xhtml += '<tr>'
+                        xhtml += '<td>' + i++ + '</td>'
+                        xhtml += '<td>' + data.job_title
+                            .nama_job_title + '</td>'
+                        xhtml += '<td>' + levelValue + '</td>'
+                        xhtml += '</tr>';
+                        $('.trMs').append(xhtml);
+                    });
+                }
+            })
+            $('#modalDetail .modal-title').text('Detail Multiskill');
+            $('#modalDetail').modal('show');
+        })
 
         // ketika form tambah job title di klik
         $('.btnSubmitJobTitle').on('click', function() {
