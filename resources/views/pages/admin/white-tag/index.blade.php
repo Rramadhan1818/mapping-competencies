@@ -302,16 +302,16 @@
     var idSkillCategory = null
 
   function getMapComp(id) {
+    $('#tableEdit').DataTable().destroy()
       const url = "{!! route('formWhiteTag') !!}?id="+id+"&type=general";
       $.ajax({
           url:url,
           cache:false,
           success: function(html) {
               $("#formMapComp").html(html);
-              $('#tableEdit').DataTable().reload();
-              $("#tableEdit").DataTable({
+              $('#tableEdit').DataTable({
                 searching: true
-              });
+              }).reload();
           },
           error: function(req, sts, err) {
               console.log(err);
