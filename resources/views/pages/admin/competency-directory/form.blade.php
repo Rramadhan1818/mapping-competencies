@@ -71,10 +71,11 @@
               @endphp
               <tr>
                 <td>
-                  <select class="form-control form-control-sm" name="datas[{{$key}}][id_job_title]" required>
+                  <select class="selectpicker form-control form-control-sm selectEdit" name="datas[{{$key}}][id_job_title]" required data-live-search="true" data-hide-disabled="true"
+                  data-actions-box="true">
                       <option value="">Pilih Job Title</option>
                       @foreach($jobTitles as $job)
-                        <option {{($job->id_job_title == $directory->id_job_title) ? "selected" : ''}} value="{{$job->id_job_title}}">{{$job->nama_job_title}}</option>
+                        <option class="select-cr" {{($job->id_job_title == $directory->id_job_title) ? "selected" : ''}} value="{{$job->id_job_title}}">{{$job->nama_job_title}}</option>
                       @endforeach
                   </select>
                 </td>
@@ -110,6 +111,7 @@
 
 $(document).ready(function(){
   $("#id_curriculum").selectpicker('refresh');
+  $(".selectEdit").selectpicker('refresh');
     $('select').on('change', function() {
       idd = $("option:selected").attr("id") ;
         if(idd == 5){
@@ -149,6 +151,7 @@ $(document).ready(function(){
             tr = document.createElement("tr");
             tr.innerHTML = html;
             $("#bodyCompetencies").append(tr);
+            $(".selectNew").selectpicker('refresh');
           }
         })
     }

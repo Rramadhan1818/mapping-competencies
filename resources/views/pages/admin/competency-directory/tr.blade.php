@@ -1,5 +1,6 @@
 <td>
-  <select class='form-control form-control-sm' name='datas[{{$time}}][id_job_title]'>
+  <select class='selectpicker selectNew form-control form-control-sm' name='datas[{{$time}}][id_job_title]' data-live-search="true" data-hide-disabled="true"
+  data-actions-box="true">
       <option value=''>Pilih Job Title</option>
       @foreach($jobTitles as $job)
         <option value="{{$job->id_job_title}}">{{$job->nama_job_title}}</option>
