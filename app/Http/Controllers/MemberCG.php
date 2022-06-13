@@ -184,10 +184,12 @@ class MemberCG extends Controller
         $counting = WhiteTagModel::select(DB::raw("COUNT(*) as cnt"),"level")
                                  ->join("users",function ($join) use ($request){
                                      $join->on("users.id","white_tag.id_user")
-                                        ->where([
-                                            ["white_tag.id_user",$request->id],
-                                            ["white_tag.actual",">=","cd.target"]
-                                        ]);
+                                         ->whereRaw("white_tag.id_user = '".$request->id."' white_tag.actual >= cd.target AND white_tag.actual > 0 AND white_tag.start >= 0");
+                                        // ->where([
+                                        //     ["white_tag.id_user",$request->id],
+                                        //     ["white_tag.actual",">=","cd.target"],
+
+                                        // ]);
                                  })
                                  ->join("competencies_directory as cd","cd.id_directory","white_tag.id_directory")
                                  ->join("curriculum as crclm","crclm.id_curriculum","cd.id_curriculum")
