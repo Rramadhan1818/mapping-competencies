@@ -1,5 +1,3 @@
-<input type="hidden" name="user_id" value="{{$user->id}}">
-<input type="hidden" name="type" value="{{$type}}">
 @forelse ($comps as $key => $comp)
 <tr>
     <td>{{$key+1}}</td>
@@ -14,7 +12,8 @@
         @else
             <input type="hidden" name="data[{{$key.time()}}][id]" value="{{$comp->id_directory}}">
             <select class="form-control" name="data[{{$key.time()}}][start]" id="selectStart{{$key.time()}}">
-                <option value="0" {{($comp->start  == '0' || $comp->start == null ) ? 'selected' : ''}}>0</option>
+                <option value=""  {{($comp->start == null || $comp->tagingStatus == 'Belum diatur') ? 'selected' : ''}}>Pilih Level</option>
+                <option value="0" {{$comp->start  == '0' ? 'selected' : ''}}>0</option>
                 <option value="1" {{$comp->start  == '1' ? 'selected' : ''}}>1</option>
                 <option value="2" {{$comp->start  == '2' ? 'selected' : ''}}>2</option>
                 <option value="3" {{$comp->start  == '3' ? 'selected' : ''}}>3</option>
@@ -28,7 +27,8 @@
                 <input type="text" class="form-control" value="{{$comp->actual}}" disabled>
             @else
                 <select class="form-control" name="data[{{$key.time()}}][actual]" id="selectActual{{$key.time()}}">
-                    <option value="0" {{($comp->actual  == '0' || $comp->actual == null) ? 'selected' : ''}}>0</option>
+                    <option value=""  {{($comp->start == null || $comp->tagingStatus == 'Belum diatur') ? 'selected' : ''}}>Pilih Level</option>
+                    <option value="0" {{$comp->actual  == '0' ? 'selected' : ''}}>0</option>
                     <option value="1" {{$comp->actual  == '1' ? 'selected' : ''}}>1</option>
                     <option value="2" {{$comp->actual  == '2' ? 'selected' : ''}}>2</option>
                     <option value="3" {{$comp->actual  == '3' ? 'selected' : ''}}>3</option>

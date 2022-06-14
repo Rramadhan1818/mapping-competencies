@@ -140,6 +140,7 @@
             </div>
             <form action="{!!route('actionWhiteTag')!!}" id="formWhiteTag" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" id="user_id" name="user_id" value="">
                 <div class="modal-body">
                     <div class="table-responsive">
                         <table class=" display expandable-table table-striped table-hover" id="tableEdit" style="width:100%">
@@ -155,12 +156,14 @@
                                     <th class="text-center" rowspan="2">Status</th>
                                 </tr> 
                                 <tr>
-                                    <th class="text-center" style="width:90px">Start</th>
-                                    <th class="text-center" style="width:90px">Actual</th>
-                                    <th class="text-center" style="width:90px">Target</th>
+                                    <th class="text-center" style="min-width:90px">Start</th>
+                                    <th class="text-center" style="min-width:90px">Actual</th>
+                                    <th class="text-center" style="min-width:90px">Target</th>
                                 </tr>
                             </thead>
-                            <tbody id="formMapComp"></tbody>
+                            <tbody id="formMapComp">
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -303,6 +306,7 @@
 
   function getMapComp(id) {
     $('#tableEdit').DataTable().destroy()
+    $("#user_id").val(id);
       const url = "{!! route('formWhiteTag') !!}?id="+id+"&type=general";
       $.ajax({
           url:url,

@@ -340,7 +340,6 @@ class WhiteTag extends Controller
     public function actionWhiteTag(Request $request)
     {
         $request->validate([
-            "type" => "required|string|in:general,functional",
             "user_id" => "required|numeric",
             "data" => "nullable|array",
             "data.*.id" => "nullable|numeric",
@@ -361,13 +360,15 @@ class WhiteTag extends Controller
             if(isset($data["data"]) && count($data["data"]) > 0){
                 $insert = [];
                 for($i=0; $i < count($data["data"]); $i++){
-                    $insert[$i] = [
-                        "id_white_tag"=> $this->random_string(5,5,false).time(),
-                        "id_directory" => $data["data"][$i]["id"],
-                        "id_user" => $data["user_id"],
-                        "start" => $data["data"][$i]["start"],
-                        "actual" => $data["data"][$i]["actual"]
-                    ];
+                    if($data["data"][$i]["start"] != "" && $data["data"][$i]["actual"] != ""){
+                        $insert[$i] = [
+                            "id_white_tag"=> $this->random_string(5,5,false).time(),
+                            "id_directory" => $data["data"][$i]["id"],
+                            "id_user" => $data["user_id"],
+                            "start" => $data["data"][$i]["start"],
+                            "actual" => $data["data"][$i]["actual"]
+                        ];
+                    }
                 }
                 WhiteTagModel::insert($insert);
             }
