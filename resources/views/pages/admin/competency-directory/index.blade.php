@@ -165,7 +165,7 @@
                         $('#table-cd').DataTable().destroy();
                         initDatatable();
                         Swal.fire({
-                            position:'top-end',
+                            position:'center',
                             icon:'success',
                             title:data.message,
                             showConfirmButton:false,
@@ -174,7 +174,7 @@
                     },
                     error:function (err) {
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'error',
                             title: err.responseJSON.message,
                             showConfirmButton: false,
@@ -199,7 +199,7 @@
                 },
                 error: function (response) {
                     Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'error',
                             title: response.responseJSON.errors,
                             showConfirmButton: false,
@@ -241,7 +241,7 @@
                 },
                 error:function(err){
                     Swal.fire({
-                        position: 'top-end',
+                        position: 'center',
                         icon: 'error',
                         title: err.responseJSON.message,
                         showConfirmButton: false,

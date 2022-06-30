@@ -395,7 +395,7 @@ function displayTime(){
   document.getElementById('date').innerText = timeNow.toLocaleString('id-ID',{
     dateStyle:'full'
   });
-  console.log(timeNow);
+  // console.log(timeNow);  
 }
 
 displayTime();
