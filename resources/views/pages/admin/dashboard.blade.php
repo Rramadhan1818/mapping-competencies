@@ -58,7 +58,7 @@ h4 {
   top: 22px;
   right: 150px;
   left: 150px;
-  font-family: 'Bahnschrift', 'Nunito';
+  font-family: 'Monteserrat', 'Nunito';
   font-size: 29px;
   font-weight: 600;
   color: #373435;
@@ -166,7 +166,7 @@ h4 {
         <div class="col-md-6 stretch-card transparent">
           <div class="card card-light-danger">
             <div class="card-body">
-              <p class="mb-4">Roration</p>
+              <p class="mb-4">Rotation</p>
               <p class="fs-30 mb-2">0</p>
               {{-- <p>0.22% (30 days)</p> --}}
             </div>

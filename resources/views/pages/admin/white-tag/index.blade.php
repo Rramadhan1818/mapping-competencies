@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'White Tag General')
+@section('title', 'Mapping Competencies General')
 @push('style')
 <style>
      
@@ -32,7 +32,7 @@
         <div id="accordion-gen" class="accordion">
         <div class="card">
             <div class="card-header card-title" data-toggle="collapse" href="#graphgen">
-            White Tag
+            Mapping Competencies
             </div>
                 <div id="graphgen" class="card-body collapse show" data-parent="#accordion-gen" aria-expanded="true">
                         <div class="row mb-0">
@@ -69,10 +69,10 @@
                 {{-- <p class="card-title">White Tag</p> --}}
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item active">
-                        <a class="nav-link active btn-primary" data-toggle="tab" href="#pills-home" type="button">White Tag CG</a>
+                        <a class="nav-link active btn-primary" data-toggle="tab" href="#pills-home" type="button">Edit</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-primary" data-toggle="tab" href="#pills-profile" type="button">White Tag All</a>
+                        <a class="nav-link btn-primary" data-toggle="tab" href="#pills-profile" type="button">Preview</a>
                     </li>
                 </ul>
                 <div class="row">
@@ -100,7 +100,8 @@
                                 <a href="{!!route('exportWhiteTagAll')!!}" class="btn btn-inverse-info float-left mb-2">Export</a>
                             @endif
                             <div class="table-responsive">
-                                <table class="display nowrap expandable-table table-striped table-hover" id="table-white-tag-all" style="width:100%">
+                                {{-- display nowrap expandable-table --}}
+                                <table class="table table-sm table-striped table-hover" id="table-white-tag-all" style="width:100% !important">
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
@@ -152,13 +153,14 @@
                                     <th rowspan="2">Competency</th>
                                     <th rowspan="2">Level</th>
                                     <th rowspan="2">Competency Group</th>
-                                    <th colspan="3" class="text-center">Action</th>
+                                    <th colspan="4" class="text-center">Action</th>
                                     <th class="text-center" rowspan="2">Status</th>
                                 </tr> 
                                 <tr>
                                     <th class="text-center" style="min-width:90px">Start</th>
                                     <th class="text-center" style="min-width:90px">Actual</th>
-                                    <th class="text-center" style="min-width:90px">Target</th>
+                                    <th class="text-center" style="min-width:50px">Target</th>
+                                    <th class="text-center" style="min-width:90px">Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody id="formMapComp">
@@ -199,6 +201,7 @@
                                 <th class="text-center">Start</th>
                                 <th class="text-center">Actual</th>
                                 <th class="text-center">Target</th>
+                                <th class="text-center">Keterangan</th>
                                 <th class="text-center">Status</th>
                             </tr> 
                         </thead>
@@ -273,14 +276,18 @@
         var form = $("#formWhiteTag")
         const url = form.attr("action");
         var formSerialize = $("#formWhiteTag > input[name=user_id], input[name=_token]").serialize()
-        var serializeDatatable = tableEdit.$('input,select').serialize()
+        var serializeDatatable = tableEdit.$('input,select,textarea').serialize()
         var formData = formSerialize+'&'+serializeDatatable
+
+        // console.log(serializeDatatable);
+        // exit();
         $.ajax({
             url:url,
             type:"post",
             cache:false,
             data:formData,
             success:function(data){
+                console.log(data);
                 $("#modal-tambah").modal('hide');
                 $('#table-cg').DataTable().destroy();
                 initDatatable();
@@ -387,6 +394,9 @@
                     data: 'target'
                 },
                 {
+                    data: 'catatan'
+                },
+                {
                     data: 'tagingStatus'
                 },
           ]
@@ -462,7 +472,7 @@
                   next: '&nbsp;'
               }
           },
-          scrollX: true,
+          scrollX: false,
           columns: [
               {
                   data: 'DT_RowIndex', name: 'DT_RowIndex'

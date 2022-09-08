@@ -33,8 +33,8 @@ class WhiteTag extends Controller
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
-            $btn = '<button data-id="' . $row->id . '" onclick="getMapComp('.$row->id.')" class="button-add btn btn-inverse-success btn-icon mr-1" data-toggle="modal" data-target="#modal-tambah"><i class="icon-plus menu-icon"></i></button>';
-            $btn = $btn . '<button type="button" onclick="detailWhiteTag('.$row->id.')" class="btn btn-inverse-info btn-icon" data-toggle="modal" data-target="#modal-detail"><i class="ti-eye"></i></button>';
+            $btn = '<button data-id="' . $row->id . '" onclick="getMapComp(' . $row->id . ')" class="button-add btn btn-inverse-success btn-icon mr-1" data-toggle="modal" data-target="#modal-tambah" data-toggle="tooltip" data-placement="top" title="Tambah Data"><i class="icon-plus menu-icon"></i></button>';
+            $btn = $btn . '<button type="button" onclick="detailWhiteTag(' . $row->id . ')" class="btn btn-inverse-info btn-icon" data-toggle="modal" data-target="#modal-detail"><i class="ti-eye" data-toggle="tooltip" data-placement="top" title="Lihat Detail Mapping"></i></button>';
                 return $btn;
             })
             ->addIndexColumn()
@@ -54,9 +54,10 @@ class WhiteTag extends Controller
                 ->join("curriculum AS crclm","crclm.id_curriculum","cd.id_curriculum")
                 ->join("competencie_groups as compGroup","compGroup.id","crclm.training_module_group")
                 ->join("skill_category AS sc","sc.id_skill_category","crclm.id_skill_category")
-                ->whereRaw("white_tag.actual >= cd.target AND white_tag.actual > 0 AND white_tag.start >= 0")
+                // ->whereRaw("white_tag.actual >= cd.target AND white_tag.actual > 0 AND white_tag.start >= 0")
                 // ->where("white_tag.actual",">=","cd.target")
                 ->get();
+
         return Datatables::of($data)
         ->addIndexColumn()
         ->editColumn('start', function ($row) {
@@ -314,7 +315,7 @@ class WhiteTag extends Controller
             "competencies_directory.id_directory as id_directory","curriculum.no_training_module as no_training",
             "curriculum.training_module as training_module","curriculum.training_module_group as training_module_group",
             "curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start",
-            "white_tag.actual as actual","competencies_directory.target as target",
+            "white_tag.actual as actual", "white_tag.catatan as catatan", "competencies_directory.target as target",
             DB::raw("(SELECT COUNT(*) FROM taging_reason as tr where tr.id_white_tag = white_tag.id_white_tag) as cntTagingReason"),
             // DB::raw("(IF(((white_tag.actual - competencies_directory.target) < 0),'Tidak Mencapai Target','Finish' )) as tagingStatus")
             DB::raw("(CASE WHEN (white_tag.actual - competencies_directory.target) < 0 THEN 'Tidak Mencapai Target'
@@ -344,9 +345,13 @@ class WhiteTag extends Controller
             "data" => "nullable|array",
             "data.*.id" => "nullable|numeric",
             "data.*.start" => "nullable|numeric",
-            "data.*.actual" => "nullable|numeric"
+            "data.*.actual" => "nullable|numeric",
+            "data.*.catatan" => "nullable"
         ]);
+
         DB::beginTransaction();
+        // dd($request);
+        // die();
         try{
             $data = $this->validate_input_v2($request);
             $skillId = [1,2];
@@ -366,7 +371,8 @@ class WhiteTag extends Controller
                             "id_directory" => $data["data"][$i]["id"],
                             "id_user" => $data["user_id"],
                             "start" => $data["data"][$i]["start"],
-                            "actual" => $data["data"][$i]["actual"]
+                            "catatan" => $data["data"][$i]["catatan"],
+                            "actual" => $data["data"][$i]["actual"],
                         ];
                     }
                 }
@@ -384,7 +390,7 @@ class WhiteTag extends Controller
         $user = User::select("id","id_job_title")->where("id",$request->id)->first();
         $skillId = [1,2];
         $select = [
-            "curriculum.no_training_module as no_training","curriculum.training_module as training_module","curriculum.training_module_group as training_module_group","curriculum.level as level","skill_category.skill_category as skill_category","white_tag.start as start","white_tag.actual as actual","competencies_directory.target as target",
+            "curriculum.no_training_module as no_training", "curriculum.training_module as training_module", "curriculum.training_module_group as training_module_group", "curriculum.level as level", "skill_category.skill_category as skill_category", "white_tag.start as start", "white_tag.actual as actual", "white_tag.catatan as catatan", "competencies_directory.target as target",
             // DB::raw("(IF((white_tag.actual - competencies_directory.target) < 0,'Tidak Mencapai Target','Finish' )) as tagingStatus")
             DB::raw("(CASE WHEN (white_tag.actual - competencies_directory.target) < 0 THEN 'Tidak Mencapai Target'
                             WHEN (white_tag.actual IS NULL) THEN 'Belum diatur'

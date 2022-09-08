@@ -35,14 +35,14 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>No.#</th>
+                                            <th>No</th>
                                             <th>No Competency</th>
                                             <th>Skill Category</th>
                                             <th>Competency</th>
                                             <th>Level</th>
                                             <th>Competency Group</th>
                                             <th>Competency Description</th>
-                                            <th style="min-width: 250px">Job Title</th>
+                                            <th style="min-width: 650px">Job Title</th>
                                             <th width="15%">Action</th>
                                         </tr>
                                     </thead>
@@ -62,18 +62,32 @@
                                                     @endphp
                                                     <ul>
                                                         @foreach ($jobs as $job)
-                                                            <li>{{$job}}</li>
+                                                           {{ $job.', '}}
                                                         @endforeach
+                                                        {{-- @php
+                                                            $string = strip_tags(implode($jobs));
+                                                            if (strlen($string) > 500) {
+
+                                                                // truncate string
+                                                                $stringCut = substr($string, 0, 500);
+                                                                $endPoint = strrpos($stringCut, ' ');
+
+                                                                //if the string doesn't contain any space then it will cut without word basis.
+                                                                $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                                                $string .= '... <a href="/this/story">Read More</a>';
+                                                            }
+                                                            echo $string;
+                                                        @endphp --}}
                                                     </ul>
                                                 </td>
                                                 <td>
                                                     <button data-id="{{ $data->id_curriculum }}" onclick="editdata(this)"
-                                                        class="btn btn-inverse-success btn-icon delete-button mr-1 mr-1 Edit-button"
-                                                        data-toggle="modal" data-target="#modal-edit"><i
+                                                        class="btn btn-inverse-success btn-icon delete-button mr-1 Edit-button"
+                                                        data-toggle="modal" data-target="#modal-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"><i
                                                             class="icon-file menu-icon"></i></button>
                                                     <button data-id="{{ $data->id_curriculum }}"
                                                         class="btn btn-inverse-danger btn-icon mr-1 cr-hapus"
-                                                        data-toggle="modal" data-target="#modal-cr-hapus">
+                                                        data-toggle="modal" data-target="#modal-cr-hapus" data-toggle="tooltip" data-placement="top" title="Delete Data">
                                                         <i class="icon-trash">
                                                         </i></button>
                                                 </td>
@@ -108,7 +122,7 @@
                                 <div class="form-group">
                                     <label for="skillCategory">Skill Category</label>
                                     <select id="id_skill_category" class="form-control form-control-sm" name="id_skill_category">
-                                        <option value="">Pilih Skill Category</option>
+                                        {{-- <option value="">Pilih Skill Category</option> --}}
                                     </select>
                                 </div>
                             </div>
@@ -117,7 +131,7 @@
                                     <label for="training_module_group">Competency Group</label>
                                     <select id="training_module_group" class="form-control form-control-sm"
                                         name="training_module_group">
-                                        <option value="">Pilih Competencie Group</option>
+                                        {{-- <option value="#">-- Pilih Competencie Group --</option> --}}
                                     </select>
                                 </div>
                             </div>
@@ -139,11 +153,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="noModule">Competency Desc</label>
+                                    <label for="noModule">Competency Description</label>
                                     <textarea class="form-control" id="training_module_desc" name="training_module_desc" rows="3"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="noModule">Job Title CG</label>
+                                    <label for="noModule">Job Title</label>
                                     <select id="id_job_title" class="selectpicker form-control form-control-sm"
                                         name="id_job_title[]" data-live-search="true" data-hide-disabled="true" multiple
                                         data-actions-box="true">

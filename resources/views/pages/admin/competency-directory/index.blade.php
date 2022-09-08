@@ -36,7 +36,7 @@
                             <table class="display expandable-table table-striped table-hover table-sm" id="table-cd" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No Competency#</th>
+                                        <th>No Competency</th>
                                         <th>Competency</th>
                                         <th>Skill Category</th>
                                         <th>Level</th>
