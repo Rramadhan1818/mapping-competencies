@@ -135,10 +135,10 @@ class WhiteTag extends Controller
         ->addColumn('tagingStatus', function ($row) {
                 if (isset($row->tagingStatus)) {
                     if ($row->tagingStatus == 'Finish') {
-                        $label = '<span class="badge badge-success">' . $row->tagingStatus . '</span>';
+                    $label = '<span class="badge badge-sm badge-success">' . $row->tagingStatus . '</span>';
                         return $label;
                     } else {
-                        $label = '<span class="badge badge-secondary text-white">' . $row->tagingStatus . '</span>';
+                    $label = '<span class="badge badge-sm badge-secondary text-white">' . $row->tagingStatus . '</span>';
                         return $label;
                     }
 
@@ -409,6 +409,7 @@ class WhiteTag extends Controller
                                                     ->where("white_tag.id_user",$user->id);
                                             })
                                             ->groupBy("competencies_directory.id_curriculum")
+            ->orderByDesc('tagingStatus')
                                             ->get();
         return Datatables::of($data)
         ->addIndexColumn()
@@ -487,10 +488,10 @@ class WhiteTag extends Controller
         ->addColumn('tagingStatus', function ($row) {
             if (isset($row->tagingStatus)) {
                 if ($row->tagingStatus == 'Finish') {
-                    $label = '<span class="badge badge-success">' . $row->tagingStatus . '</span>';
+                    $label = '<span class="badge badge-sm badge-success">' . $row->tagingStatus . '</span>';
                     return $label;
                 } else {
-                    $label = '<span class="badge badge-secondary text-white">' . $row->tagingStatus . '</span>';
+                    $label = '<span class="badge badge-sm badge-secondary text-white">' . $row->tagingStatus . '</span>';
                     return $label;
                 }
             }

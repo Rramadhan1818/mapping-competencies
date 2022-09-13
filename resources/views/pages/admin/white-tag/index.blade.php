@@ -24,6 +24,15 @@
         border-radius: 40px !important;
     }
 
+#table-white-tag-all td{
+    font-size: 0.75rem;
+    padding: 0px;
+} 
+
+table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
+    padding-right: 0px;
+}
+
 </style>
 @endpush
 @section('content')
@@ -34,7 +43,7 @@
             <div class="card-header card-title" data-toggle="collapse" href="#graphgen">
             Mapping Competencies
             </div>
-                <div id="graphgen" class="card-body collapse show" data-parent="#accordion-gen" aria-expanded="true">
+                <div id="graphgen" class="card-body collapse show pb-1" data-parent="#accordion-gen" aria-expanded="true">
                         <div class="row mb-0">
                             <label class="col-sm-2 col-form-label pr-0">Circle Group</label>
                             <div class="col-sm-4 pl-0 m-auto">
@@ -50,7 +59,7 @@
                             <canvas id="pieChart" class="mb-2"></canvas>
                         </div>
                         <div id="elementCompGroup" class="col-md-6" style="display: none">
-                            <canvas id="pieCompGroup" class="mb-2 "></canvas>
+                            <canvas id="pieCompGroup" class="mb-2"></canvas>
                         </div>
                     </div>
                 </div>
@@ -101,14 +110,14 @@
                             @endif
                             <div class="table-responsive">
                                 {{-- display nowrap expandable-table --}}
-                                <table class="table table-sm table-striped table-hover" id="table-white-tag-all" style="width:100% !important">
+                                <table class="table table-sm table-striped table-bordered table-hover text-center" id="table-white-tag-all" style="width:100% !important">
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th>Nama Anggota</th>
                                             <th>No Competency</th>
                                             <th>Skill Category</th>
-                                            <th>Competency</th>
+                                            <th style="width: 20px!important">Competency</th>
                                             <th>Level</th>
                                             <th>Competency Group</th>
                                             {{-- <th>Competency Group</th> --}}
@@ -463,8 +472,8 @@
           ],
           searching: true,
           dom: '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-          displayLength: 10,
-          lengthMenu: [10, 15, 20],
+          displayLength: 20,
+          lengthMenu: [20, 30, 50],
           language: {
               paginate: {
                   // remove previous & next text from pagination

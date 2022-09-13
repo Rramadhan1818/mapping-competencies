@@ -7,7 +7,7 @@
     .card-box {
     padding: 20px;
     border-radius: 3px;
-    margin-bottom: 30px;
+    margin-bottom: 13px;
     background-color: #fff;
 }
 
@@ -68,7 +68,7 @@ h4 {
 @section('content')
 <!-- BEGIN: Content-->
   <div class="row">
-    <div class="col-md-12 grid-margin">
+    <div class="col-md-12 mb-2">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <h3 class="font-weight-bold">Welcome {{ Auth::user()->nama_pengguna }} 😁</h3>
@@ -103,7 +103,7 @@ h4 {
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" style="margin-bottom: -10px">
     <div class="col-md-6 grid-margin stretch-card" style="margin-bottom: 2rem !important;">
     {{-- <div class="col-md-6 grid-margin stretch-card">
       <div class="card">
