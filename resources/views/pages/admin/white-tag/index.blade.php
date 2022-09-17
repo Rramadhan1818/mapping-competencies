@@ -394,7 +394,6 @@
 
   }
 
-
   function initDatatable() {
       var dtJson = $('#table-cg').DataTable({
           ajax: "{{ route('memberJson') }}",
