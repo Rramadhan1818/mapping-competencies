@@ -413,7 +413,6 @@ table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
 
   }
 
-
   function initDatatable() {
       var dtJson = $('#table-cg').DataTable({
           ajax: "{{ route('memberJson') }}",
