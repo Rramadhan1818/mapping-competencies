@@ -17,6 +17,10 @@
         padding: 1.2rem !important;
         border-radius: 40px !important;
     }
+
+    table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
+    padding-right: 106px;
+    }
 </style>
 @endpush
 @section('content')

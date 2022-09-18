@@ -110,7 +110,7 @@ table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
                             @endif
                             <div class="table-responsive">
                                 {{-- display nowrap expandable-table --}}
-                                <table class="table table-sm table-striped table-bordered table-hover text-center" id="table-white-tag-all" style="width:100% !important">
+                                <table class="table table-sm table-striped table-hover text-center" id="table-white-tag-all" style="width:100% !important">
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
